@@ -23,9 +23,9 @@ Before you get started, make sure you have the following software installed on y
 Create a new database called `prime_app` and create a `user` table:
 
 ```SQL
-CREATE TABLE "user" (
+CREATE TABLE "users" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "email" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
 ```
