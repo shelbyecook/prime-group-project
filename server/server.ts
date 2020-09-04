@@ -6,7 +6,7 @@ import userRouter from './routes/user.router';
 
 require('dotenv').config();
 
-const app: any = express();
+const app: any = express(); //test
 
 // Body parser middleware
 app.use(bodyParser.json());
