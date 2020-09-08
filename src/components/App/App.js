@@ -6,6 +6,13 @@ import {
   Switch,
 } from 'react-router-dom';
 
+// Import template/Argon Styling
+import '../../assets/vendor/nucleo/css/nucleo.css';
+import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
+import '../../assets/scss/argon-design-system-react.scss';
+import '../../assets/css/argon-design-system-react.min.css';
+import '../../assets/css/argon-design-system-react.css.map';
+
 import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
