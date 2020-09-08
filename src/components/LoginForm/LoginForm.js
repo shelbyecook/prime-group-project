@@ -43,28 +43,26 @@ class LoginForm extends Component {
           </h3>
         )}
         <FormGroup>
-          <Label htmlFor="email">
-            Email:
-            <Input
-              type="text"
-              name="email"
-              required
-              value={this.state.email}
-              onChange={this.handleInputChangeFor('email')}
-            />
-          </Label>
+          <Label htmlFor="email">Email:</Label>
+          <Input
+            className="form-control-alternative"
+            type="text"
+            name="email"
+            required
+            value={this.state.email}
+            onChange={this.handleInputChangeFor('email')}
+          />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="password">
-            Password:
-            <Input
-              type="password"
-              name="password"
-              required
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </Label>
+          <Label htmlFor="password">Password:</Label>
+          <Input
+            className="form-control-alternative"
+            type="password"
+            name="password"
+            required
+            value={this.state.password}
+            onChange={this.handleInputChangeFor('password')}
+          />
         </FormGroup>
         <FormGroup>
           <Input className="btn" type="submit" name="submit" value="Log In" />

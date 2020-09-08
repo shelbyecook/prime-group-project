@@ -7,15 +7,13 @@ import {
 } from 'react-router-dom';
 
 // Import template/Argon Styling
-import '../../assets/vendor/nucleo/css/nucleo.css';
-import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
-import '../../assets/scss/argon-design-system-react.scss';
-import '../../assets/css/argon-design-system-react.min.css';
-import '../../assets/css/argon-design-system-react.css.map';
+import '../../assets/plugins/nucleo/css/nucleo.css';
+// import '../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css';
+import '../../assets/scss/argon-dashboard-react.scss';
 
 import { connect } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+// import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -38,7 +36,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          {/* <Nav /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />

@@ -4,9 +4,9 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // Importing Reactstrap
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import '../../assets/vendor/nucleo/css/nucleo.css';
-import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
-import '../../assets/scss/argon-design-system-react.scss';
+// import '../../assets/vendor/nucleo/css/nucleo.css';
+// import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
+// import '../../assets/scss/argon-design-system-react.scss';
 
 class RegisterForm extends Component {
   state = {
@@ -48,56 +48,58 @@ class RegisterForm extends Component {
           </h3>
         )}
         <FormGroup>
-          <Label htmlFor="firstName">
-            First Name:
-            <Input
-              type="text"
-              name="firstName"
-              value={this.state.firstName}
-              required
-              onChange={this.handleInputChangeFor('firstName')}
-            />
-          </Label>
+          <Label htmlFor="firstName">First Name:</Label>
+          <Input
+            className="form-control-alternative"
+            type="text"
+            name="firstName"
+            value={this.state.firstName}
+            required
+            onChange={this.handleInputChangeFor('firstName')}
+          />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="lastName">
-            Last Name:
-            <Input
-              type="text"
-              name="lastName"
-              value={this.state.lastName}
-              required
-              onChange={this.handleInputChangeFor('lastName')}
-            />
-          </Label>
+          <Label htmlFor="lastName">Last Name:</Label>
+          <Input
+            className="form-control-alternative"
+            type="text"
+            name="lastName"
+            value={this.state.lastName}
+            required
+            onChange={this.handleInputChangeFor('lastName')}
+          />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="email">
-            Email:
-            <Input
-              placeholder="name@example.com"
-              type="email"
-              name="email"
-              value={this.state.email}
-              required
-              onChange={this.handleInputChangeFor('email')}
-            />
-          </Label>
+          <Label htmlFor="email">Email:</Label>
+          <Input
+            className="form-control-alternative"
+            placeholder="name@example.com"
+            type="email"
+            name="email"
+            value={this.state.email}
+            required
+            onChange={this.handleInputChangeFor('email')}
+          />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="password">
-            Password:
-            <Input
-              type="password"
-              name="password"
-              value={this.state.password}
-              required
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </Label>
+          <Label htmlFor="password">Password:</Label>
+          <Input
+            className="form-control-alternative"
+            type="password"
+            name="password"
+            value={this.state.password}
+            required
+            onChange={this.handleInputChangeFor('password')}
+          />
         </FormGroup>
         <FormGroup>
-          <Input className="btn" type="submit" name="submit" value="Register" />
+          <Input
+            className="btn btn-primary"
+            outline
+            type="submit"
+            name="submit"
+            value="Register"
+          />
         </FormGroup>
       </Form>
     );
