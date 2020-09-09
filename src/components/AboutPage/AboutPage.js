@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+// Basic class component structure for React with default state
+// value setup. When making a new component be sure to replace
+// the component name TemplateClass with the name for the new
+// component.
+class AboutPage extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_AIRTABLE',
+    });
+  }
+  state = {
+    heading: 'Airtable test',
+  };
 
-const AboutPage = () => (
-  <div className="container">
-    <div>
-      <p>This about page is for anyone to read!</p>
-    </div>
-  </div>
-);
+  render() {
+    return (
+      <div>
+        <h2>{this.state.heading}</h2>
+      </div>
+    );
+  }
+}
 
-export default AboutPage;
+export default connect(mapStoreToProps)(AboutPage);
