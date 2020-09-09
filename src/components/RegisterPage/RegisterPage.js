@@ -3,30 +3,25 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
+
+/*
+Registration Page/Form (only displays if the user has not filled out yet)
+checks:
+if About Me table(DB) is empty {
+  render registration page/form
+} else {
+  take user to User Page
+}
+*/
 
 class RegisterPage extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+  state = {};
 
   render() {
     return (
       <div>
-        <RegisterForm />
-
-        <center>
-          <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/login');
-            }}
-          >
-            Login
-          </button>
-        </center>
+        <MemberAboutForm />
       </div>
     );
   }

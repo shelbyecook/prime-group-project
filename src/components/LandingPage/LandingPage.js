@@ -60,10 +60,12 @@ class LandingPage extends Component {
           </Card>
         </Container>
         <Container style={{ margin: 'auto', width: '50%' }}>
-          <Nav tabs>
+          <Nav tabs className="nav-fill flex-column flex-sm-row">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === '1' })}
+                className={classnames('mb-sm-3 mb-md-0', {
+                  active: this.state.activeTab === '1',
+                })}
                 onClick={() => {
                   this.toggle('1');
                 }}
@@ -73,7 +75,9 @@ class LandingPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === '2' })}
+                className={classnames('mb-sm-3 mb-md-0', {
+                  active: this.state.activeTab === '2',
+                })}
                 onClick={() => {
                   this.toggle('2');
                 }}
