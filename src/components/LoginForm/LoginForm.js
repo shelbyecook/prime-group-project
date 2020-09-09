@@ -3,7 +3,17 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // Importing Reactstrap
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+} from 'reactstrap';
 
 class LoginForm extends Component {
   state = {
@@ -43,29 +53,48 @@ class LoginForm extends Component {
           </h3>
         )}
         <FormGroup>
-          <Label htmlFor="email">Email:</Label>
-          <Input
-            className="form-control-alternative"
-            type="text"
-            name="email"
-            required
-            value={this.state.email}
-            onChange={this.handleInputChangeFor('email')}
-          />
+          <InputGroup className="input-group-alternative mb-4">
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <i className="ni ni-email-83" />
+              </InputGroupText>
+            </InputGroupAddon>
+            <Input
+              className="form-control-alternative"
+              placeholder="name@example.com"
+              type="email"
+              name="email"
+              value={this.state.email}
+              required
+              onChange={this.handleInputChangeFor('email')}
+            />
+          </InputGroup>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="password">Password:</Label>
-          <Input
-            className="form-control-alternative"
-            type="password"
-            name="password"
-            required
-            value={this.state.password}
-            onChange={this.handleInputChangeFor('password')}
-          />
+          <InputGroup className="input-group-alternative mb-4">
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <i className="ni ni-lock-circle-open" />
+              </InputGroupText>
+            </InputGroupAddon>
+            <Input
+              className="form-control-alternative"
+              type="password"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              required
+              onChange={this.handleInputChangeFor('password')}
+            />
+          </InputGroup>
         </FormGroup>
         <FormGroup>
-          <Input className="btn" type="submit" name="submit" value="Log In" />
+          <Input
+            className="btn btn-primary"
+            type="submit"
+            name="submit"
+            value="Log In"
+          />
         </FormGroup>
       </Form>
     );

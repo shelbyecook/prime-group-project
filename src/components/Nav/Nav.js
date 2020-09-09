@@ -19,9 +19,13 @@ const Nav = (props) => {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <img
+          style={{ marginTop: '2px', marginLeft: '2px' }}
+          src="https://www.innovateherkc.com/wp-content/uploads/2019/09/InnovateHer_Logo_small.png"
+          alt="logo for InnovateHer KC"
+        />
       </Link>
-      <div className="nav-right">
+      <div className="nav-right" style={{ float: 'right' }}>
         <Link className="nav-link" to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,

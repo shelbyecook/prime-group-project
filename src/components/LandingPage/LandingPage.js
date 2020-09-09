@@ -48,48 +48,50 @@ class LandingPage extends Component {
   render() {
     console.log(this.state.activeTab);
     return (
-      <Container>
+      <CardBody className="text-center bg-info">
         <Container>
-          <Card style={{ backgroundColor: '#BC91D9' }}>
-            <CardBody className="text-center">
-              <img
-                src="https://www.innovateherkc.com/wp-content/uploads/2019/09/InnovateHer_Logo_small.png"
-                alt="logo for InnovateHer KC"
-              />
-            </CardBody>
-          </Card>
-        </Container>
-        <Container style={{ margin: 'auto', width: '50%' }}>
-          <Nav tabs className="nav-fill flex-column flex-sm-row">
-            <NavItem>
-              <NavLink
-                className={classnames('mb-sm-3 mb-md-0', {
-                  active: this.state.activeTab === '1',
-                })}
-                onClick={() => {
-                  this.toggle('1');
+          <Row>
+            <Col lg={{ size: 6, offset: 3 }} md={8}>
+              <Nav
+                tabs
+                style={{
+                  position: 'relative',
+                  top: '5px',
+                  zIndex: '1000',
                 }}
+                className="nav-fill flex-column flex-sm-row"
               >
-                Login
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                className={classnames('mb-sm-3 mb-md-0', {
-                  active: this.state.activeTab === '2',
-                })}
-                onClick={() => {
-                  this.toggle('2');
-                }}
-              >
-                Register
-              </NavLink>
-            </NavItem>
-          </Nav>
+                <NavItem>
+                  <NavLink
+                    className={classnames('mb-sm-3 mb-md-0', {
+                      active: this.state.activeTab === '1',
+                    })}
+                    onClick={() => {
+                      this.toggle('1');
+                    }}
+                  >
+                    Login
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className={classnames('mb-sm-3 mb-md-0', {
+                      active: this.state.activeTab === '2',
+                    })}
+                    onClick={() => {
+                      this.toggle('2');
+                    }}
+                  >
+                    Register
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Col>
+          </Row>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
               <Row>
-                <Col>
+                <Col lg={{ size: 6, offset: 3 }} md={8}>
                   <Card>
                     <CardBody>
                       <LoginForm />
@@ -100,7 +102,7 @@ class LandingPage extends Component {
             </TabPane>
             <TabPane tabId="2">
               <Row>
-                <Col>
+                <Col lg={{ size: 6, offset: 3 }} md={8}>
                   <Card>
                     <CardBody>
                       <RegisterForm />
@@ -110,9 +112,8 @@ class LandingPage extends Component {
               </Row>
             </TabPane>
           </TabContent>
-          <Row></Row>
         </Container>
-      </Container>
+      </CardBody>
     );
   }
 }
