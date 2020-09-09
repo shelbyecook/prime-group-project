@@ -6,67 +6,109 @@ import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from '../LoginForm/LoginForm';
+
+// Argon Components
+import { Container, Row, Col, Card, CardBody } from 'reactstrap';
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Button,
+  CardTitle,
+  CardText,
+} from 'reactstrap';
+import classnames from 'classnames';
+
+// const [activeTab, setActiveTab] = useState('1');
+
+//   const toggle = tab => {
+//     if(activeTab !== tab) setActiveTab(tab);
+//   }
 
 class LandingPage extends Component {
   state = {
-    heading: 'Class Component',
+    activeTab: '1',
   };
+
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab,
+      });
+    }
+  }
 
   onLogin = (event) => {
     this.props.history.push('/login');
   };
 
   render() {
+    console.log(this.state.activeTab);
     return (
-      <div className="container">
-        <h2>{this.state.heading}</h2>
-
-        <div className="grid">
-          <div className="grid-col grid-col_8">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra
-              lacus ut ex molestie blandit. Etiam et turpis sit amet risus
-              mollis interdum. Suspendisse et justo vitae metus bibendum
-              fringilla sed sed justo. Aliquam sollicitudin dapibus lectus,
-              vitae consequat odio elementum eget. Praesent efficitur eros vitae
-              nunc interdum, eu interdum justo facilisis. Sed pulvinar nulla ac
-              dignissim efficitur. Quisque eget eros metus. Vestibulum bibendum
-              fringilla nibh a luctus. Duis a sapien metus.
-            </p>
-
-            <p>
-              Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-              id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-              consectetur placerat pharetra. Aenean gravida ex ut erat commodo,
-              ut finibus metus facilisis. Nullam eget lectus non urna rhoncus
-              accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-              euismod, augue at condimentum rhoncus, massa lorem semper lacus,
-              sed lobortis augue mi vel felis. Duis ultrices sapien at est
-              convallis congue.
-            </p>
-
-            <p>
-              Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-              Suspendisse posuere dapibus maximus. Aliquam vitae felis libero.
-              In vehicula sapien at semper ultrices. Vivamus sed feugiat libero.
-              Sed sagittis neque id diam euismod, ut egestas felis ultricies.
-              Nullam non fermentum mauris. Sed in enim ac turpis faucibus
-              pretium in sit amet nisi.
-            </p>
-          </div>
-          <div className="grid-col grid-col_4">
-            <RegisterForm />
-
-            <center>
-              <h4>Already a Member?</h4>
-              <button className="btn btn_sizeSm" onClick={this.onLogin}>
+      <Container>
+        <Container>
+          <Card style={{ backgroundColor: '#BC91D9' }}>
+            <CardBody className="text-center">
+              <img
+                src="https://www.innovateherkc.com/wp-content/uploads/2019/09/InnovateHer_Logo_small.png"
+                alt="logo for InnovateHer KC"
+              />
+            </CardBody>
+          </Card>
+        </Container>
+        <Container style={{ margin: 'auto', width: '50%' }}>
+          <Nav tabs>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === '1' })}
+                onClick={() => {
+                  this.toggle('1');
+                }}
+              >
                 Login
-              </button>
-            </center>
-          </div>
-        </div>
-      </div>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === '2' })}
+                onClick={() => {
+                  this.toggle('2');
+                }}
+              >
+                Register
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="1">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody>
+                      <LoginForm />
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+            <TabPane tabId="2">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody>
+                      <RegisterForm />
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+          </TabContent>
+          <Row></Row>
+        </Container>
+      </Container>
     );
   }
 }
