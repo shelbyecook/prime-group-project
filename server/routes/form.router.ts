@@ -1,20 +1,31 @@
 import { Request, Response } from 'express';
 import express from 'express';
 import pool from '../modules/pool';
-import { ADDRGETNETWORKPARAMS } from 'dns';
 
 const router: express.Router = express.Router();
 
-/**
- * GET route template
- */
+//GET route for getting user profile data
 router.get(
-  '/',
+  '/profile/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
-    // GET route code here
+    const userId = req.params.id;
+    const queryText = `SELECT community_role, organization_name, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram   FROM about
+                        JOIN "users" ON "about".user_id= "users".id 
+                        JOIN "social_media" on "social_media".user_id= "users".id 
+                        JOIN "demographic" on "demographic".user_id= "users".id  WHERE "users".id=$1;`;
+    pool
+      .query(queryText, [userId])
+      .then((response) => {
+        res.send(response.rows);
+      })
+      .catch((err) => {
+        console.log('Error completing GET profile query', err);
+        res.sendStatus(500);
+      });
   }
 );
 
+//POST route for posting to the about table
 router.post(
   '/register/about/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
@@ -54,6 +65,7 @@ router.post(
   }
 );
 
+//POST route for posting to the demographic table
 router.post(
   '/register/demographic/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
@@ -86,7 +98,7 @@ router.post(
       });
   }
 );
-
+//POST route for posting to the social_media table
 router.post(
   '/register/social/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
