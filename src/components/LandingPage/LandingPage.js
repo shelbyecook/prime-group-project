@@ -59,46 +59,54 @@ class LandingPage extends Component {
             </CardBody>
           </Card>
         </Container>
-        <Container>
+        <Container style={{ margin: 'auto', width: '50%' }}>
           <Nav tabs>
             <NavItem>
               <NavLink
-                className={classnames(this.state.activeTab === '1')}
+                className={classnames({ active: this.state.activeTab === '1' })}
                 onClick={() => {
                   this.toggle('1');
                 }}
               >
-                Tab1
+                Login
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames(this.state.activeTab === '2')}
+                className={classnames({ active: this.state.activeTab === '2' })}
                 onClick={() => {
                   this.toggle('2');
                 }}
               >
-                More Tabs
+                Register
               </NavLink>
             </NavItem>
           </Nav>
-          <Row>
-            <Col>
-              <Card>
-                <CardBody>
-                  <LoginForm />
-                </CardBody>
-              </Card>
-            </Col>
-
-            <Col>
-              <Card>
-                <CardBody>
-                  <RegisterForm />
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="1">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody>
+                      <LoginForm />
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+            <TabPane tabId="2">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody>
+                      <RegisterForm />
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+          </TabContent>
+          <Row></Row>
         </Container>
       </Container>
     );
