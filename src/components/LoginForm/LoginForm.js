@@ -7,18 +7,18 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class LoginForm extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
   };
 
   login = (event) => {
     event.preventDefault();
 
-    if (this.state.username && this.state.password) {
+    if (this.state.email && this.state.password) {
       this.props.dispatch({
         type: 'LOGIN',
         payload: {
-          username: this.state.username,
+          email: this.state.email,
           password: this.state.password,
         },
       });
