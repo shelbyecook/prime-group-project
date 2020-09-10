@@ -94,12 +94,13 @@ const Nav = (props) => {
           <div className="ml-auto">
             {props.store.user.id && (
               <>
+                <i className="ni ni-book-bookmark" style={{ color: 'white' }} />
                 <NavLink className="nav-item">
                   <Link className="nav-item" to="/info">
                     Info Page
                   </Link>
                 </NavLink>
-                <i className="ni ni-user-run" />
+                <i className="ni ni-user-run" style={{ color: 'white' }} />
                 <NavLink className="nav-logout">
                   <LogOutButton className="nav-logout" />
                 </NavLink>

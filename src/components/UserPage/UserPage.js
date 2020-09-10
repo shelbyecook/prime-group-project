@@ -54,56 +54,58 @@ class UserPage extends Component {
             </Card>
           </Col>
         </Row>
-        <Nav tabs className="nav-fill flex-column flex-sm-row">
-          <NavItem>
-            <NavLink
-              className={classnames('mb-sm-3 mb-md-0', {
-                active: this.state.activeTab === '1',
-              })}
-              onClick={() => {
-                this.toggle('1');
-              }}
-            >
-              Step 1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames('mb-sm-3 mb-md-0', {
-                active: this.state.activeTab === '2',
-              })}
-              onClick={() => {
-                this.toggle('2');
-              }}
-            >
-              Step 2
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="1">
-            <Row>
-              <Col>
-                <Card>
-                  <CardBody>
-                    <Container>
-                      <RegisterPage />
-                    </Container>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-          </TabPane>
-          <TabPane tabId="2">
-            <Row>
-              <Col>
-                <Card>
-                  <CardBody></CardBody>
-                </Card>
-              </Col>
-            </Row>
-          </TabPane>
-        </TabContent>
+        <Container>
+          <Nav tabs className="nav-fill flex-column flex-sm-row">
+            <NavItem>
+              <NavLink
+                className={classnames('mb-sm-3 mb-md-0', {
+                  active: this.state.activeTab === '1',
+                })}
+                onClick={() => {
+                  this.toggle('1');
+                }}
+              >
+                Step 1
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={classnames('mb-sm-3 mb-md-0', {
+                  active: this.state.activeTab === '2',
+                })}
+                onClick={() => {
+                  this.toggle('2');
+                }}
+              >
+                Step 2
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="1">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody>
+                      <Container>
+                        <RegisterPage />
+                      </Container>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+            <TabPane tabId="2">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody></CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+          </TabContent>
+        </Container>
       </>
     );
   }

@@ -89,12 +89,9 @@ class LoginForm extends Component {
           </InputGroup>
         </FormGroup>
         <FormGroup>
-          <Input
-            className="btn btn-primary"
-            type="submit"
-            name="submit"
-            value="Log In"
-          />
+          <Button outline color="primary" block type="submit" name="submit">
+            Log In
+          </Button>
         </FormGroup>
       </Form>
     );

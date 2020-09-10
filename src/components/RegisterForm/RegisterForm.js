@@ -124,12 +124,9 @@ class RegisterForm extends Component {
               </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Input
-                className="btn btn-primary"
-                type="submit"
-                name="submit"
-                value="Register"
-              />
+              <Button outline color="primary" block type="submit" name="submit">
+                Register
+              </Button>
             </FormGroup>
           </Col>
         </Row>
