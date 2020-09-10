@@ -36,20 +36,20 @@ const Nav = (props) => {
       expand="lg"
     >
       <Container>
-        <NavLink onClick={(e) => e.preventDefault()}>
-          <Link to="/home">
-            <img
-              style={{
-                marginTop: '2px',
-                marginLeft: '2px',
-                height: '75%',
-                width: '75%',
-              }}
-              src="https://www.innovateherkc.com/wp-content/uploads/2019/09/InnovateHer_Logo_small.png"
-              alt="logo for InnovateHer KC"
-            />
-          </Link>
-        </NavLink>
+        {/* <NavLink onClick={(e) => e.preventDefault()}> */}
+        <Link to="/home">
+          <img
+            style={{
+              marginTop: '2px',
+              marginLeft: '2px',
+              height: '75%',
+              width: '75%',
+            }}
+            src="https://www.innovateherkc.com/wp-content/uploads/2019/09/InnovateHer_Logo_small.png"
+            alt="logo for InnovateHer KC"
+          />
+        </Link>
+        {/* </NavLink> */}
         <button
           aria-controls="navbar-info"
           aria-expanded={false}
@@ -91,23 +91,17 @@ const Nav = (props) => {
             </Row>
           </div>
           {/* Show the link to the info page and the logout button if the user is logged in */}
-          <div className="ml-auto nav-link">
+          <div className="ml-auto">
             {props.store.user.id && (
               <>
                 <NavLink className="nav-item">
-                  <Link
-                    className="nav-item"
-                    style={{ display: 'inline' }}
-                    to="/info"
-                  >
+                  <Link className="nav-item" to="/info">
                     Info Page
                   </Link>
                 </NavLink>
-                <NavLink className="nav-item">
-                  <LogOutButton
-                    className="nav-item"
-                    style={{ display: 'inline' }}
-                  />
+                <i className="ni ni-user-run" />
+                <NavLink className="nav-logout">
+                  <LogOutButton className="nav-logout" />
                 </NavLink>
               </>
             )}
