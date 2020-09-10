@@ -18,9 +18,7 @@ router.get(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
     // GET route code here
-    
     console.log('THIS IS THE CONSOLE LOG', process.env.AIRTABLE_API_KEY);
-
     axios({
       method: 'GET',
       url:
