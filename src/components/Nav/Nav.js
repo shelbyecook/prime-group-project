@@ -65,14 +65,7 @@ const Nav = (props) => {
         <UncontrolledCollapse navbar toggler="#navbar-info">
           <div className="navbar-collapse-header">
             <Row>
-              <Col className="collapse-brand" xs="6">
-                <Link className="nav-link" to={loginLinkData.path}>
-                  {/* Show this link if they are logged in or not,
-          but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
-                  {loginLinkData.text}
-                </Link>
-              </Col>
+              <Col className="collapse-brand" xs="6"></Col>
               <Col className="collapse-close" xs="6">
                 <button
                   aria-controls="navbar-info"
@@ -94,6 +87,15 @@ const Nav = (props) => {
           <div className="ml-auto">
             {props.store.user.id && (
               <>
+                <i className="ni ni-circle-08" style={{ color: 'white' }} />
+                <NavLink className="nav-item">
+                  <Link className="nav-item" to={loginLinkData.path}>
+                    {/* Show this link if they are logged in or not,
+          but call this link 'Home' if they are logged in,
+          and call this link 'Login / Register' if they are not */}
+                    {loginLinkData.text}
+                  </Link>
+                </NavLink>
                 <i className="ni ni-book-bookmark" style={{ color: 'white' }} />
                 <NavLink className="nav-item">
                   <Link className="nav-item" to="/info">

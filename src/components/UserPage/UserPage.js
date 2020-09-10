@@ -44,11 +44,11 @@ class UserPage extends Component {
                 </h1>
                 <p className="lead">
                   We'll start with gathering some information about{' '}
-                  <span style={{ color: '#F59032' }}>you</span>, and help you
-                  make your place in the community of strong womxn. Through this
-                  we can solidfy the foundation for the six pillars of
-                  InnovateHer KC: Social Connection, Professional Development,
-                  Championship, Amplification, Resource Sharing, and Mentorship.
+                  <span style={{ color: '#F59032' }}>you</span>, and help to
+                  solidify your place in the community. Through this we can
+                  support the foundation for the six pillars of InnovateHer KC:
+                  Social Connection, Professional Development, Championship,
+                  Amplification, Resource Sharing, and Mentorship.
                 </p>
               </CardBody>
             </Card>
@@ -85,13 +85,7 @@ class UserPage extends Component {
             <TabPane tabId="1">
               <Row>
                 <Col>
-                  <Card>
-                    <CardBody>
-                      <Container>
-                        <RegisterPage />
-                      </Container>
-                    </CardBody>
-                  </Card>
+                  <RegisterPage />
                 </Col>
               </Row>
             </TabPane>
