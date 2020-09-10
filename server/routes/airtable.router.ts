@@ -1,12 +1,15 @@
 import { Request, Response } from 'express';
+require('dotenv').config();
 import express from 'express';
 import pool from '../modules/pool';
 import axios from 'axios';
 const router: express.Router = express.Router();
 const { response } = require('express');
 
-const { AIRTABLE_API_KEY, BASE } = process.env;
-const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE);
+
+
+const AIRTABLE_KEY  = process.env.AIRTABLE_API_KEY;
+
 
 /**
  * GET route template
@@ -15,12 +18,15 @@ router.get(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
     // GET route code here
+    
+    console.log('THIS IS THE CONSOLE LOG', process.env.AIRTABLE_API_KEY);
+
     axios({
       method: 'GET',
       url:
         'https://api.airtable.com/v0/appuvYL7KtFPgB0ow/Imported%20table/recSuUlFzEY2Ju9WN',
       headers: {
-        Authorization: `Bearer AIRTABLE_API_KEY`,
+        Authorization: `Bearer ${AIRTABLE_KEY}`,
       },
     })
       .then((response) => {

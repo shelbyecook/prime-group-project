@@ -61,6 +61,8 @@ services:
       SERVER_SESSION_SECRET: ${SERVER_SESSION_SECRET}
       CHOKIDAR_USEPOLLING: 'true'
       NODE_ENV: ${NODE_ENV}
+      AIRTABLE_API_KEY: ${AIRTABLE_API_KEY}
+      BASE: ${BASE}
     volumes:
       - './server:/app-server/server'
       - './server/dist:/app-server/dist'
