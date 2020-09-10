@@ -6,10 +6,8 @@ import axios from 'axios';
 const router: express.Router = express.Router();
 const { response } = require('express');
 
-
-
-const AIRTABLE_KEY  = process.env.AIRTABLE_API_KEY;
-
+const AIRTABLE_KEY = process.env.AIRTABLE_API_KEY;
+const BASE = process.env.BASE;
 
 /**
  * GET route template
@@ -18,11 +16,10 @@ router.get(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
     // GET route code here
-    console.log('THIS IS THE CONSOLE LOG', process.env.AIRTABLE_API_KEY);
+
     axios({
       method: 'GET',
-      url:
-        'https://api.airtable.com/v0/appuvYL7KtFPgB0ow/Imported%20table/recSuUlFzEY2Ju9WN',
+      url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
       headers: {
         Authorization: `Bearer ${AIRTABLE_KEY}`,
       },
