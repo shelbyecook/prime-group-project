@@ -21,20 +21,19 @@ import {
   Col,
   Container,
 } from 'reactstrap';
+import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
 
 // Basic functional component structure for React with default state
 // value setup.
-function MemberAboutForm(props) {
+function MemberAboutForm(props, tab) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
-  const [heading, setHeading] = useState('Functional Component');
-
   const formik = useFormik({
     initialValues: {
+      displayName: '', // string
       role: '', // string
       organization: '', // string
-      displayName: '', // string
-      jobTitle: '', // string
+      title: '', // string
       streetAddress: '', // string
       city: '', // string
       state: '', // string
@@ -45,10 +44,16 @@ function MemberAboutForm(props) {
       profilePic: '', // string
       bio: '', // string
       shirtSize: '', // string
+      mentor: false,
+      mentee: false,
     },
     onSubmit: (values) => {
-      setHeading(JSON.stringify(values, null, 2));
-      alert(JSON.stringify(values, null, 2));
+      // setHeading(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      props.dispatch({
+        type: 'HOLD_ABOUT',
+        payload: values,
+      });
     },
   });
   return (
@@ -65,11 +70,11 @@ function MemberAboutForm(props) {
                   <Col lg={8}>
                     <FormGroup>
                       <h1>Profile Picture: 'will contain S3 upload field'</h1>
-                      <Label htmlFor="name">Display Name: </Label>
+                      <Label htmlFor="displayName">Display Name: </Label>
                       <Input
                         className="form-control-alternative"
-                        id="name"
-                        name="name"
+                        id="displayName"
+                        name="displayName"
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.displayName}
@@ -120,11 +125,11 @@ function MemberAboutForm(props) {
                       />
                     </Col>
                     <Col lg={6}>
-                      <Label htmlFor="address">Street Address</Label>
+                      <Label htmlFor="streetAddress">Street Address</Label>
                       <Input
                         className="form-control-alternative"
-                        id="address"
-                        name="address"
+                        id="streetAddress"
+                        name="streetAddress"
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.streetAddress}
@@ -164,6 +169,86 @@ function MemberAboutForm(props) {
                       />
                     </Col>
                   </Row>
+                  <hr />
+                  <FormGroup>
+                    <CardText className="display-4">
+                      Mentorship Options:
+                    </CardText>
+                    <legend className="col-form-label col-sm-12">
+                      I am interested in mentoring another IHKC member.
+                    </legend>
+                    <InputGroup className="custom-control custom-radio mb-3">
+                      <Input
+                        className="custom-control-input"
+                        id="yes-mentor"
+                        name="mentor"
+                        type="radio"
+                        onChange={formik.handleChange}
+                        value={true}
+                      />
+                      <Label
+                        className="custom-control-label"
+                        htmlFor="yes-mentor"
+                      >
+                        Yes, I'm interesting in becoming a community mentor.
+                      </Label>
+                    </InputGroup>
+                    <InputGroup className="custom-control custom-radio mb-3">
+                      <Input
+                        className="custom-control-input"
+                        id="no-mentor"
+                        name="mentor"
+                        type="radio"
+                        value={false}
+                        onChange={formik.handleChange}
+                      />
+                      <Label
+                        className="custom-control-label"
+                        htmlFor="no-mentor"
+                      >
+                        No, I'm not interested at this time.
+                      </Label>
+                    </InputGroup>
+                  </FormGroup>
+                  <FormGroup>
+                    <legend className="col-form-label col-sm-12">
+                      I am interested in being mentored by another IHKC member.
+                    </legend>
+
+                    <InputGroup className="custom-control custom-radio mb-3">
+                      <Input
+                        className="custom-control-input"
+                        id="yes-mentor-2"
+                        name="mentee"
+                        type="radio"
+                        value={true}
+                        onChange={formik.handleChange}
+                      />
+                      <Label
+                        className="custom-control-label"
+                        htmlFor="yes-mentor-2"
+                      >
+                        Yes, I am interesting in being mentored by another IHKC
+                        member.
+                      </Label>
+                    </InputGroup>
+                    <InputGroup className="custom-control custom-radio mb-3">
+                      <Input
+                        className="custom-control-input"
+                        id="no-mentor-2"
+                        name="mentee"
+                        type="radio"
+                        value={false}
+                        onChange={formik.handleChange}
+                      />
+                      <Label
+                        className="custom-control-label"
+                        htmlFor="no-mentor-2"
+                      >
+                        No, I'm not interested at this time.
+                      </Label>
+                    </InputGroup>
+                  </FormGroup>
                 </FormGroup>
                 <hr />
                 <CardText className="display-4">Socials:</CardText>
@@ -211,9 +296,16 @@ function MemberAboutForm(props) {
                   <option value="xl">XL</option>
                 </Input>
                 <Row>
-                  <Button outline color="primary" type="submit">
-                    Submit
-                  </Button>
+                  <Col lg={{ size: 2, offset: 10 }}>
+                    <Button
+                      outline
+                      color="primary"
+                      type="submit"
+                      onClick={props.toggle}
+                    >
+                      Next
+                    </Button>
+                  </Col>
                 </Row>
               </Col>
             </Row>

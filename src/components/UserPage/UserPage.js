@@ -8,6 +8,7 @@ import {
   Container,
   Row,
   Col,
+  Button,
   Card,
   CardBody,
   TabContent,
@@ -18,6 +19,9 @@ import {
 } from 'reactstrap';
 
 import classnames from 'classnames';
+import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
+import MemberDemoForm from '../MemberDemoForm/MemberDemoForm';
+import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
@@ -25,14 +29,16 @@ class UserPage extends Component {
     activeTab: '1',
   };
 
-  toggle(tab) {
+  toggle = (tab) => {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab,
       });
     }
-  }
+  };
   render() {
+    console.log(this.state.activeTab);
+    console.log(this.props.store);
     return (
       <>
         <Row>
@@ -44,18 +50,27 @@ class UserPage extends Component {
                 </h1>
                 <p className="lead">
                   We'll start with gathering some information about{' '}
-                  <span style={{ color: '#F59032' }}>you</span>, and help to
-                  solidify your place in the community. Through this we can
-                  support the foundation for the six pillars of InnovateHer KC:
-                  Social Connection, Professional Development, Championship,
+                  <span style={{ color: '#F59032' }}>you</span> to help solidify
+                  your place in the community. Through this we can support the
+                  foundation for the six pillars of InnovateHer KC: Social
+                  Connection, Professional Development, Championship,
                   Amplification, Resource Sharing, and Mentorship.
                 </p>
               </CardBody>
             </Card>
           </Col>
         </Row>
+        <br />
         <Container>
-          <Nav tabs className="nav-fill flex-column flex-sm-row">
+          <Nav
+            tabs
+            style={{
+              position: 'relative',
+              top: '5px',
+              zIndex: '1000',
+            }}
+            className="nav-fill flex-column flex-sm-row"
+          >
             <NavItem>
               <NavLink
                 className={classnames('mb-sm-3 mb-md-0', {
@@ -65,7 +80,7 @@ class UserPage extends Component {
                   this.toggle('1');
                 }}
               >
-                Step 1
+                Step 1 - About Me
               </NavLink>
             </NavItem>
             <NavItem>
@@ -77,7 +92,19 @@ class UserPage extends Component {
                   this.toggle('2');
                 }}
               >
-                Step 2
+                Step 2 - Demographic Information
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={classnames('mb-sm-3 mb-md-0', {
+                  active: this.state.activeTab === '3',
+                })}
+                onClick={() => {
+                  this.toggle('3');
+                }}
+              >
+                Step 3 - Areas of Interest/Expertise
               </NavLink>
             </NavItem>
           </Nav>
@@ -85,7 +112,14 @@ class UserPage extends Component {
             <TabPane tabId="1">
               <Row>
                 <Col>
-                  <RegisterPage />
+                  <MemberAboutForm toggle={() => this.toggle('2')} />
+                  {/* <Button
+                    onClick={() => {
+                      this.toggle('2');
+                    }}
+                  >
+                    Next
+                  </Button> */}
                 </Col>
               </Row>
             </TabPane>
@@ -93,7 +127,27 @@ class UserPage extends Component {
               <Row>
                 <Col>
                   <Card>
-                    <CardBody></CardBody>
+                    <CardBody>
+                      <MemberDemoForm />
+                      <Button
+                        onClick={() => {
+                          this.toggle('3');
+                        }}
+                      >
+                        Next
+                      </Button>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TabPane>
+            <TabPane tabId="3">
+              <Row>
+                <Col>
+                  <Card>
+                    <CardBody>
+                      <MemberMentorForm />
+                    </CardBody>
                   </Card>
                 </Col>
               </Row>
