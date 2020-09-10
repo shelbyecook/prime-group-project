@@ -30,19 +30,21 @@ router.post(
   '/register/about/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
     console.log(req.body);
-    const communityRole = req.body.communityRole;
-    const organizationName = req.body.organizationName;
-    const jobTitle = req.body.jobTitle;
-    const address = req.body.address;
+    const communityRole = req.body.role;
+    const organizationName = req.body.organization;
+    const jobTitle = req.body.title;
+    const address = req.body.streetAddress;
     const city = req.body.city;
     const state = req.body.state;
-    const zipCode = req.body.zipCode;
-    const headshotPic = req.body.headshotPic;
+    const zipCode = req.body.zipcode;
+    const headshotPic = req.body.profilePic;
     const bio = req.body.bio;
-    const tshirtSize = req.body.tshirtSize;
+    const tshirtSize = req.body.shirtSize;
+    const mentor = req.body.mentor;
+    const mentee = req.body.mentee;
     const userId = req.params.id;
 
-    const queryText = `INSERT INTO "about" (community_role, organization_name, job_title, address, city, state, zip_code, headshot, bio, tshirt_size, birthday, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);`;
+    const queryText = `INSERT INTO "about" (community_role, organization_name, job_title, address, city, state, zip_code, headshot, bio, tshirt_size, birthday, mentor, mentee, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17);`;
     pool
       .query(queryText, [
         communityRole,
@@ -55,6 +57,8 @@ router.post(
         headshotPic,
         bio,
         tshirtSize,
+        mentor,
+        mentee,
         userId,
       ])
       .then(() => res.sendStatus(201))
