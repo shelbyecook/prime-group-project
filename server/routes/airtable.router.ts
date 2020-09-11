@@ -9,14 +9,9 @@ const { response } = require('express');
 const AIRTABLE_KEY = process.env.AIRTABLE_API_KEY;
 const BASE = process.env.BASE;
 
-/**
- * GET route template
- */
 router.get(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
-    // GET route code here
-
     axios({
       method: 'GET',
       url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
@@ -35,9 +30,6 @@ router.get(
   }
 );
 
-/**
- * POST route template
- */
 router.post(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
