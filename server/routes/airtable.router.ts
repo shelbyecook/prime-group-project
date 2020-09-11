@@ -1,9 +1,13 @@
 import { Request, Response } from 'express';
+require('dotenv').config();
 import express from 'express';
 import pool from '../modules/pool';
 import axios from 'axios';
 const router: express.Router = express.Router();
 const { response } = require('express');
+
+const AIRTABLE_KEY  = process.env.AIRTABLE_API_KEY;
+
 /**
  * GET route template
  */
@@ -16,7 +20,7 @@ router.get(
       url:
         'https://api.airtable.com/v0/appuvYL7KtFPgB0ow/Imported%20table/recSuUlFzEY2Ju9WN',
       headers: {
-        Authorization: `Bearer keyFf5LEuetu81Zyk`,
+        Authorization: `Bearer ${AIRTABLE_KEY}`,
       },
     })
       .then((response) => {
