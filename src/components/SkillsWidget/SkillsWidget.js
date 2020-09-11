@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import SearchOption from '../SearchOption/SearchOption';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -8,13 +9,16 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class SkillsWidget extends Component {
   state = {
-    heading: 'Class Component',
+    selectedSkills: [],
   };
+
+  selectSkill = () => {};
 
   render() {
     return (
       <div>
         <h2>{this.state.heading}</h2>
+        <SearchOption />
       </div>
     );
   }
