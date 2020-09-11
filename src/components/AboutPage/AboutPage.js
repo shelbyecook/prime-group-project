@@ -9,7 +9,13 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class AboutPage extends Component {
   componentDidMount() {
     this.props.dispatch({
-      type: 'FETCH_AIRTABLE',
+      type: 'FETCH_AIRTABLE_SPEAKER',
+    });
+    this.props.dispatch({
+      type: 'FETCH_AIRTABLE_SPACES',
+    });
+    this.props.dispatch({
+      type: 'FETCH_AIRTABLE_BUSINESSES',
     });
   }
   state = {

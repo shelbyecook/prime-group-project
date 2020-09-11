@@ -1,22 +1,23 @@
 import { Request, Response } from 'express';
+require('dotenv').config();
 import express from 'express';
 import pool from '../modules/pool';
 import axios from 'axios';
 const router: express.Router = express.Router();
 const { response } = require('express');
-/**
- * GET route template
- */
+
+const AIRTABLE_KEY = process.env.AIRTABLE_API_KEY;
+const BASE = process.env.BASE;
+
 router.get(
-  '/',
+  '/speaker',
   (req: Request, res: Response, next: express.NextFunction): void => {
-    // GET route code here
     axios({
       method: 'GET',
-      url:
-        'https://api.airtable.com/v0/appuvYL7KtFPgB0ow/Imported%20table/recSuUlFzEY2Ju9WN',
+      // url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
+      url: `https://api.airtable.com/v0/${BASE}/Kansas%20City%20Diverse%20Speaker%20Directory`,
       headers: {
-        Authorization: `Bearer keyFf5LEuetu81Zyk`,
+        Authorization: `Bearer ${AIRTABLE_KEY}`,
       },
     })
       .then((response) => {
@@ -30,9 +31,50 @@ router.get(
   }
 );
 
-/**
- * POST route template
- */
+router.get(
+  '/spaces',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    axios({
+      method: 'GET',
+      // url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
+      url: `https://api.airtable.com/v0/app1iZZ3DnqBxxEWd/Event%20Spaces%20in%20KC`,
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_KEY}`,
+      },
+    })
+      .then((response) => {
+        res.send(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+  }
+);
+
+router.get(
+  '/businesses',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    axios({
+      method: 'GET',
+      // url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
+      url: `https://api.airtable.com/v0/appQMs9RQoFgjtSQX/Womxn%20Owned%20Businesses`,
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_KEY}`,
+      },
+    })
+      .then((response) => {
+        res.send(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+  }
+);
+
 router.post(
   '/',
   (req: Request, res: Response, next: express.NextFunction): void => {
