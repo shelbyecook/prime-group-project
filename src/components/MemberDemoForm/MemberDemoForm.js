@@ -131,7 +131,7 @@ function MemberDemoForm(props) {
           <option value="LGBTQIA+">LGBTQIA+</option>
           <option value="I prefer not to answer">I prefer not to answer</option>
         </Input>
-        <Label htmlFor="ability">Select Ability Level</Label>
+        <Label htmlFor="ability">Ability Level</Label>
         <Input
           id="ability"
           name="ability"
