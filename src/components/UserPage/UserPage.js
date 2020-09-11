@@ -22,6 +22,7 @@ import classnames from 'classnames';
 import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
 import MemberDemoForm from '../MemberDemoForm/MemberDemoForm';
 import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
+import SkillsWidget from '../SkillsWidget/SkillsWidget';
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
@@ -139,7 +140,7 @@ class UserPage extends Component {
                 <Col>
                   <Card>
                     <CardBody>
-                      <MemberMentorForm />
+                      <SkillsWidget />
                     </CardBody>
                   </Card>
                 </Col>
