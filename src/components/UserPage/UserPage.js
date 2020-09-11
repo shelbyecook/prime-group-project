@@ -128,14 +128,7 @@ class UserPage extends Component {
                 <Col>
                   <Card>
                     <CardBody>
-                      <MemberDemoForm />
-                      <Button
-                        onClick={() => {
-                          this.toggle('3');
-                        }}
-                      >
-                        Next
-                      </Button>
+                      <MemberDemoForm toggle={() => this.toggle('3')} />
                     </CardBody>
                   </Card>
                 </Col>

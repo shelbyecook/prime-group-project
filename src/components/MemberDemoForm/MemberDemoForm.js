@@ -17,8 +17,8 @@ import {
   //CardTitle,
   //CardText,
   //CardBody,
-  //Row,
-  //Col,
+  Row,
+  Col,
   //Container,
 } from 'reactstrap';
 
@@ -178,7 +178,19 @@ function MemberDemoForm(props) {
           <option value="Doctoral Degree">Doctoral Degree</option>
           <option value="I prefer not to answer">I prefer not to answer</option>
         </Input>
-        <Button type="submit">Submit</Button>
+        <hr />
+        <Row>
+          <Col lg={{ size: 2, offset: 10 }}>
+            <Button
+              outline
+              color="primary"
+              type="submit"
+              onClick={props.toggle}
+            >
+              Next
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </>
   );

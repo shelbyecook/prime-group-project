@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { useFormik } from 'formik';
-
+import ReactDatetime from 'react-datetime';
+import moment from 'moment';
 // import reactstrap Styles/Components
 import {
   FormGroup,
@@ -21,11 +22,10 @@ import {
   Col,
   Container,
 } from 'reactstrap';
-import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
 
 // Basic functional component structure for React with default state
 // value setup.
-function MemberAboutForm(props, tab) {
+function MemberAboutForm(props) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
   const formik = useFormik({
@@ -40,12 +40,14 @@ function MemberAboutForm(props, tab) {
       zipcode: '', // number
       linkedin: '', // string
       facebook: '', // string
+      instagram: '', // string
       twitter: '', // string
       profilePic: '', // string
       bio: '', // string
       shirtSize: '', // string
       mentor: false,
       mentee: false,
+      birthday: '',
     },
     onSubmit: (values) => {
       // setHeading(JSON.stringify(values, null, 2));
@@ -56,6 +58,7 @@ function MemberAboutForm(props, tab) {
       });
     },
   });
+  console.log(formik);
   return (
     <>
       <Card className="bg-neutral">
@@ -67,9 +70,9 @@ function MemberAboutForm(props, tab) {
             <Row>
               <Col>
                 <Row>
-                  <Col lg={8}>
+                  <h1>Profile Picture: 'will contain S3 upload field'</h1>
+                  <Col lg={6}>
                     <FormGroup>
-                      <h1>Profile Picture: 'will contain S3 upload field'</h1>
                       <Label htmlFor="displayName">Display Name: </Label>
                       <Input
                         className="form-control-alternative"
@@ -90,7 +93,36 @@ function MemberAboutForm(props, tab) {
                       />
                     </FormGroup>
                   </Col>
+                  <Col lg={6}>
+                    <FormGroup>
+                      <Label htmlFor="birthday">Birthday: </Label>
+                      <InputGroup className="input-group-alternative">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="ni ni-calendar-grid-58" />
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <ReactDatetime
+                          id="birthday"
+                          name="birthday"
+                          onChange={(e) => {
+                            formik.setFieldValue(
+                              'birthday',
+                              moment(e).format('MM-DD-YYYY')
+                            );
+                          }}
+                          value={formik.values.birthday}
+                          inputProps={{
+                            placeholder: 'Birthday',
+                          }}
+                          timeFormat={false}
+                          closeOnSelect={true}
+                        />
+                      </InputGroup>
+                    </FormGroup>
+                  </Col>
                 </Row>
+
                 <hr />
                 <FormGroup>
                   <CardText className="display-4">Admin:</CardText>
@@ -253,7 +285,8 @@ function MemberAboutForm(props, tab) {
                 <hr />
                 <CardText className="display-4">Socials:</CardText>
                 <Row>
-                  <Col lg={4}>
+                  <Col lg={6}>
+                    <i className="fa fa-linkedin-square" />{' '}
                     <Label htmlFor="linkedin">LinkedIn: </Label>
                     <Input
                       className="form-control-alternative"
@@ -264,7 +297,8 @@ function MemberAboutForm(props, tab) {
                       value={formik.values.linkedin}
                     />
                   </Col>
-                  <Col lg={4}>
+                  <Col lg={6}>
+                    <i className="fa fa-facebook-square" />{' '}
                     <Label htmlFor="facebook">Facebook: </Label>
                     <Input
                       className="form-control-alternative"
@@ -275,7 +309,8 @@ function MemberAboutForm(props, tab) {
                       value={formik.values.facebook}
                     />
                   </Col>
-                  <Col lg={4}>
+                  <Col lg={6}>
+                    <i className="fa fa-twitter-square" />{' '}
                     <Label htmlFor="twitter">Twitter: </Label>
                     <Input
                       className="form-control-alternative"
@@ -284,6 +319,28 @@ function MemberAboutForm(props, tab) {
                       type="text"
                       onChange={formik.handleChange}
                       value={formik.values.twitter}
+                    />
+                  </Col>
+                  <Col lg={6}>
+                    <i
+                      className="fa fa-instagram"
+                      style={{
+                        backgroundColor: '#525f7f',
+                        color: 'white',
+                        borderRadius: '3px',
+                        fontSize: '11px',
+                        padding: '1.5px 2.5px',
+                        verticalAlign: 'middle',
+                      }}
+                    />{' '}
+                    <Label htmlFor="instagram">Instagram: </Label>
+                    <Input
+                      className="form-control-alternative"
+                      id="instagram"
+                      name="instagram"
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.instagram}
                     />
                   </Col>
                 </Row>
@@ -295,6 +352,7 @@ function MemberAboutForm(props, tab) {
                   <option value="l">L</option>
                   <option value="xl">XL</option>
                 </Input>
+                <hr />
                 <Row>
                   <Col lg={{ size: 2, offset: 10 }}>
                     <Button
