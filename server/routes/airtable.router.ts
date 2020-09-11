@@ -14,7 +14,8 @@ router.get(
   (req: Request, res: Response, next: express.NextFunction): void => {
     axios({
       method: 'GET',
-      url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
+      // url: `https://api.airtable.com/v0/${BASE}/Imported%20table/recSuUlFzEY2Ju9WN`,
+      url: `https://api.airtable.com/v0/${BASE}/Speaker`,
       headers: {
         Authorization: `Bearer ${AIRTABLE_KEY}`,
       },
