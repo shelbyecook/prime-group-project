@@ -87,10 +87,10 @@ router.post(
     const age = req.body.age;
     const ethnicity = req.body.ethnicity;
     const gender = req.body.gender;
-    const sexualOrientation = req.body.sexualOrientation;
+    const sexualOrientation = req.body.sexual_orientation;
     const ability = req.body.ability;
-    const income = req.body.income;
-    const education = req.body.education;
+    const income = req.body.income_level;
+    const education = req.body.education_level;
     const userId = req.params.id;
 
     const queryText = `INSERT INTO "demographic" (age, ethnicity, gender, sexual_orientation, ability, income, education, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
@@ -113,25 +113,25 @@ router.post(
   }
 );
 //POST route for posting to the social_media table
-router.post(
-  '/register/social/:id',
-  (req: Request, res: Response, next: express.NextFunction): void => {
-    console.log(req.body);
-    const linkedin = req.body.linkedin;
-    const facebook = req.body.facebook;
-    const instagram = req.body.instagram;
-    const twitter = req.body.twitter;
-    const userId = req.params.id;
+// router.post(
+//   '/register/social/:id',
+//   (req: Request, res: Response, next: express.NextFunction): void => {
+//     console.log(req.body);
+//     const linkedin = req.body.linkedin;
+//     const facebook = req.body.facebook;
+//     const instagram = req.body.instagram;
+//     const twitter = req.body.twitter;
+//     const userId = req.params.id;
 
-    const queryText = `INSERT INTO "social_media" (twitter, facebook, linkedin, instagram, user_id) VALUES ($1, $2, $3, $4, $5);`;
-    pool
-      .query(queryText, [linkedin, facebook, instagram, twitter, userId])
-      .then(() => res.sendStatus(201))
-      .catch((err) => {
-        console.log('Error completing social_media table POST query', err);
-        res.sendStatus(500);
-      });
-  }
-);
+//     const queryText = `INSERT INTO "social_media" (twitter, facebook, linkedin, instagram, user_id) VALUES ($1, $2, $3, $4, $5);`;
+//     pool
+//       .query(queryText, [linkedin, facebook, instagram, twitter, userId])
+//       .then(() => res.sendStatus(201))
+//       .catch((err) => {
+//         console.log('Error completing social_media table POST query', err);
+//         res.sendStatus(500);
+//       });
+//   }
+// );
 
 export default router;

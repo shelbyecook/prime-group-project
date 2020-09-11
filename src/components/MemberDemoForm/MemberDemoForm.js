@@ -39,6 +39,7 @@ function MemberDemoForm(props) {
     },
 
     onSubmit: (values) => {
+      console.log(values);
       // setHeading(JSON.stringify(values, null, 2));
       props.dispatch({
         type: 'HOLD_DEMO', // HOLD_DEMO
