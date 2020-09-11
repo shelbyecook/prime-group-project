@@ -78,7 +78,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.ethnicity}
         >
-          <option value="">Select an Ethnicity</option>
+          <option value="">Ethnicity</option>
           <option value="American Indian or other Native American">
             American Indian or other Native American
           </option>
@@ -119,6 +119,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.sexual_orientation}
         >
+          <option value="">Sexual Orientation</option>
           <option value="Female / Female-Identifying">
             Female / Female-Identifying
           </option>
@@ -137,6 +138,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.ability}
         >
+          <option value="">Ability Level</option>
           <option value="I have a disability">I have a disability</option>
           <option value="I do not have a disability">
             {' '}
@@ -152,6 +154,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.sexual_orientation}
         >
+          <option value="">Income Level</option>
           <option value="<40000">less than $40000 per year</option>
           <option value="40000-79999"> $40000-79999</option>
           <option value="80000-119999">$80000-119999</option>
@@ -172,6 +175,7 @@ function MemberDemoForm(props) {
             {' '}
             High School diploma or GED
           </option>
+          <option value="">Education Level</option>
           <option value="Some College">Some College</option>
           <option value=">Associate's Degree">Associate's Degree</option>
           <option value="Bachelor's Degree">Bachelor's Degree</option>
