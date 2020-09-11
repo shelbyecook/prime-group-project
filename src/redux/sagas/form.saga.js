@@ -11,7 +11,7 @@ function* postForm(action) {
     ); // { form: props.store.form, id: props.store.user.id }
     yield axios.post(
       `/api/form/register/demographic/${action.payload.id}`,
-      action.payload.form.demographic
+      action.payload.form.demo
     ); // { form: props.store.form, id: props.store.user.id }
     // yield axios.post(
     //   `/api/form/register/social/${action.payload.id}`,
