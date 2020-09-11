@@ -11,7 +11,6 @@ router.get(
     const userId = req.params.id;
     const queryText = `SELECT community_role, organization_name, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram   FROM about
                         JOIN "users" ON "about".user_id= "users".id 
-                        JOIN "social_media" on "social_media".user_id= "users".id 
                         JOIN "demographic" on "demographic".user_id= "users".id  WHERE "users".id=$1;`;
     pool
       .query(queryText, [userId])

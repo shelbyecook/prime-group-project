@@ -57,6 +57,7 @@ CREATE TABLE "about" (
     "linkedin" VARCHAR (150),
     "facebook" VARCHAR (150),
     "twitter" VARCHAR (150),
+    "instagram" VARCHAR (150),
     "headshot" VARCHAR (200),
     "bio" VARCHAR (300),
     "tshirt_size" VARCHAR (50),
