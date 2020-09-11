@@ -60,7 +60,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.age}
         >
-          <option value="">Age Range</option>
+          <option value="">Select Age Range</option>
           <option value="<18">18 years of age or less</option>
           <option value="18-24">18-24</option>
           <option value="25-34">25-34</option>
@@ -78,7 +78,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.ethnicity}
         >
-          <option value="">Ethnicity</option>
+          <option value="">Select Ethnicity</option>
           <option value="American Indian or other Native American">
             American Indian or other Native American
           </option>
@@ -105,6 +105,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.gender}
         >
+          <option value="">Select Gender</option>
           <option value="Female / Female-Identifying">
             Female / Female-Identifying
           </option>
@@ -119,7 +120,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.sexual_orientation}
         >
-          <option value="">Sexual Orientation</option>
+          <option value="">Select Sexual Orientation</option>
           <option value="Female / Female-Identifying">
             Female / Female-Identifying
           </option>
@@ -130,7 +131,7 @@ function MemberDemoForm(props) {
           <option value="LGBTQIA+">LGBTQIA+</option>
           <option value="I prefer not to answer">I prefer not to answer</option>
         </Input>
-        <Label htmlFor="ability">Ability Level</Label>
+        <Label htmlFor="ability">Select Ability Level</Label>
         <Input
           id="ability"
           name="ability"
@@ -138,7 +139,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.ability}
         >
-          <option value="">Ability Level</option>
+          <option value="">Select Ability Level</option>
           <option value="I have a disability">I have a disability</option>
           <option value="I do not have a disability">
             {' '}
@@ -154,7 +155,7 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.sexual_orientation}
         >
-          <option value="">Income Level</option>
+          <option value="">Select Income Level</option>
           <option value="<40000">less than $40000 per year</option>
           <option value="40000-79999"> $40000-79999</option>
           <option value="80000-119999">$80000-119999</option>
@@ -170,12 +171,12 @@ function MemberDemoForm(props) {
           onChange={formik.handleChange}
           value={formik.values.education_level}
         >
+          <option value="">Select Education Level</option>
           <option value="Less than high school">Less than high school</option>
           <option value="High School diploma or GED">
             {' '}
             High School diploma or GED
           </option>
-          <option value="">Education Level</option>
           <option value="Some College">Some College</option>
           <option value=">Associate's Degree">Associate's Degree</option>
           <option value="Bachelor's Degree">Bachelor's Degree</option>
