@@ -13,10 +13,10 @@ function* postForm(action) {
       `/api/form/register/demographic/${action.payload.id}`,
       action.payload.form.demographic
     ); // { form: props.store.form, id: props.store.user.id }
-    yield axios.post(
-      `/api/form/register/social/${action.payload.id}`,
-      action.payload.form.about
-    ); // { form: props.store.form, id: props.store.user.id }
+    // yield axios.post(
+    //   `/api/form/register/social/${action.payload.id}`,
+    //   action.payload.form.about
+    // ); // { form: props.store.form, id: props.store.user.id }
   } catch (error) {
     console.log('Form failed to submit. Please try again.', error);
   }
