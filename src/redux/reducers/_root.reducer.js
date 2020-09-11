@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import airtable from './airtable.reducer';
+import speakers from './speaker.reducer';
+import spaces from './spaces.reducer';
+import businesses from './businesses.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -12,7 +14,9 @@ import airtable from './airtable.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  airtable,
+  speakers,
+  spaces,
+  businesses,
 });
 
 export default rootReducer;
