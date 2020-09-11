@@ -44,6 +44,7 @@ CREATE TABLE "social_media" (
 );
 CREATE TABLE "about" (
     "id" SERIAL PRIMARY KEY,
+    "display_name" VARCHAR (100),
     "community_role" VARCHAR (150),
     "organization_name" VARCHAR (100),
     "mentor" boolean,
@@ -53,6 +54,9 @@ CREATE TABLE "about" (
     "city" VARCHAR (100),
     "state" VARCHAR (100),
     "zip_code" int,
+    "linkedin" VARCHAR (150),
+    "facebook" VARCHAR (150),
+    "twitter" VARCHAR (150),
     "headshot" VARCHAR (200),
     "bio" VARCHAR (300),
     "tshirt_size" VARCHAR (50),

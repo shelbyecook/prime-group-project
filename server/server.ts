@@ -4,6 +4,7 @@ import sessionMiddleware from './modules/session-middleware';
 import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
 import airtableRouter from './routes/airtable.router';
+import formRouter from './routes/form.router';
 
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/airtable', airtableRouter);
+app.use('/api/form', formRouter);
 
 // Serve static files
 app.use(express.static('build'));

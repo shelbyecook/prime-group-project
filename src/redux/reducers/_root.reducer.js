@@ -1,9 +1,15 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
+
 import speakers from './speaker.reducer';
 import spaces from './spaces.reducer';
 import businesses from './businesses.reducer';
+import form from './form.reducer';
+
+
+
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -14,9 +20,15 @@ import businesses from './businesses.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
+
   speakers,
   spaces,
   businesses,
+  form, // used to store form data for submission
+
+ 
+
+
 });
 
 export default rootReducer;

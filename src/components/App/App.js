@@ -8,7 +8,7 @@ import {
 
 // Import template/Argon Styling
 import '../../assets/plugins/nucleo/css/nucleo.css';
-// import '../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css';
+import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
 import '../../assets/scss/argon-dashboard-react.scss';
 
 import { connect } from 'react-redux';
