@@ -13,7 +13,7 @@ CREATE TABLE "demographic" (
     "id" SERIAL PRIMARY KEY,
     "age" VARCHAR (150),
     "ethnicity" VARCHAR (50),
-    "gender" VARCHAR (20),
+    "gender" VARCHAR (50),
     "sexual_orientation" VARCHAR (50),
     "ability" VARCHAR (50),
     "income" VARCHAR (50),
