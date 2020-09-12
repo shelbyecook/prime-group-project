@@ -2,48 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import { Input } from 'reactstrap';
-
-const skills = [
-  'Active listening',
-  'Adaptability',
-  'Advising',
-  'Analytical thinking',
-  'Business knowledge',
-  'Caring',
-  'Coaching',
-  'Collaboration',
-  'Communication',
-  'Conceptual thinking',
-  'Cooperation',
-  'Creativity',
-  'Critical thinking',
-  'Curiosity',
-  'Decision making',
-  'Delegation',
-  'Diplomacy',
-  'Emotional intelligence',
-  'Executive presence',
-  'Flexibility',
-  'Initiative',
-  'Innovation',
-  'Integrity',
-  'Motivation',
-  'Negotiating',
-  'Networking',
-  'Patience',
-  'Perseverance',
-  'Planning',
-  'Presenting',
-  'Problem solving',
-  'Productivity',
-  'Respect',
-  'Responsibility',
-  'Sense of humor',
-  'Sharing',
-  'Strategic thinking',
-  'Troubleshooting',
-];
+import { Row, Col, Input, Table, Container } from 'reactstrap';
+import SearchResults from '../SearchResults/SearchResults';
 
 // creating a Search functional component to reuse in search page and for skills
 function SearchOptions(props) {
@@ -54,29 +14,47 @@ function SearchOptions(props) {
     setSearchTerm(event.target.value);
   };
   useEffect(() => {
-    const results = skills.filter(
+    const results = props.skills.filter(
       (skill) =>
         skill.toLowerCase().includes(searchTerm) || skill.includes(searchTerm)
     );
     setSearchResults(results);
   }, [searchTerm]);
-
   return (
     <div>
-      <Input
-        className="form-control-alternative"
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <div style={{ height: '50px', overflow: 'scroll' }}>
-        <ul>
-          {searchResults.map((item) => (
+      <Container>
+        <Row>
+          <Col lg={{ size: 6, offset: 3 }}>
+            <Input
+              className="form-control-alternative"
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleChange}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            lg={{ size: 6, offset: 3 }}
+            style={{ height: '300px', overflow: 'scroll' }}
+          >
+            <Table>
+              <thead className="thead-light">
+                <tr>
+                  <th colSpan="2">Skills</th>
+                </tr>
+              </thead>
+              {/* {searchResults.map((item) => (
             <li>{item}</li>
-          ))}
-        </ul>
-      </div>
+          ))} */}
+              <tbody>
+                <SearchResults results={searchResults} />
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
