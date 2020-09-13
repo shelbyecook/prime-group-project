@@ -1,6 +1,6 @@
-const airtableReducer = (state = {}, action) => {
+const spacesReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_AIRTABLE':
+    case 'SET_AIRTABLE_SPACES':
       return action.payload;
     default:
       return state;
@@ -9,4 +9,4 @@ const airtableReducer = (state = {}, action) => {
 
 // user will be on the redux state at:
 // state.user
-export default airtableReducer;
+export default spacesReducer;
