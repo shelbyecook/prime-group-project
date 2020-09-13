@@ -160,6 +160,12 @@ class SkillsWidget extends Component {
     });
   };
 
+  removeSkill = (i) => {
+    this.props.dispatch({
+      type: 'REMOVE_SKILL',
+      payload: i,
+    });
+  };
   render() {
     return (
       <div>
@@ -218,7 +224,7 @@ class SkillsWidget extends Component {
           <CardBody>
             <TabContent activeTab={'tabs' + this.state.tabs}>
               <TabPane tabId="tabs1">
-                <SearchOption skills={skills} />
+                <SearchOption />
               </TabPane>
               <TabPane tabId="tabs2">
                 <SearchOption skills={skills2} />{' '}
@@ -228,12 +234,21 @@ class SkillsWidget extends Component {
               </TabPane>
             </TabContent>
             <hr />
-            {this.props.store.skillsholder.map((skill, i) => {
+            {this.props.store.memberskills.map((skill, i) => {
+              let color = 'primary';
+              if (skill.category === 'Leadership') {
+                color = 'primary';
+              } else if (skill.category === 'Business and Entrepreneurship') {
+                color = 'info';
+              }
               return (
-                <Badge key={i} color="primary" pill>
+                <Badge key={skill.id} color={color} pill>
                   {skill.skill}
                   <span className={styles.cancelSkill}>
-                    <i className="ni ni-fat-remove" />
+                    <i
+                      className="ni ni-fat-remove"
+                      onClick={() => this.removeSkill(skill.id)}
+                    />
                   </span>
                 </Badge>
               );

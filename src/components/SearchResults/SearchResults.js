@@ -10,27 +10,27 @@ class SearchResults extends Component {
     selectedSkills: [],
   };
 
-  selectSkill = (i, skill) => () => {
-    console.log(i, skill, this.state.selectedSkills);
-    const newSkill = { id: i, skill };
+  selectSkill = (skill) => () => {
+    console.log(skill, this.state.selectedSkills);
     // TODO SORT THESE AND FILTER DUPLICATES
     this.props.dispatch({
       type: 'ADD_SKILL',
-      payload: { id: i, skill },
+      payload: skill,
     });
   };
 
   render() {
+    console.log(this.props.results);
     return (
       <>
         {this.props.results.map((skill, i) => (
-          <tr key={i}>
-            <td scope="col">{skill}</td>
+          <tr key={skill.id}>
+            <td scope="col">{skill.skill}</td>
             {/*id: skill:*/}
             <td scope="col">
               <Button
                 //   disabled={clicked}
-                onClick={this.selectSkill(i, skill)}
+                onClick={this.selectSkill(skill)}
                 outline
                 color="primary"
               >

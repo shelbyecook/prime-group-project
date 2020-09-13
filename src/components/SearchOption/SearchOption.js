@@ -13,10 +13,18 @@ function SearchOptions(props) {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  // useEffect(() => {
+  //   const results = props.skills.filter(
+  //     (skill) =>
+  //       skill.toLowerCase().includes(searchTerm) || skill.includes(searchTerm)
+  //   );
+  //   setSearchResults(results);
+  // }, [searchTerm]);
   useEffect(() => {
-    const results = props.skills.filter(
+    const results = props.store.skillsholder.filter(
       (skill) =>
-        skill.toLowerCase().includes(searchTerm) || skill.includes(searchTerm)
+        skill.skill.toLowerCase().includes(searchTerm) ||
+        skill.skill.includes(searchTerm)
     );
     setSearchResults(results);
   }, [searchTerm]);
