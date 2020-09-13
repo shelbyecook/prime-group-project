@@ -5,6 +5,7 @@ import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
 import airtableRouter from './routes/airtable.router';
 import formRouter from './routes/form.router';
+import profileRouter from './routes/profile.router';
 
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/airtable', airtableRouter);
 app.use('/api/form', formRouter);
+app.use('/api/profile', profileRouter);
 
 // Serve static files
 app.use(express.static('build'));
