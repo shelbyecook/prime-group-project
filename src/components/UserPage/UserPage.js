@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
+import MemberDemoForm from '../MemberDemoForm/MemberDemoForm';
+import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
+import SkillsWidget from '../SkillsWidget/SkillsWidget';
 
 import {
   Container,
@@ -19,10 +23,6 @@ import {
 } from 'reactstrap';
 
 import classnames from 'classnames';
-import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
-import MemberDemoForm from '../MemberDemoForm/MemberDemoForm';
-import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
-import SkillsWidget from '../SkillsWidget/SkillsWidget';
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
@@ -37,6 +37,18 @@ class UserPage extends Component {
       });
     }
   };
+
+  submitData = () => {
+    this.props.dispatch({
+      type: 'FINAL_SUBMIT',
+      payload: {
+        form: this.props.store.form,
+        skills: this.props.store.memberskills,
+        id: this.props.store.user.id,
+      },
+    });
+  };
+
   render() {
     console.log(this.state.activeTab);
     console.log(this.props.store);
@@ -141,6 +153,18 @@ class UserPage extends Component {
                   <Card>
                     <CardBody>
                       <SkillsWidget />
+                      <hr />
+                      <Row>
+                        <Col lg={{ size: 2, offset: 10 }}>
+                          <Button
+                            outline
+                            color="primary"
+                            onClick={this.submitData}
+                          >
+                            Submit
+                          </Button>
+                        </Col>
+                      </Row>
                     </CardBody>
                   </Card>
                 </Col>
