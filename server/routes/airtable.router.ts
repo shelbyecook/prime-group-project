@@ -22,7 +22,6 @@ router.get(
     })
       .then((response) => {
         res.send(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -44,7 +43,6 @@ router.get(
     })
       .then((response) => {
         res.send(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +64,6 @@ router.get(
     })
       .then((response) => {
         res.send(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

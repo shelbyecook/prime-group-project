@@ -21,7 +21,9 @@ import {
   Row,
   Col,
   Container,
+  CardHeader,
 } from 'reactstrap';
+import ImageUpload from '../ImageUpload/ImageUpload';
 
 // Basic functional component structure for React with default state
 // value setup.
@@ -61,16 +63,18 @@ function MemberAboutForm(props) {
   console.log(formik);
   return (
     <>
-      <Card className="bg-neutral">
-        <CardBody>
+      <Card className="bg-secondary">
+        <CardHeader>
           <CardTitle>
             <CardText className="display-3">About Me:</CardText>
           </CardTitle>
+        </CardHeader>
+        <CardBody>
           <Form onSubmit={formik.handleSubmit}>
             <Row>
               <Col>
                 <Row>
-                  <h1>Profile Picture: 'will contain S3 upload field'</h1>
+                  <ImageUpload />
                   <Col lg={6}>
                     <FormGroup>
                       <Label htmlFor="displayName">Display Name: </Label>

@@ -2,10 +2,17 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 
+import form from './form.reducer';
+import skillsholder from './skillsholder.reducer';
+import memberskills from './memberskills.reducer';
+
+
+
 import speakers from './speaker.reducer';
 import spaces from './spaces.reducer';
 import businesses from './businesses.reducer';
-import form from './form.reducer';
+
+
 
 
 
@@ -20,13 +27,16 @@ import form from './form.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-
+  form, // used to store form data for submission
+  skillsholder, // receive skills from db to show on widget
+  memberskills, // holds skills while user selects before submission
   speakers,
   spaces,
   businesses,
-  form, // used to store form data for submission
+  
 
  
+
 
 
 });
