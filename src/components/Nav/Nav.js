@@ -88,8 +88,8 @@ const Nav = (props) => {
             {props.store.user.id && (
               <>
                 <i className="ni ni-circle-08" style={{ color: 'white' }} />
-                <NavLink className="nav-item">
-                  <Link className="nav-item" to={loginLinkData.path}>
+                <NavLink className="nav-piece">
+                  <Link className="nav-piece" to={loginLinkData.path}>
                     {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
           and call this link 'Login / Register' if they are not */}
@@ -97,8 +97,8 @@ const Nav = (props) => {
                   </Link>
                 </NavLink>
                 <i className="ni ni-book-bookmark" style={{ color: 'white' }} />
-                <NavLink className="nav-item">
-                  <Link className="nav-item" to="/info">
+                <NavLink className="nav-piece">
+                  <Link className="nav-piece" to="/info">
                     Info Page
                   </Link>
                 </NavLink>
@@ -111,11 +111,11 @@ const Nav = (props) => {
 
             {/* Always show this link since the about page is not protected */}
             <NavLink
-              className="nav-item"
+              className="nav-piece"
               href="#pablo"
               onClick={(e) => e.preventDefault()}
             >
-              <Link className="nav-item" to="/about">
+              <Link className="nav-piece" to="/about">
                 About
               </Link>
             </NavLink>

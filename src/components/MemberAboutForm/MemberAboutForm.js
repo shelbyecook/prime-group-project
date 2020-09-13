@@ -21,6 +21,7 @@ import {
   Row,
   Col,
   Container,
+  CardHeader,
 } from 'reactstrap';
 
 // Basic functional component structure for React with default state
@@ -61,11 +62,13 @@ function MemberAboutForm(props) {
   console.log(formik);
   return (
     <>
-      <Card className="bg-neutral">
-        <CardBody>
+      <Card className="bg-secondary">
+        <CardHeader>
           <CardTitle>
             <CardText className="display-3">About Me:</CardText>
           </CardTitle>
+        </CardHeader>
+        <CardBody>
           <Form onSubmit={formik.handleSubmit}>
             <Row>
               <Col>
