@@ -5,14 +5,11 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* postSkills(action) {
   try {
     console.log(action.payload);
-    yield axios.post(
-      `/api/skills${action.payload.user_skill}`,
-      action.payload.skills
-    );
-    yield axios.post(
-      `/api/skills${action.payload.user_id}`,
-      action.payload.user_skill
-    );
+    const response = yield axios.get(`/api/skills${action.payload.user_skill}`);
+    yield put({
+      type: SET_SKILLS,
+      payload: response.data,
+    });
   } catch (error) {
     console.log('Form failed. Please try again.', error);
   }
