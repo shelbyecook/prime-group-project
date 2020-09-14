@@ -15,133 +15,8 @@ import {
   TabPane,
   Badge,
   Button,
+  CardFooter,
 } from 'reactstrap';
-
-const skills = [
-  'Active listening',
-  'Adaptability',
-  'Advising',
-  'Analytical thinking',
-  'Business knowledge',
-  'Caring',
-  'Coaching',
-  'Collaboration',
-  'Communication',
-  'Conceptual thinking',
-  'Cooperation',
-  'Creativity',
-  'Critical thinking',
-  'Curiosity',
-  'Decision making',
-  'Delegation',
-  'Diplomacy',
-  'Emotional intelligence',
-  'Executive presence',
-  'Flexibility',
-  'Initiative',
-  'Innovation',
-  'Integrity',
-  'Motivation',
-  'Negotiating',
-  'Networking',
-  'Patience',
-  'Perseverance',
-  'Planning',
-  'Presenting',
-  'Problem solving',
-  'Productivity',
-  'Respect',
-  'Responsibility',
-  'Sense of humor',
-  'Sharing',
-  'Strategic thinking',
-  'Troubleshooting',
-];
-
-const skills2 = [
-  'Algorithms',
-  'Analytical Skills',
-  'Big Data',
-  'Calculating',
-  'Compiling Statistics',
-  'Data Analytics',
-  'Data Mining',
-  'Database Design',
-  'Database Management',
-  'Documentation',
-  'Modeling',
-  'Modification',
-  'Needs Analysis',
-  'Quantitative Research',
-  'Quantitative Reports',
-  'Statistical Analysis',
-  'Applications',
-  'Certifications',
-  'Coding',
-  'Computing',
-  'Configuration',
-  'Customer Support',
-  'Debugging',
-  'Design',
-  'Development',
-  'Hardware',
-  'Implementation',
-  'Information Technology',
-  'Infrastructure',
-  'Languages',
-  'Maintenance',
-  'Network Architecture',
-  'Network Security',
-  'Networking',
-  'New Technologies',
-  'Operating Systems',
-  'Programming',
-  'Restoration',
-  'Security',
-  'Servers',
-  'Software',
-  'Solution Delivery',
-  'Storage',
-  'Structures',
-  'Systems Analysis',
-  'Technical Support',
-  'Technology',
-  'Testing',
-  'Tools',
-  'Training',
-  'Troubleshooting',
-  'Usability',
-  'Benchmarking',
-  'Budget Planning',
-  'Engineering',
-  'Fabrication',
-  'Following Specifications',
-  'Operations',
-  'Performance Review',
-  'Project Planning',
-  'Quality Assurance',
-  'Quality Control',
-  'Scheduling',
-  'Task Delegation',
-  'Task Management',
-  'Blogging',
-  'Digital Photography',
-  'Digital Media',
-  'Facebook',
-  'Instagram',
-  'Networking',
-  'Pinterest',
-  'SEO',
-  'Social Media Platforms',
-  'Twitter',
-  'Web Analytics',
-  'Client Relations',
-  'Email',
-  'Requirements Gathering',
-  'Research',
-  'Subject Matter Experts (SMEs)',
-  'Technical Documentation',
-];
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -174,7 +49,7 @@ class SkillsWidget extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="bg-secondary">
         <h2>{this.state.heading}</h2>
         {/*{ id: , category: , skill: } // {user_id: skill_id:}*/}
         <Nav
@@ -193,7 +68,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-cloud-upload-96 mr-2" />
               Leadership
             </NavLink>
           </NavItem>
@@ -207,7 +81,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-bell-55 mr-2" />
               Business and Entrepreneurship
             </NavLink>
           </NavItem>
@@ -221,7 +94,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Marketing, Branding and Sales
             </NavLink>
           </NavItem>
@@ -235,7 +107,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Technical
             </NavLink>
           </NavItem>
@@ -249,7 +120,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Accounting and Finance
             </NavLink>
           </NavItem>
@@ -263,7 +133,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Legal
             </NavLink>
           </NavItem>
@@ -277,7 +146,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Health and Wellness
             </NavLink>
           </NavItem>
@@ -291,7 +159,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Human Resources
             </NavLink>
           </NavItem>
@@ -305,7 +172,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Education
             </NavLink>
           </NavItem>
@@ -319,7 +185,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Artists and Creatives
             </NavLink>
           </NavItem>
@@ -333,7 +198,6 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Community Advocacy
             </NavLink>
           </NavItem>
@@ -347,13 +211,12 @@ class SkillsWidget extends Component {
               href="#pablo"
               role="tab"
             >
-              <i className="ni ni-calendar-grid-58 mr-2" />
               Civic Engagement
             </NavLink>
           </NavItem>
         </Nav>
         <Card className="shadow">
-          <CardBody>
+          <CardBody className="bg-secondary">
             <TabContent activeTab={'tabs' + this.state.tabs}>
               <TabPane tabId="tabs1">
                 {this.props.store &&
@@ -486,13 +349,53 @@ class SkillsWidget extends Component {
                   )}
               </TabPane>
             </TabContent>
-            <hr />
+          </CardBody>
+          <CardFooter className="bg-white">
             {this.props.store.memberskills.map((skill, i) => {
               let color = 'primary';
-              if (skill.category === 'Leadership') {
+              if (skill.category_id === 1) {
                 color = 'primary';
               } else if (skill.category === 'Business and Entrepreneurship') {
                 color = 'info';
+              }
+
+              switch (skill.category_id) {
+                case 1:
+                  color = 'primary';
+                  break;
+                case 2:
+                  color = 'info';
+                  break;
+                case 3:
+                  color = 'secondary';
+                  break;
+                case 4:
+                  color = 'success';
+                  break;
+                case 5:
+                  color = 'danger';
+                  break;
+                case 6:
+                  color = 'warning';
+                  break;
+                case 7:
+                  color = 'primary';
+                  break;
+                case 8:
+                  color = 'info';
+                  break;
+                case 9:
+                  color = 'secondary';
+                  break;
+                case 10:
+                  color = 'success';
+                  break;
+                case 11:
+                  color = 'danger';
+                  break;
+                case 12:
+                  color = 'warning';
+                  break;
               }
               return (
                 <Badge key={skill.id} color={color} pill>
@@ -506,7 +409,7 @@ class SkillsWidget extends Component {
                 </Badge>
               );
             })}
-          </CardBody>
+          </CardFooter>
         </Card>
       </div>
     );
