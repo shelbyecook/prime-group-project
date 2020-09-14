@@ -153,7 +153,7 @@ function MemberDemoForm(props) {
           name="income_level"
           type="select"
           onChange={formik.handleChange}
-          value={formik.values.sexual_orientation}
+          value={formik.values.income_level}
         >
           <option value="">Choose one of the following...</option>
           <option value="<40000">less than $40000 per year</option>
