@@ -21,6 +21,18 @@ router.get(
 );
 
 
+function queryNum(n, array) {
+  if (n <= 0) {
+  return;
+  } else {
+    let skill = n + 1;
+    let queryValues = `($1, $${skill})`;
+    array.push(queryValues);
+    queryNum(n - 1, array);
+        console.log(array);
+  }
+}
+
 
 //POST route for posting to the user_skills table
 router.post(
@@ -29,8 +41,9 @@ router.post(
     const user_id = req.body.user_id;
     const skill_id = req.body.category_id;
 
+
     const queryText: string = `INSERT INTO "users_skills" (user_id, skill_id)
-    VALUES ($1, $2);`;
+    VALUES ${queryNum};`;
     pool
       .query(queryText, [user_id, skill_id])
       .then(() => res.sendStatus(201))
