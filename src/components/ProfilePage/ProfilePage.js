@@ -33,6 +33,12 @@ class ProfilePage extends Component {
       lname: 'calvillo',
     },
   };
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_PROFILE',
+      payload: this.props.store.user.id,
+    });
+  }
 
   handleChange = (key) => (event) => {
     this.setState({
