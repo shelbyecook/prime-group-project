@@ -1,10 +1,11 @@
 import React, { Component } from 'react'; /*8.5K (gzipped: 3.4K)*/
 import { connect } from 'react-redux'; /*13.3K (gzipped: 4.8K)*/
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader'; /*26.5K(gzipped: 8.2K)*/
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ImageUpload extends Component {
   handleFinishedUpload = (info) => {
-    console.log(this.props.id);
+    console.log(this.props.store.user.id);
     this.setState({
       avatar: info.fileUrl,
     });
@@ -14,7 +15,10 @@ class ImageUpload extends Component {
     //   type: 'POST_IMAGE_URL',
     //   payload: info.fileUrl,
     // });
-    const headshotInfo = { avatarPath: info.fileUrl, avatarId: this.props.id };
+    const headshotInfo = {
+      avatarPath: info.fileUrl,
+      avatarId: this.props.store.user.id,
+    };
     console.log(headshotInfo);
     this.props.dispatch({
       type: 'UPDATE_USER_HEADSHOT',
@@ -40,4 +44,4 @@ class ImageUpload extends Component {
   }
 }
 
-export default connect()(ImageUpload);
+export default connect(mapStoreToProps)(ImageUpload);

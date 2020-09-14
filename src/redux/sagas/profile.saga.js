@@ -36,8 +36,8 @@ function* updateImageUrl(action) {
       imageUrl: action.payload.avatarPath,
     };
     console.log('Posting image url', action.payload);
-    const response = yield axios.put(
-      `/api/imageurl/avatar/${action.payload.avatarId}`,
+    const response = yield axios.post(
+      `/api/imageurl/headshot/${action.payload.avatarId}`,
       data,
       config
     );
