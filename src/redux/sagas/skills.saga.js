@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* getSkills(action) {
   try {
     console.log(action.payload);
-    const response = yield axios.get('/someroute');
+    const response = yield axios.get('/api/profile/skills');
     yield put({
       type: 'SET_SKILLS',
       payload: response.data,

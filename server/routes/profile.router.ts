@@ -82,4 +82,58 @@ router.put(
   }
 );
 
+router.get(
+  '/skills',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const queryText = `SELECT * FROM skills`;
+    pool
+      .query(queryText)
+      .then((response) => {
+        res.send(response.rows);
+      })
+      .catch((err) => {
+        console.log('Error completing GET skills query', err);
+        res.sendStatus(500);
+      });
+  }
+);
+
+router.post(
+  '/skills/:id',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const userId = req.params.id;
+    const skillsId = req.body.skillsId;
+
+    const queryText = `INSERT into "users_skills" (user_id, skills_id) VALUES ($1, $2) ;`;
+    pool
+      .query(queryText, [skillsId, userId])
+      .then((response) => {
+        res.send(response.rows);
+        res.status(200);
+      })
+      .catch((err) => {
+        console.log('POST users_skills table error:', err);
+        res.status(500);
+        res.send(err);
+      });
+  }
+);
+
+router.get(
+  '/skills/user/:id',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const userId = req.params.id;
+    const queryText = `SELECT * FROM users_skills WHERE user_id= $1`;
+    pool
+      .query(queryText, [userId])
+      .then((response) => {
+        res.send(response.rows);
+      })
+      .catch((err) => {
+        console.log('Error completing GET users_skills table query', err);
+        res.sendStatus(500);
+      });
+  }
+);
+
 export default router;
