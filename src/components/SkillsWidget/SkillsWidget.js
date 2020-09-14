@@ -173,7 +173,6 @@ class SkillsWidget extends Component {
     });
   };
   render() {
-    console.log(typeof this.props.store.skillsholder.leadership);
     return (
       <div>
         <h2>{this.state.heading}</h2>
@@ -226,6 +225,132 @@ class SkillsWidget extends Component {
               Marketing, Branding and Sales
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 4}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 4,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 4)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Technical
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 5}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 5,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 5)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Accounting and Finance
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 6}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 6,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 6)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Legal
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 7}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 7,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 7)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Health and Wellness
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 8}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 8,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 8)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Human Resources
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 9}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 9,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 9)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Education
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 10}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 10,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 10)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Artists and Creatives
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 11}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 11,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 11)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Community Advocacy
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              aria-selected={this.state.tabs === 12}
+              className={classnames('mb-sm-3 mb-md-0', {
+                active: this.state.tabs === 12,
+              })}
+              onClick={(e) => this.toggleNavs(e, 'tabs', 12)}
+              href="#pablo"
+              role="tab"
+            >
+              <i className="ni ni-calendar-grid-58 mr-2" />
+              Civic Engagement
+            </NavLink>
+          </NavItem>
         </Nav>
         <Card className="shadow">
           <CardBody>
@@ -241,8 +366,125 @@ class SkillsWidget extends Component {
                     </>
                   )}
               </TabPane>
-              <TabPane tabId="tabs2">{/* <SearchOption />{' '} */}</TabPane>
-              <TabPane tabId="tabs3">{/* <SearchOption />{' '} */}</TabPane>
+              <TabPane tabId="tabs2">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.business && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.business}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs3">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.marketing && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.marketing}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs4">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.technical && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.technical}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs5">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.finance && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.finance}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs6">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.legal && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.legal}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs7">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.health && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.health}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs8">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.hr && (
+                    <>
+                      <SearchOption skills={this.props.store.skillsholder.hr} />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs9">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.education && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.education}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs10">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.creatives && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.creatives}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs11">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.communityAdvocacy && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.communityAdvocacy}
+                      />
+                    </>
+                  )}
+              </TabPane>
+              <TabPane tabId="tabs12">
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.civicEngagement && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.civicEngagement}
+                      />
+                    </>
+                  )}
+              </TabPane>
             </TabContent>
             <hr />
             {this.props.store.memberskills.map((skill, i) => {
