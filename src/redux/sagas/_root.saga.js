@@ -7,6 +7,7 @@ import formSaga from './form.saga';
 
 
 import airtableSaga from './airtable.saga';
+import skillsSaga from './skills.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -24,6 +25,8 @@ export default function* rootSaga() {
     formSaga(), // handles all form POSTs/GETs
 
     airtableSaga(),
+
+    skillsSaga(),
 
   ]);
 }

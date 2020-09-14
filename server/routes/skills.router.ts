@@ -23,17 +23,6 @@ router.get(
 
 
 
-//POST route for the data displaying to the page??
-// router.post(
-//     '/skills',
-//     (req: Request, res: Response, next: express.NextFunction): void => {
-    
-//   );
-  
-
-
-
-
 //POST route for posting to the user_skills table
 router.post(
   '/skills',
@@ -75,25 +64,25 @@ router.delete(
 
 
 //PUT route for editing user data
-router.put(
-    '/:id',
-    (req: Request, res: Response, next: express.NextFunction): void => {
-    const id = req.params.id;
-    const skills = req.body;
+// router.put(
+//     '/:id',
+//     (req: Request, res: Response, next: express.NextFunction): void => {
+//     const id = req.params.id;
+//     const skills = req.body;
 
-    const queryText = `UPDATE "users_skills" SET "skill_id" = $1 WHERE "id" = $2;`;
-    pool.query(queryText, [
-        skills.skill_id,
-        id
-    ])
-    .then((dbResponse) => {
-        res.sendStatus(201);
-    })
-    .catch((err) => {
-        console.log(`Error with edit: ${err}`);
-        res.sendStatus(500);
-      });
-});
+//     const queryText = `UPDATE "users_skills" SET "skill_id" = $1 WHERE "id" = $2;`;
+//     pool.query(queryText, [
+//         skills.skill_id,
+//         id
+//     ])
+//     .then((dbResponse) => {
+//         res.sendStatus(201);
+//     })
+//     .catch((err) => {
+//         console.log(`Error with edit: ${err}`);
+//         res.sendStatus(500);
+//       });
+// });
 
 
 
