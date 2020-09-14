@@ -2,13 +2,13 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {});
+// router.get('/', (req, res) => {});
 
-router.put('/headshot/:id', (req, res) => {
+router.post('/headshot/:id', (req, res) => {
   console.log(req.body.imageUrl);
   const imageUrl = req.body.imageUrl;
   const imageId = req.params.id;
-  const queryText = `UPDATE "about" SET headshot = $1 
+  const queryText = `UPDATE "about" SET headshot = $1
   WHERE user_id = $2;`;
 
   pool
