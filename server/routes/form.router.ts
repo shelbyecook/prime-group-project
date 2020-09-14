@@ -4,27 +4,6 @@ import pool from '../modules/pool';
 
 const router: express.Router = express.Router();
 
-//GET route for getting user profile data
-router.get(
-  '/profile/:id',
-  (req: Request, res: Response, next: express.NextFunction): void => {
-    const userId = req.params.id;
-    const queryText = `SELECT community_role, organization_name, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram   FROM about
-                        JOIN "users" ON "about".user_id= "users".id 
-                        JOIN "social_media" on "social_media".user_id= "users".id 
-                        JOIN "demographic" on "demographic".user_id= "users".id  WHERE "users".id=$1;`;
-    pool
-      .query(queryText, [userId])
-      .then((response) => {
-        res.send(response.rows);
-      })
-      .catch((err) => {
-        console.log('Error completing GET profile query', err);
-        res.sendStatus(500);
-      });
-  }
-);
-
 //POST route for posting to the about table
 router.post(
   '/register/about/:id',
@@ -41,6 +20,7 @@ router.post(
     const linkedin = req.body.linkedin;
     const facebook = req.body.facebook;
     const twitter = req.body.twitter;
+    const instagram = req.body.instagram;
     const headshotPic = req.body.profilePic;
     const bio = req.body.bio;
     const tshirtSize = req.body.shirtSize;
@@ -49,7 +29,7 @@ router.post(
     const mentee = req.body.mentee;
     const userId = req.params.id;
 
-    const queryText = `INSERT INTO "about" (display_name, community_role, organization_name, job_title, address, city, state, zip_code, linkedin, facebook, twitter, headshot, bio, tshirt_size, birthday, mentor, mentee, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18);`;
+    const queryText = `INSERT INTO "about" (display_name, community_role, organization_name, job_title, address, city, state, zip_code, linkedin, facebook, twitter, instagram, headshot, bio, tshirt_size, birthday, mentor, mentee, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18);`;
     pool
       .query(queryText, [
         displayName,
@@ -63,6 +43,7 @@ router.post(
         linkedin,
         facebook,
         twitter,
+        instagram,
         headshotPic,
         bio,
         tshirtSize,

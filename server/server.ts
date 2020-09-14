@@ -5,6 +5,12 @@ import passport from './strategies/user.strategy';
 import userRouter from './routes/user.router';
 import airtableRouter from './routes/airtable.router';
 import formRouter from './routes/form.router';
+// const imageUrlRouter = require('./routes/image-url.router.js');
+import profileRouter from './routes/profile.router';
+
+import imageUrlRouter from './routes/image-url.router';
+
+const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
 require('dotenv').config();
 
@@ -25,6 +31,19 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/airtable', airtableRouter);
 app.use('/api/form', formRouter);
+
+app.use(
+  '/s3',
+  UploaderS3Router({
+    bucket: 'innovateher', // required
+    region: 'us-east-2', // optional
+    headers: { 'Access-Control-Allow-Origin': '*' }, // optional
+    ACL: 'public-read', // this is the default - set to `public-read` to let anyone view uploads
+  })
+);
+
+app.use('/api/imageurl', imageUrlRouter);
+app.use('/api/profile', profileRouter);
 
 // Serve static files
 app.use(express.static('build'));
