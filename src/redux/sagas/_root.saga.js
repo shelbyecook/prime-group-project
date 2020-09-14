@@ -5,7 +5,9 @@ import userSaga from './user.saga';
 import formSaga from './form.saga';
 import airtableSaga from './airtable.saga';
 import skillsSaga from './skills.saga';
+
 import profileSaga from './profile.saga';
+
 
 
 // rootSaga is the primary saga.
@@ -24,6 +26,8 @@ export default function* rootSaga() {
     skillsSaga(),
     airtableSaga(), //handles Airtable GETs
     profileSaga(), //handles user profile GETs/PUTs
+
+    skillsSaga(),
 
   ]);
 }

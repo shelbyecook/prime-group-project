@@ -6,8 +6,11 @@ import axios from 'axios';
 const router: express.Router = express.Router();
 const { response } = require('express');
 
+
+
 const AIRTABLE_KEY = process.env.AIRTABLE_API_KEY;
 const BASE = process.env.BASE;
+
 
 router.get(
   '/speaker',

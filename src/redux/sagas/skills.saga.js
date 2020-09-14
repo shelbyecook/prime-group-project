@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+
+
 // worker Saga: will be fired on "FETCH_USER" actions
 function* getSkills(action) {
   try {
@@ -12,11 +14,14 @@ function* getSkills(action) {
     });
   } catch (error) {
     console.log('Form failed to submit. Please try again.', error);
+
   }
 }
 
 function* skillsSaga() {
+
   yield takeLatest('FINAL_SUBMIT', getSkills);
+
 }
 
 export default skillsSaga;
