@@ -1,27 +1,71 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-
-
 // worker Saga: will be fired on "FETCH_USER" actions
 function* getSkills(action) {
   try {
-    console.log(action.payload);
-    const response = yield axios.get('/someroute');
+    const response = yield axios.get('/api/skills/all');
+    const leadershipList = response.data.filter((skill) => {
+      return skill.category_id === 1;
+    });
+    const businessList = response.data.filter((skill) => {
+      return skill.category_id === 2;
+    });
+    const marketingList = response.data.filter((skill) => {
+      return skill.category_id === 3;
+    });
+    const technicalList = response.data.filter((skill) => {
+      return skill.category_id === 4;
+    });
+    const financeList = response.data.filter((skill) => {
+      return skill.category_id === 5;
+    });
+    const legalList = response.data.filter((skill) => {
+      return skill.category_id === 6;
+    });
+    const healthList = response.data.filter((skill) => {
+      return skill.category_id === 7;
+    });
+    const hrList = response.data.filter((skill) => {
+      return skill.category_id === 8;
+    });
+    const educationList = response.data.filter((skill) => {
+      return skill.category_id === 9;
+    });
+    const creativesList = response.data.filter((skill) => {
+      return skill.category_id === 10;
+    });
+    const communityList = response.data.filter((skill) => {
+      return skill.category_id === 11;
+    });
+    const civicList = response.data.filter((skill) => {
+      return skill.category_id === 12;
+    });
     yield put({
       type: 'SET_SKILLS',
-      payload: response.data,
+      payload: [
+        leadershipList,
+        businessList,
+        marketingList,
+        technicalList,
+        financeList,
+        legalList,
+        healthList,
+        hrList,
+        educationList,
+        creativesList,
+        communityList,
+        civicList,
+      ],
     });
   } catch (error) {
     console.log('Form failed to submit. Please try again.', error);
-
   }
 }
 
 function* skillsSaga() {
-
-  yield takeLatest('FINAL_SUBMIT', getSkills);
-
+  yield takeLatest('GET_SKILLS', getSkills);
+  // yield takeLatest('FINAL_SUBMIT', );
 }
 
 export default skillsSaga;
