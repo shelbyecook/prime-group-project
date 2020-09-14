@@ -28,7 +28,6 @@ function SearchOptions(props) {
     );
     setSearchResults(results);
   }, [searchTerm]);
-  console.log(props.store.skillsholder.business);
   return (
     <div>
       <Container>

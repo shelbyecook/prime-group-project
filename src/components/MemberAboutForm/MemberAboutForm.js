@@ -60,7 +60,6 @@ function MemberAboutForm(props) {
       });
     },
   });
-  console.log(formik);
   return (
     <>
       <Card className="bg-secondary">
