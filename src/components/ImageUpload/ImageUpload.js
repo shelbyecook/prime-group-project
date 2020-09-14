@@ -21,7 +21,7 @@ class ImageUpload extends Component {
     };
     console.log(headshotInfo);
     this.props.dispatch({
-      type: 'UPDATE_USER_HEADSHOT',
+      type: 'SET_USER_HEADSHOT',
       payload: headshotInfo,
     });
   };

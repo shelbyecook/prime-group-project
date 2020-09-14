@@ -54,7 +54,7 @@ function* updateImageUrl(action) {
 function* profileSaga() {
   yield takeLatest('GET_PROFILE', getProfile);
   yield takeLatest('UPDATE_PROFILE', updateProfile);
-  yield takeLatest('UPDATE_USER_HEADSHOT', updateImageUrl);
+  //   yield takeLatest('UPDATE_USER_HEADSHOT', updateImageUrl);
 }
 
 export default profileSaga;
