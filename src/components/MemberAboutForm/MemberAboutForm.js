@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { useFormik } from 'formik';
 import ReactDatetime from 'react-datetime';
 import moment from 'moment';
+
 // import reactstrap Styles/Components
 import {
   FormGroup,
@@ -61,6 +62,11 @@ function MemberAboutForm(props) {
     },
   });
   console.log(formik);
+
+  useEffect(() => {
+    formik.values.profilePic = props.store.imageUrlReducer.avatarPath;
+  });
+
   return (
     <>
       <Card className="bg-secondary">
