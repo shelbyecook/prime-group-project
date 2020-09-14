@@ -8,11 +8,10 @@ const router: express.Router = express.Router();
 router.get(
   '/skills',
   (req: Request, res: Response, next: express.NextFunction): void => {
-    const id = req.params.id;
-    const queryText =  `SELECT * FROM "skills" WHERE "id" = $1;`;
+    const queryText =  `SELECT * FROM "skills"`;
 
     pool
-      .query(queryText, [id])
+      .query(queryText)
       .then(() => res.sendStatus(201))
       .catch((err) => {
         console.log(`Error saving skill to database: ${err}`);
