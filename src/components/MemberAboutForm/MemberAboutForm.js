@@ -23,6 +23,7 @@ import {
   Container,
   CardHeader,
 } from 'reactstrap';
+import ImageUpload from '../ImageUpload/ImageUpload';
 
 // Basic functional component structure for React with default state
 // value setup.
@@ -73,7 +74,7 @@ function MemberAboutForm(props) {
             <Row>
               <Col>
                 <Row>
-                  <h1>Profile Picture: 'will contain S3 upload field'</h1>
+                  <ImageUpload />
                   <Col lg={6}>
                     <FormGroup>
                       <Label htmlFor="displayName">Display Name: </Label>
