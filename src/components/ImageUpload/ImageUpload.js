@@ -3,6 +3,25 @@ import { connect } from 'react-redux'; /*13.3K (gzipped: 4.8K)*/
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader'; /*26.5K(gzipped: 8.2K)*/
 
 class ImageUpload extends Component {
+  handleFinishedUpload = (info) => {
+    console.log(this.props.id);
+    this.setState({
+      avatar: info.fileUrl,
+    });
+    console.log(info);
+    console.log(info.fileUrl);
+    // this.props.dispatch({
+    //   type: 'POST_IMAGE_URL',
+    //   payload: info.fileUrl,
+    // });
+    const headshotInfo = { avatarPath: info.fileUrl, avatarId: this.props.id };
+    console.log(headshotInfo);
+    this.props.dispatch({
+      type: 'UPDATE_USER_HEADSHOT',
+      payload: headshotInfo,
+    });
+  };
+
   render() {
     const uploadOptions = {
       server: 'http://localhost:5000',
