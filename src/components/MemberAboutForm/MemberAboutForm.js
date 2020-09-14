@@ -44,7 +44,7 @@ function MemberAboutForm(props) {
       facebook: '', // string
       instagram: '', // string
       twitter: '', // string
-      profilePic: '', // string
+      profilePic: props.store.imageUrlReducer.avatarPath, // string
       bio: '', // string
       shirtSize: '', // string
       mentor: false,
@@ -74,7 +74,12 @@ function MemberAboutForm(props) {
             <Row>
               <Col>
                 <Row>
-                  <ImageUpload />
+                  <ImageUpload
+                  //id="profilePic"
+                  //onChange={formik.handleChange}
+                  //value={formik.values.profilePic}
+                  />
+
                   <Col lg={6}>
                     <FormGroup>
                       <Label htmlFor="displayName">Display Name: </Label>
