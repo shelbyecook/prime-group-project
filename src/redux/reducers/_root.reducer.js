@@ -6,17 +6,10 @@ import form from './form.reducer';
 import skillsholder from './skillsholder.reducer';
 import memberskills from './memberskills.reducer';
 
-
-
 import speakers from './speaker.reducer';
 import spaces from './spaces.reducer';
 import businesses from './businesses.reducer';
-
-
-
-
-
-
+import imageUrlReducer from './image-upload.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,12 +26,7 @@ const rootReducer = combineReducers({
   speakers,
   spaces,
   businesses,
-  
-
- 
-
-
-
+  imageUrlReducer,
 });
 
 export default rootReducer;

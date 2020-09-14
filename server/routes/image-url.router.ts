@@ -5,13 +5,12 @@ import pool from '../modules/pool';
 const router: express.Router = express.Router();
 
 // PUT to UPDATE PROFILE PICTURE
-router.put(
+router.post(
   '/headshot/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
     const imageUrl = req.body.imageUrl;
     const imageId = req.params.id;
-    const queryText = `UPDATE "about" SET headshot = $1
-  WHERE user_id = $2;`;
+    const queryText = `INSERT into "about" (headshot) VALUES ($1);`;
 
     pool
       .query(queryText, [imageUrl, imageId])
