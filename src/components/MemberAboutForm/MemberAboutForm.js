@@ -61,7 +61,6 @@ function MemberAboutForm(props) {
       });
     },
   });
-  console.log(formik);
 
   useEffect(() => {
     formik.values.profilePic = props.store.imageUrlReducer.avatarPath;

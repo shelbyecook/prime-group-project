@@ -11,8 +11,6 @@ class SearchResults extends Component {
   };
 
   selectSkill = (skill) => () => {
-    console.log(skill, this.state.selectedSkills);
-    // TODO SORT THESE AND FILTER DUPLICATES
     this.props.dispatch({
       type: 'ADD_SKILL',
       payload: skill,
@@ -20,7 +18,6 @@ class SearchResults extends Component {
   };
 
   render() {
-    console.log(this.props.results);
     return (
       <>
         {this.props.results.map((skill, i) => (

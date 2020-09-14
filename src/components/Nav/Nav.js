@@ -27,7 +27,6 @@ const Nav = (props) => {
     loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
   }
-  console.log(props);
 
   return (
     <Navbar

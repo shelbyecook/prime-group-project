@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import express from 'express';
 import pool from '../modules/pool';
+import { QueryConfig } from 'pg';
 
 const router: express.Router = express.Router();
 
@@ -36,15 +37,27 @@ function queryNum(n: any, array: any): any {
 
 //POST route for posting to the user_skills table
 router.post(
-  '/skills',
+  '/add',
   (req: Request, res: Response, next: express.NextFunction): void => {
     const user_id = req.body.user_id;
-    const skill_id = req.body.category_id;
+    const skills = req.body.skills;
+    console.log(user_id, skills);
 
-    const queryText: string = `INSERT INTO "users_skills" (user_id, skill_id)
-    VALUES ${queryNum};`;
+    const array: any[] = [];
+    const numStart = skills.length;
+    queryNum(numStart, array);
+
+    const finalQuery = array.reverse().join(', ');
+    skills.unshift(user_id);
+    console.log(finalQuery, skills);
+
+    const query: QueryConfig = {
+      text: `INSERT INTO "users_skills" (user_id, skill_id)
+      VALUES ${finalQuery};`,
+      values: skills,
+    };
     pool
-      .query(queryText, [user_id, skill_id])
+      .query(query)
       .then(() => res.sendStatus(201))
       .catch((err) => {
         console.log(`Error saving skill to database: ${err}`);

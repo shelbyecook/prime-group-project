@@ -44,7 +44,7 @@ function SearchOptions(props) {
         </Row>
         <Row>
           <Col
-            lg={{ size: 6, offset: 3 }}
+            lg={{ size: 8, offset: 2 }}
             style={{ height: '300px', overflow: 'scroll' }}
           >
             <Table>
@@ -57,13 +57,7 @@ function SearchOptions(props) {
             <li>{item}</li>
           ))} */}
               <tbody>
-                {props.store &&
-                  props.store.skillsholder &&
-                  props.store.skillsholder.leadership && (
-                    <>
-                      <SearchResults results={searchResults} />
-                    </>
-                  )}
+                <SearchResults results={searchResults} />
               </tbody>
             </Table>
           </Col>

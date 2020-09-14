@@ -50,8 +50,6 @@ class UserPage extends Component {
   };
 
   render() {
-    console.log(this.state.activeTab);
-    console.log(this.props.store);
     return (
       <>
         <Row>
