@@ -21,7 +21,7 @@ function SearchOptions(props) {
   //   setSearchResults(results);
   // }, [searchTerm]);
   useEffect(() => {
-    const results = props.store.skillsholder.filter(
+    const results = props.skills.filter(
       (skill) =>
         skill.skill.toLowerCase().includes(searchTerm) ||
         skill.skill.includes(searchTerm)
@@ -57,7 +57,13 @@ function SearchOptions(props) {
             <li>{item}</li>
           ))} */}
               <tbody>
-                <SearchResults results={searchResults} />
+                {props.store &&
+                  props.store.skillsholder &&
+                  props.store.skillsholder.leadership && (
+                    <>
+                      <SearchResults results={searchResults} />
+                    </>
+                  )}
               </tbody>
             </Table>
           </Col>

@@ -153,6 +153,12 @@ class SkillsWidget extends Component {
     tabs: 1,
   };
 
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_SKILLS',
+    });
+  }
+
   toggleNavs = (e, state, index) => {
     e.preventDefault();
     this.setState({
@@ -167,6 +173,7 @@ class SkillsWidget extends Component {
     });
   };
   render() {
+    console.log(typeof this.props.store.skillsholder.leadership);
     return (
       <div>
         <h2>{this.state.heading}</h2>
@@ -224,14 +231,18 @@ class SkillsWidget extends Component {
           <CardBody>
             <TabContent activeTab={'tabs' + this.state.tabs}>
               <TabPane tabId="tabs1">
-                <SearchOption />
+                {this.props.store &&
+                  this.props.store.skillsholder &&
+                  this.props.store.skillsholder.leadership && (
+                    <>
+                      <SearchOption
+                        skills={this.props.store.skillsholder.leadership}
+                      />
+                    </>
+                  )}
               </TabPane>
-              <TabPane tabId="tabs2">
-                <SearchOption skills={skills2} />{' '}
-              </TabPane>
-              <TabPane tabId="tabs3">
-                <SearchOption skills={skills} />{' '}
-              </TabPane>
+              <TabPane tabId="tabs2">{/* <SearchOption />{' '} */}</TabPane>
+              <TabPane tabId="tabs3">{/* <SearchOption />{' '} */}</TabPane>
             </TabContent>
             <hr />
             {this.props.store.memberskills.map((skill, i) => {

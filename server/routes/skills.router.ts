@@ -6,13 +6,15 @@ const router: express.Router = express.Router();
 
 //GET route for getting skills from the skills table
 router.get(
-  '/skills',
+  '/all',
   (req: Request, res: Response, next: express.NextFunction): void => {
-    const queryText =  `SELECT * FROM "skills"`;
+    const queryText = `SELECT * FROM "skills"`;
 
     pool
       .query(queryText)
-      .then(() => res.sendStatus(201))
+      .then((dbResponse) => {
+        res.send(dbResponse.rows);
+      })
       .catch((err) => {
         console.log(`Error saving skill to database: ${err}`);
         res.sendStatus(500);
@@ -20,19 +22,17 @@ router.get(
   }
 );
 
-
-function queryNum(n, array) {
+function queryNum(n: any, array: any): any {
   if (n <= 0) {
-  return;
+    return;
   } else {
     let skill = n + 1;
     let queryValues = `($1, $${skill})`;
     array.push(queryValues);
     queryNum(n - 1, array);
-        console.log(array);
+    console.log(array);
   }
 }
-
 
 //POST route for posting to the user_skills table
 router.post(
@@ -40,7 +40,6 @@ router.post(
   (req: Request, res: Response, next: express.NextFunction): void => {
     const user_id = req.body.user_id;
     const skill_id = req.body.category_id;
-
 
     const queryText: string = `INSERT INTO "users_skills" (user_id, skill_id)
     VALUES ${queryNum};`;
@@ -54,29 +53,23 @@ router.post(
   }
 );
 
-
-
 //DELETE route for deleting a skill off profile
 router.delete(
-    '/:id',
-    (req: Request, res: Response, next: express.NextFunction): void => {
+  '/:id',
+  (req: Request, res: Response, next: express.NextFunction): void => {
     const id = req.params.id;
     const queryText = `DELETE FROM "users_skills" WHERE "id" = $1;`;
 
-    pool.query(queryText, [id] )
-    .then((dbResponse) => {
+    pool
+      .query(queryText, [id])
+      .then((dbResponse) => {
         res.sendStatus(201);
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(`Error with delete: ${err}`);
         res.sendStatus(500);
       });
-});
+  }
+);
 
-
-
-
-
-
-
-module.exports = router;
+export default router;
