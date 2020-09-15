@@ -53,7 +53,7 @@ class UserPage extends Component {
     return (
       <>
         <Row>
-          <Col lg={10} style={{ margin: 'auto' }}>
+          <Col lg={10} style={{ margin: 'auto', marginTop: '50px' }}>
             <Card style={{ backgroundColor: '#1BBFBF' }}>
               <CardBody>
                 <h1 className="display-1">

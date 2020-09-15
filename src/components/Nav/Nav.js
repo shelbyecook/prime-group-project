@@ -33,6 +33,7 @@ const Nav = (props) => {
       inverse
       className="navbar-horizontal navbar-dark bg-secondary"
       expand="lg"
+      style={{ borderBottom: '1px solid #888' }}
     >
       <Container>
         {/* <NavLink onClick={(e) => e.preventDefault()}> */}

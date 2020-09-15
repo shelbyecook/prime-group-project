@@ -4,10 +4,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* getProfile(action) {
   try {
     console.log(action.payload); // :id = action.payload.id ${}
-    yield axios.get(
-      `/api/profile/about/${action.payload.id}`
+    const response = yield axios.get(
+      `/api/profile/about/${action.payload}`
       //  Data structure needed for payload on backend on req.body: { id }
     );
+    console.log(response);
+    yield put({
+      type: 'SET_MY_PROFILE',
+      payload: response.data[0],
+    });
   } catch (error) {
     console.log('Profile failed to update. Please try again.', error);
   }
