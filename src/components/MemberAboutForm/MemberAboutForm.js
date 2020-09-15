@@ -357,7 +357,13 @@ function MemberAboutForm(props) {
                   </Col>
                 </Row>
                 <Label htmlFor="shirtsize">T-Shirt Size: </Label>
-                <Input type="select" className="form-control-alternative">
+                <Input
+                  id="shirtSize"
+                  type="select"
+                  className="form-control-alternative"
+                  onChange={formik.handleChange}
+                  value={formik.values.shirtSize}
+                >
                   <option value="">Select a T-Shirt Size</option>
                   <option value="s">S</option>
                   <option value="m">M</option>
