@@ -30,8 +30,7 @@ const Nav = (props) => {
 
   return (
     <Navbar
-      inverse
-      className="navbar-horizontal navbar-dark bg-secondary"
+      className="navbar-horizontal navbar-light bg-secondary"
       expand="lg"
       style={{ borderBottom: '1px solid #888' }}
     >
@@ -51,6 +50,7 @@ const Nav = (props) => {
         </Link>
         {/* </NavLink> */}
         <button
+          style={{ color: '#333' }}
           aria-controls="navbar-info"
           aria-expanded={false}
           aria-label="Toggle navigation"
@@ -60,7 +60,10 @@ const Nav = (props) => {
           id="navbar-info"
           type="button"
         >
-          <span className="navbar-toggler-icon" />
+          <span
+            // style={{ color: '#333' }}
+            className="navbar-toggler-icon text-muted"
+          />
         </button>
         <UncontrolledCollapse navbar toggler="#navbar-info">
           <div className="navbar-collapse-header">
