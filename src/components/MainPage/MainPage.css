@@ -1,0 +1,10 @@
+.spacing{
+    padding: 2%;
+}
+
+
+.spacing-01{
+    padding: 2%;
+    display: inline;
+    box-sizing: border-box;
+}
