@@ -27,6 +27,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 
 import './App.css';
+import MemberSearchPage from '../MemberSearchPage/MemberSearchPage';
 
 class App extends Component {
   componentDidMount() {
@@ -68,6 +69,12 @@ class App extends Component {
               component={InfoPage}
             />
             <ProtectedRoute
+              // logged in shows MemberSearchPage else shows LoginPage
+              exact
+              path="/search"
+              component={MemberSearchPage}
+            />
+            <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/profile"
@@ -95,6 +102,7 @@ class App extends Component {
               component={RegisterPage}
               authRedirect="/user"
             />
+
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
