@@ -36,8 +36,8 @@ class MainPage extends Component{
                 </Row>
             <Row xs={1}>
                 <Col className="spacing-01">
-                    <button class="btn btn-secondary btn-lg">
-                    <a class="list-group-item" href="#about"><i class="fa fa-microphone" aria-hidden="true"></i>&nbsp; Find A Speaker</a>
+                    <button class="btn btn-secondary btn-lg" >
+                    <a class="list-group-item" href="#about"><i class="fa fa-microphone" aria-hidden="true"> </i>&nbsp; Find A Speaker</a>
                     </button>
                 </Col>
                 <Col className="spacing-01">

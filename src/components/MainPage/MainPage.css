@@ -1,5 +1,6 @@
 .spacing{
     padding: 2%;
+    
 }
 
 
@@ -7,4 +8,7 @@
     padding: 2%;
     display: inline;
     box-sizing: border-box;
+    color: #8f4fb7;
+    border-color: #dacee6;
+    border: 1px solid transparent;
 }
