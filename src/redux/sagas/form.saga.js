@@ -5,14 +5,14 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* postForm(action) {
   try {
     console.log(action.payload); // :id = action.payload.id ${}
-    // yield axios.post(
-    //   `/api/form/register/about/${action.payload.id}`,
-    //   action.payload.form.about
-    // ); // { form: props.store.form, id: props.store.user.id }
-    // yield axios.post(
-    //   `/api/form/register/demographic/${action.payload.id}`,
-    //   action.payload.form.demo
-    // );
+    yield axios.post(
+      `/api/form/register/about/${action.payload.id}`,
+      action.payload.form.about
+    ); // { form: props.store.form, id: props.store.user.id }
+    yield axios.post(
+      `/api/form/register/demographic/${action.payload.id}`,
+      action.payload.form.demo
+    );
     const skills = action.payload.skills.map((skills) => {
       return skills.id;
     });
