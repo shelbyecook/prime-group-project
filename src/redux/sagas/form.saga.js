@@ -4,15 +4,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 // worker Saga: will be fired on "FETCH_USER" actions
 function* postForm(action) {
   try {
-    console.log(action.payload); // :id = action.payload.id ${}
-    // yield axios.post(
-    //   `/api/form/register/about/${action.payload.id}`,
-    //   action.payload.form.about
-    // ); // { form: props.store.form, id: props.store.user.id }
-    // yield axios.post(
-    //   `/api/form/register/demographic/${action.payload.id}`,
-    //   action.payload.form.demo
-    // );
+    console.log('post form action.payload', action.payload); // :id = action.payload.id ${}
+    yield axios.post(
+      `/api/form/register/about/${action.payload.id}`,
+      action.payload.form.about
+    ); // { form: props.store.form, id: props.store.user.id }
+    yield axios.post(
+      `/api/form/register/demographic/${action.payload.id}`,
+      action.payload.form.demo
+    );
     const skills = action.payload.skills.map((skills) => {
       return skills.id;
     });

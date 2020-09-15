@@ -45,7 +45,7 @@ function MemberAboutForm(props) {
       facebook: '', // string
       instagram: '', // string
       twitter: '', // string
-      profilePic: props.store.imageUrlReducer.avatarPath, // string
+      headshot: props.store.imageUrlReducer.avatarPath, // string
       bio: '', // string
       shirtSize: '', // string
       mentor: false,
@@ -55,6 +55,8 @@ function MemberAboutForm(props) {
     onSubmit: (values) => {
       // setHeading(JSON.stringify(values, null, 2));
       // alert(JSON.stringify(values, null, 2));
+      console.log('image reducer', props.store.imageUrlReducer);
+      console.log('values', values);
       props.dispatch({
         type: 'HOLD_ABOUT',
         payload: values,
@@ -63,7 +65,7 @@ function MemberAboutForm(props) {
   });
 
   useEffect(() => {
-    formik.values.profilePic = props.store.imageUrlReducer.avatarPath;
+    formik.values.headshot = props.store.imageUrlReducer.avatarPath;
   });
 
   return (
@@ -79,11 +81,7 @@ function MemberAboutForm(props) {
             <Row>
               <Col>
                 <Row>
-                  <ImageUpload
-                  //id="profilePic"
-                  //onChange={formik.handleChange}
-                  //value={formik.values.profilePic}
-                  />
+                  <ImageUpload />
 
                   <Col lg={6}>
                     <FormGroup>

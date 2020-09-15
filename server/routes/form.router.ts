@@ -8,7 +8,7 @@ const router: express.Router = express.Router();
 router.post(
   '/register/about/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
-    console.log(req.body);
+    console.log('form post backend req.body', req.body);
     const displayName = req.body.displayName;
     const communityRole = req.body.role;
     const organizationName = req.body.organization;
@@ -21,7 +21,7 @@ router.post(
     const facebook = req.body.facebook;
     const twitter = req.body.twitter;
     const instagram = req.body.instagram;
-    const headshotPic = req.body.profilePic;
+    const headshotPic = req.body.headshot;
     const bio = req.body.bio;
     const tshirtSize = req.body.shirtSize;
     const birthday = req.body.birthday;
