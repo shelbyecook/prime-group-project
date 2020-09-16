@@ -9,6 +9,7 @@ import formRouter from './routes/form.router';
 import profileRouter from './routes/profile.router';
 import imageUrlRouter from './routes/image-url.router';
 import skillsRouter from './routes/skills.router';
+import nodemailer from 'nodemailer';
 
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
