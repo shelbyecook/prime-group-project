@@ -19,10 +19,15 @@ import memberskills from '../../redux/reducers/memberskills.reducer';
 
 class MainPage extends Component{
     state = {
-
+        first_name: "",
+        last_name: "",
+        headshot: "",
     };
+    
+    
 
     render() {
+        const member = this.props.state;
         return(
             <Container className="spacing">
                 <Row xs={2}>
@@ -47,17 +52,32 @@ class MainPage extends Component{
                 </Col>
             </Row>
             <Card className="spacing" border="primary" style={{ width: '20 rem' }}>
-                <CardImg style={{ width: "8rem" }}
+                <CardImg className="card-img-top" style={{ width: "8rem" }}
                 src='https://innovateher.s3.amazonaws.com/170d9588-2a75-4208-acc3-0632363b5d93_ashleigh1_c.png'
+                alt='Profile Img'
                 />
+                <Col lg={8}>
+                    <CardTitle className="text-left">
+                        Name:
+                        {/* Name: {this.state.props.first_name} */}
+                    </CardTitle>
+                </Col>
+                <Col lg={8}>
+                    <CardText>
+                        Organization:
+                    </CardText>
+                </Col>
                 {/* speakerphoto.url */}
-
                     <CardBody>
-                        <CardTitle>Name: display name</CardTitle>
-                        <CardText>Skills: list of skills
-                            {/* {this.props.store.memberskills.records.map((memberskills, index ))} */}
-                        </CardText>
-                        <a href="#profile" role="button" aria-disabled="true" class="btn fa fa-long-arrow-right">view profile</a>
+                        <Row>
+                            <CardText>
+                                Skills: list of skills
+                                {/* {this.props.store.memberskills.records.map((memberskills, index ))} */}
+                            </CardText>
+                        </Row>
+                        
+                            <a href="#profile" role="button" aria-disabled="true" class="btn move fa fa-long-arrow-right">view profile</a>
+
                     </CardBody>
                 </Card>
             </Container>
