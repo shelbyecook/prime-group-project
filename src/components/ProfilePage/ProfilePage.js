@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import _ from 'lodash';
 
 import {
   Container,
@@ -21,6 +22,7 @@ import {
   CardHeader,
   Badge,
 } from 'reactstrap';
+import ImageUpload from '../ImageUpload/ImageUpload';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -28,23 +30,40 @@ import {
 class ProfilePage extends Component {
   state = {
     profile: {},
+    update: false,
+    picEdit: false,
   };
   componentDidMount() {
     this.setState({
       profile: this.props.store.profile,
+      update: false,
     });
   }
 
   handleChange = (key) => (event) => {
     this.setState({
       profile: {
+        ...this.state.profile,
         [key]: event.target.value,
       },
     });
   };
 
+  updateProfile = () => {
+    this.props.dispatch({
+      type: 'UPDATE_PROFILE',
+      payload: { profile: this.state.profile, id: this.props.store.user.id },
+    });
+    // TO DO: re-render component
+  };
+
+  switchPic = () => {
+    this.setState({
+      picEdit: true,
+    });
+  };
+
   render() {
-    console.log(this.state.profile);
     return (
       <>
         {this.props && this.props.store && this.props.store.profile && (
@@ -56,7 +75,21 @@ class ProfilePage extends Component {
                 xs={{ size: 12, order: '2' }}
               >
                 <Card className="bg-secondary shadow">
-                  <CardHeader className="bg-white">My Profile:</CardHeader>
+                  <CardHeader className="bg-white">
+                    My Profile:{' '}
+                    {_.isEqual(this.state.profile, this.props.store.profile) ? (
+                      ''
+                    ) : (
+                      <Button
+                        style={{ float: 'right' }}
+                        outline
+                        color="primary"
+                        onClick={this.updateProfile}
+                      >
+                        Save Profile
+                      </Button>
+                    )}
+                  </CardHeader>
                   <CardBody>
                     <CardText className="text-uppercase text-muted">
                       Account Information
@@ -321,15 +354,25 @@ class ProfilePage extends Component {
               >
                 <Card className="shadow">
                   <CardBody className="text-center">
-                    <img
-                      style={{
-                        maxWidth: '50%',
-                        borderRadius: '50%',
-                      }}
-                      className="card-profile-image"
-                      src={this.props.store.profile.headshot}
-                      alt="profile headshot"
-                    />
+                    {this.state.picEdit ? (
+                      <ImageUpload />
+                    ) : (
+                      <>
+                        <img
+                          style={{
+                            maxWidth: '50%',
+                            borderRadius: '50%',
+                          }}
+                          className="card-profile-image"
+                          src={this.props.store.profile.headshot}
+                          alt="profile headshot"
+                        />
+                        <br />
+                        <Button outline color="primary" size="sm">
+                          Change Profile Picture
+                        </Button>
+                      </>
+                    )}
                     <h3>
                       {this.props.store.profile.display_name},{' '}
                       <span className="font-weight-light">

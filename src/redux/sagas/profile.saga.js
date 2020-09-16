@@ -22,10 +22,17 @@ function* updateProfile(action) {
   try {
     console.log(action.payload); // :id = action.payload.id ${}
     yield axios.put(
-      `/api/profile/about/${action.payload.id}`
-      //  Data structure needed for payload on backend req.body: {id, displayName, communityRole, organizationName, jobTitle, bio,
-      //  mentor, mentee, twitter, facebook, linkedin, instagram}
+      `/api/profile/about/${action.payload.id}`,
+      action.payload.profile
     );
+    yield axios.put(
+      `/api/profile/user/${action.payload.id}`,
+      action.payload.profile
+    );
+    yield put({
+      type: 'FETCH_USER',
+      payload: action.payload.id,
+    });
   } catch (error) {
     console.log('Profile failed to update. Please try again.', error);
   }
