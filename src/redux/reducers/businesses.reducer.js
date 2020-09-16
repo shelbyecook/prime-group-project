@@ -1,4 +1,4 @@
-const businessReducer = (state = {}, action) => {
+const businessReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_AIRTABLE_BUSINESSES':
       return action.payload;
