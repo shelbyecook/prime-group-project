@@ -53,7 +53,8 @@ class UserPage extends Component {
   render() {
     return (
       <>
-        {this.props.store.profile.skills &&
+        {this.props.store.profile &&
+        this.props.store.profile.skills &&
         this.props.store.profile.skills.length > 1 ? (
           <ProfilePage />
         ) : (

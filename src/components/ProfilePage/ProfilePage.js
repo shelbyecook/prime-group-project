@@ -54,12 +54,21 @@ class ProfilePage extends Component {
       type: 'UPDATE_PROFILE',
       payload: { profile: this.state.profile, id: this.props.store.user.id },
     });
-    // TO DO: re-render component
   };
 
   switchPic = () => {
     this.setState({
-      picEdit: true,
+      picEdit: !this.state.picEdit,
+    });
+  };
+
+  updatePic = () => {
+    this.props.dispatch({
+      type: 'UPDATE_USER_HEADSHOT',
+      payload: {
+        headshot: this.props.store.imageUrlReducer.avatarPath,
+        id: this.props.store.user.id,
+      },
     });
   };
 
@@ -355,7 +364,21 @@ class ProfilePage extends Component {
                 <Card className="shadow">
                   <CardBody className="text-center">
                     {this.state.picEdit ? (
-                      <ImageUpload />
+                      <Col lg={{ size: 5, offset: 3 }}>
+                        <ImageUpload />
+                        {this.props.store.imageUrlReducer.avatarPath ? (
+                          <Button
+                            outline
+                            color="primary"
+                            size="sm"
+                            onClick={this.updatePic}
+                          >
+                            Save Profile Picture
+                          </Button>
+                        ) : (
+                          ''
+                        )}
+                      </Col>
                     ) : (
                       <>
                         <img
@@ -368,7 +391,12 @@ class ProfilePage extends Component {
                           alt="profile headshot"
                         />
                         <br />
-                        <Button outline color="primary" size="sm">
+                        <Button
+                          outline
+                          color="primary"
+                          size="sm"
+                          onClick={this.switchPic}
+                        >
                           Change Profile Picture
                         </Button>
                       </>

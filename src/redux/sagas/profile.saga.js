@@ -40,24 +40,22 @@ function* updateProfile(action) {
 
 function* updateImageUrl(action) {
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
-    const data = {
-      imageUrl: action.payload.avatarPath,
-    };
+    // const config = {
+    //   headers: { 'Content-Type': 'application/json' },
+    //   withCredentials: true,
+    // };
+    // const data = {
+    //   imageUrl: action.payload.avatarPath,
+    // };
     console.log('Posting image url', action.payload);
-    const response = yield axios.post(
-      `/api/imageurl/headshot/${action.payload.avatarId}`,
-      data,
-      config
+    yield axios.put(
+      `/api/imageurl/headshot-update/${action.payload.id}`,
+      action.payload
     );
-    console.log('response.data', response.data);
-    //   yield put({
-    //     type: 'GET_PROFILE',
-    //     payload: response.data,
-    //   });
+    yield put({
+      type: 'FETCH_USER',
+      payload: action.payload.id,
+    });
   } catch (error) {
     console.log('Image Url post failed: ', error);
   }
@@ -66,7 +64,7 @@ function* updateImageUrl(action) {
 function* profileSaga() {
   yield takeLatest('GET_PROFILE', getProfile);
   yield takeLatest('UPDATE_PROFILE', updateProfile);
-  //   yield takeLatest('UPDATE_USER_HEADSHOT', updateImageUrl);
+  yield takeLatest('UPDATE_USER_HEADSHOT', updateImageUrl);
 }
 
 export default profileSaga;

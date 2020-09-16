@@ -41,8 +41,7 @@ router.put(
     const profile = req.body;
 
     const queryText = `UPDATE "about" SET display_name = $1, address = $2, bio = $3, city = $4, community_role = $5, facebook = $6, headshot = $7, instagram = $8,
-                      job_title = $9, linkedin = $10, organization_name = $11, state = $12, twitter = $13, zip_code = $14
-                      WHERE user_id = $15;`;
+                      job_title = $9, linkedin = $10, organization_name = $11, state = $12, twitter = $13, zip_code = $14 WHERE user_id = $15;`;
     pool
       .query(queryText, [
         profile.display_name,
