@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import './MemberItem.css';
+// import './MemberItem.css';
 import {
   Container,
   Button,
@@ -39,38 +39,45 @@ class MemberItem extends Component {
     const { member } = this.props;
 
     return (
-      <Container>
-        <Card style={{ width: '100%' }}>
-          <CardBody>
+      <>
+        <Card className="shadow">
+          <CardBody className="m-0">
             <Row>
-              <Col lg={4}>
-                <CardImg
-                  className="card-img-top"
-                  //   top
-                  //   width="100px"
-                  //   top
-                  //   height="100px"
+              <Col lg={2} xs={4} className="mr-0">
+                <img
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    borderRadius: '50%',
+                  }}
                   src={member.headshot}
                   alt="Profile image"
                 />
               </Col>
-              <Col lg={8}>
+              <Col lg={2} xs={5}>
                 <CardTitle className="text-left">
                   {member.first_name} {member.last_name}
                 </CardTitle>
               </Col>
+              <Col lg={4} xs={7}>
+                <p>
+                  {member.community_role} at {member.organization_name}
+                </p>
+              </Col>
+              <Col lg={4} xs={5}>
+                <Button
+                  outline
+                  size="sm"
+                  color="primary"
+                  onClick={this.handleListingClick}
+                >
+                  More Info
+                </Button>
+              </Col>
             </Row>
-            <Row>
-              <p>
-                {member.community_role} at {member.organization_name}
-              </p>
-            </Row>
-
-            <Button outline color="primary" onClick={this.handleListingClick}>
-              More Info
-            </Button>
           </CardBody>
         </Card>
+
         <Modal
           className="modal-dialog-centered"
           isOpen={this.state.defaultModal}
@@ -110,7 +117,7 @@ class MemberItem extends Component {
             </Button>
           </div>
         </Modal>
-      </Container>
+      </>
     );
   }
 }

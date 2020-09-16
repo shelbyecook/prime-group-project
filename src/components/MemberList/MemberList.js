@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import { Box, Grid } from '@material-ui/core';
-
 import {
   Container,
   Button,
@@ -29,7 +27,7 @@ class MemberList extends Component {
       <Row>
         {this.props.store.memberListingsReducer.map((item, index) => {
           return (
-            <Col lg={4}>
+            <Col lg={12}>
               <MemberItem member={item} index={index} {...this.props} />
             </Col>
           );

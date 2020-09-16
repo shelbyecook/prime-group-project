@@ -13,7 +13,6 @@ import {
   CardTitle,
   CardText,
 } from 'reactstrap';
-import { Grid } from '@material-ui/core';
 import MemberList from '../MemberList/MemberList';
 
 class MemberSearchPage extends Component {
@@ -28,42 +27,17 @@ class MemberSearchPage extends Component {
 
   render() {
     return (
-      <Container>
+      <>
         <h2>{this.state.heading}</h2>
-        <Grid alignItems="center" container spacing={5}>
-          <Grid item xs={8}>
-            <Input
-              className="form-control-alternative"
-              type="text"
-              placeholder="Search"
-              //   value={searchTerm}
-              //   onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            {/* </Col>
-            <Col sm="4"> */}
-            <Button>Search</Button>
-          </Grid>
-        </Grid>
-
-        <MemberList />
-
-        {/* </Col>
-          </Row> */}
-
-        {/* <Row> */}
-        {/* <Card style={{ width: '100%' }}>
-          <CardBody>
-            <CardTitle>Member Name Goes Here</CardTitle>
-            <CardText>This is where the member info will be</CardText>
-            <Button color="primary" onClick={(e) => e.preventDefault()}>
-              Go somewhere
-            </Button>
-          </CardBody>
-        </Card> */}
-        {/* </Row> */}
-      </Container>
+        <Input
+          className="form-control-alternative"
+          type="text"
+          placeholder="Search"
+        />
+        <Container>
+          <MemberList />
+        </Container>
+      </>
     );
   }
 }
