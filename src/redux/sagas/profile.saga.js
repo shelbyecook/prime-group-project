@@ -26,6 +26,19 @@ function* updateProfile(action) {
   }
 }
 
+function* getAllProfiles(action) {
+  try {
+    console.log(action.payload); // :id = action.payload.id ${}
+    const response = yield axios.get(
+      `/api/profile/members`
+      //  Data structure needed for payload on backend on req.body: { id }
+    );
+    yield put({ type: 'SET_MEMBER_LISTINGS', payload: response.data });
+  } catch (error) {
+    console.log('getAllProfiles failed. Please try again.', error);
+  }
+}
+
 function* updateImageUrl(action) {
   try {
     const config = {
@@ -54,6 +67,7 @@ function* updateImageUrl(action) {
 function* profileSaga() {
   yield takeLatest('GET_PROFILE', getProfile);
   yield takeLatest('UPDATE_PROFILE', updateProfile);
+  yield takeLatest('FETCH_ALL_PROFILES', getAllProfiles);
   //   yield takeLatest('UPDATE_USER_HEADSHOT', updateImageUrl);
 }
 

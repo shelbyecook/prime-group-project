@@ -3,6 +3,20 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import { Box, Grid } from '@material-ui/core';
+
+import {
+  Container,
+  Button,
+  Col,
+  Row,
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardImg,
+  CardSubtitle,
+  Modal,
+} from 'reactstrap';
 import MemberItem from '../MemberItem/MemberItem';
 
 class MemberList extends Component {
@@ -12,19 +26,15 @@ class MemberList extends Component {
 
   render() {
     return (
-      <div>
-        <Box m={3}>
-          <Grid container spacing={3} alignItems="flex-start">
-            {/* {this.props.store.membersReducer.map((item, index) => {
-              return (
-                <Grid item xs={4} key={index}>
-                  <MemberItem member={item} index={index} {...this.props} />
-                </Grid>
-              );
-            })} */}
-          </Grid>
-        </Box>
-      </div>
+      <Row>
+        {this.props.store.memberListingsReducer.map((item, index) => {
+          return (
+            <Col lg={4}>
+              <MemberItem member={item} index={index} {...this.props} />
+            </Col>
+          );
+        })}
+      </Row>
     );
   }
 }

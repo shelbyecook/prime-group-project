@@ -7,7 +7,7 @@ const router: express.Router = express.Router();
 
 //GET route for getting user profile data
 router.get(
-  '/:id',
+  '/about/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
     const userId = req.params.id;
     const queryText = `SELECT display_name, community_role, organization_name, mentor, mentee, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram   FROM about
@@ -78,6 +78,22 @@ router.put(
         console.log('PUT about table error:', err);
         res.status(500);
         res.send(err);
+      });
+  }
+);
+router.get(
+  '/members',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const queryText = `SELECT display_name, community_role, organization_name, mentor, mentee, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram   FROM about
+                        JOIN "users" ON "about".user_id= "users".id `;
+    pool
+      .query(queryText, [])
+      .then((response) => {
+        res.send(response.rows);
+      })
+      .catch((err) => {
+        console.log('Error completing GET all profile query', err);
+        res.sendStatus(500);
       });
   }
 );

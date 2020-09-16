@@ -46,9 +46,9 @@ class MemberSearchPage extends Component {
             <Button>Search</Button>
           </Grid>
         </Grid>
-        <Grid container>
-          <MemberList />
-        </Grid>
+
+        <MemberList />
+
         {/* </Col>
           </Row> */}
 
