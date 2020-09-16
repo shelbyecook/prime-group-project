@@ -1,35 +1,47 @@
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import React from 'react';
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardLink,
-  CardTitle,
-  CardSubtitle,
-  Col,
-} from 'reactstrap';
 
-const SpeakerCard = (props) => {
-  return (
-    <Col lg={3}>
-      <Card className="shadow mt-2 bg-dark">
-        <CardBody>
-          {' '}
-          <CardTitle>{props.speaker.fields.Name}</CardTitle>
-          <CardSubtitle>Subtitle</CardSubtitle>
-        </CardBody>
-        <img width="100%" src="" alt="Caption" />
-        <CardBody>
-          <CardText>Text</CardText>
-          <CardLink href="#">Card Link</CardLink>
-          <CardLink href="#">Another Link</CardLink>
-        </CardBody>
-      </Card>
-    </Col>
-  );
-};
+//implicitly importing the component
+class SpeakerCard extends React.Component {
+  state = {
+    tr: false,
+  };
+
+  onExpand = (event) => {
+    this.setState({
+      tr: !this.state.tr, //evaluates value as opposite of what is current
+    });
+  };
+
+  render() {
+    const expand = {
+      height: '150px',
+    };
+    const closed = {
+      height: '0',
+    };
+
+    //style={this.state.tr ? expand : closed}
+    return (
+      <tbody>
+        <tr>
+          <td onClick={this.onExpand}>(-)</td>
+          <td>{this.props.speaker.fields.Name}</td>
+          <td>Test</td>
+          <td>Test</td>
+          <td>Test</td>
+        </tr>
+        {this.state.tr ? (
+          <tr>
+            <td>{this.props.speaker.fields.Name}</td>
+          </tr>
+        ) : (
+          ''
+        )}
+      </tbody>
+    );
+  }
+}
 
 export default connect(mapStoreToProps)(SpeakerCard);
