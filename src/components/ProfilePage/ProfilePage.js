@@ -323,7 +323,7 @@ class ProfilePage extends Component {
                   <CardBody className="text-center">
                     <img
                       style={{
-                        width: '50%',
+                        maxWidth: '50%',
                         borderRadius: '50%',
                       }}
                       className="card-profile-image"
@@ -346,8 +346,47 @@ class ProfilePage extends Component {
                       {this.props.store.profile &&
                         this.props.store.profile.skills &&
                         this.props.store.profile.skills.map((item, i) => {
+                          let color;
+                          switch (item.category_id) {
+                            case 1:
+                              color = 'primary';
+                              break;
+                            case 2:
+                              color = 'info';
+                              break;
+                            case 3:
+                              color = 'secondary';
+                              break;
+                            case 4:
+                              color = 'success';
+                              break;
+                            case 5:
+                              color = 'danger';
+                              break;
+                            case 6:
+                              color = 'warning';
+                              break;
+                            case 7:
+                              color = 'primary';
+                              break;
+                            case 8:
+                              color = 'info';
+                              break;
+                            case 9:
+                              color = 'secondary';
+                              break;
+                            case 10:
+                              color = 'success';
+                              break;
+                            case 11:
+                              color = 'danger';
+                              break;
+                            case 12:
+                              color = 'warning';
+                              break;
+                          }
                           return (
-                            <Badge key={i} pill color="primary">
+                            <Badge key={i} pill color={color}>
                               {item.skill}
                             </Badge>
                           );

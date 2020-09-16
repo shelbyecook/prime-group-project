@@ -30,38 +30,27 @@ function SearchOptions(props) {
   }, [searchTerm]);
   return (
     <div>
-      <Container>
+      <Container className="bg-neutral">
         <Row>
-          <Col lg={{ size: 6, offset: 3 }}>
-            <Input
-              className="form-control-alternative"
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={handleChange}
-            />
-          </Col>
+          {/* <Col lg={{ size: 6, offset: 3 }}> */}
+          <Input
+            className="form-control-alternative"
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleChange}
+          />
+          {/* </Col> */}
         </Row>
         <Row>
           <Col
-            lg={{ size: 8, offset: 2 }}
-            style={{ height: '300px', overflow: 'scroll' }}
+            lg={{ size: 10, offset: 1 }}
+            // style={{ height: '300px', overflow: 'scroll' }}
           >
-            <Table>
-              <thead className="thead-light">
-                <tr>
-                  <th colSpan="2">Skills</th>
-                </tr>
-              </thead>
-              {/* {searchResults.map((item) => (
-            <li>{item}</li>
-          ))} */}
-              <tbody>
-                <SearchResults results={searchResults} />
-              </tbody>
-            </Table>
+            <SearchResults results={searchResults} />
           </Col>
         </Row>
+        <br />
       </Container>
     </div>
   );

@@ -53,9 +53,9 @@ class SkillsWidget extends Component {
         <h2>{this.state.heading}</h2>
         {/*{ id: , category: , skill: } // {user_id: skill_id:}*/}
         <Nav
-          className="nav-fill flex-column flex-md-row"
-          id="tabs-icons-text"
-          pills
+          className="nav-fill flex-column flex-sm-row"
+          // id="tabs-icons-text"
+          tabs
           role="tablist"
         >
           <NavItem>
@@ -65,8 +65,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 1,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 1)}
-              href="#pablo"
-              role="tab"
             >
               Leadership
             </NavLink>
@@ -78,8 +76,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 2,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 2)}
-              href="#pablo"
-              role="tab"
             >
               Business and Entrepreneurship
             </NavLink>
@@ -91,8 +87,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 3,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 3)}
-              href="#pablo"
-              role="tab"
             >
               Marketing, Branding and Sales
             </NavLink>
@@ -104,8 +98,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 4,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 4)}
-              href="#pablo"
-              role="tab"
             >
               Technical
             </NavLink>
@@ -117,8 +109,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 5,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 5)}
-              href="#pablo"
-              role="tab"
             >
               Accounting and Finance
             </NavLink>
@@ -130,8 +120,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 6,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 6)}
-              href="#pablo"
-              role="tab"
             >
               Legal
             </NavLink>
@@ -143,8 +131,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 7,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 7)}
-              href="#pablo"
-              role="tab"
             >
               Health and Wellness
             </NavLink>
@@ -156,8 +142,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 8,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 8)}
-              href="#pablo"
-              role="tab"
             >
               Human Resources
             </NavLink>
@@ -169,8 +153,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 9,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 9)}
-              href="#pablo"
-              role="tab"
             >
               Education
             </NavLink>
@@ -182,8 +164,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 10,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 10)}
-              href="#pablo"
-              role="tab"
             >
               Artists and Creatives
             </NavLink>
@@ -195,8 +175,6 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 11,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 11)}
-              href="#pablo"
-              role="tab"
             >
               Community Advocacy
             </NavLink>
@@ -208,209 +186,200 @@ class SkillsWidget extends Component {
                 active: this.state.tabs === 12,
               })}
               onClick={(e) => this.toggleNavs(e, 'tabs', 12)}
-              href="#pablo"
-              role="tab"
             >
               Civic Engagement
             </NavLink>
           </NavItem>
         </Nav>
-        <Card className="shadow">
-          <CardBody className="bg-secondary">
-            <TabContent activeTab={'tabs' + this.state.tabs}>
-              <TabPane tabId="tabs1">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.leadership && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.leadership}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs2">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.business && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.business}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs3">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.marketing && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.marketing}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs4">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.technical && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.technical}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs5">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.finance && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.finance}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs6">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.legal && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.legal}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs7">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.health && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.health}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs8">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.hr && (
-                    <>
-                      <SearchOption skills={this.props.store.skillsholder.hr} />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs9">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.education && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.education}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs10">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.creatives && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.creatives}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs11">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.communityAdvocacy && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.communityAdvocacy}
-                      />
-                    </>
-                  )}
-              </TabPane>
-              <TabPane tabId="tabs12">
-                {this.props.store &&
-                  this.props.store.skillsholder &&
-                  this.props.store.skillsholder.civicEngagement && (
-                    <>
-                      <SearchOption
-                        skills={this.props.store.skillsholder.civicEngagement}
-                      />
-                    </>
-                  )}
-              </TabPane>
-            </TabContent>
-          </CardBody>
-          <CardFooter className="bg-white">
-            {this.props.store.memberskills.map((skill, i) => {
-              let color = 'primary';
-              if (skill.category_id === 1) {
-                color = 'primary';
-              } else if (skill.category === 'Business and Entrepreneurship') {
-                color = 'info';
-              }
+        <TabContent activeTab={'tabs' + this.state.tabs}>
+          <TabPane tabId="tabs1">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.leadership && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.leadership}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs2">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.business && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.business}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs3">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.marketing && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.marketing}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs4">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.technical && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.technical}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs5">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.finance && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.finance}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs6">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.legal && (
+                <>
+                  <SearchOption skills={this.props.store.skillsholder.legal} />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs7">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.health && (
+                <>
+                  <SearchOption skills={this.props.store.skillsholder.health} />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs8">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.hr && (
+                <>
+                  <SearchOption skills={this.props.store.skillsholder.hr} />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs9">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.education && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.education}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs10">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.creatives && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.creatives}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs11">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.communityAdvocacy && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.communityAdvocacy}
+                  />
+                </>
+              )}
+          </TabPane>
+          <TabPane tabId="tabs12">
+            {this.props.store &&
+              this.props.store.skillsholder &&
+              this.props.store.skillsholder.civicEngagement && (
+                <>
+                  <SearchOption
+                    skills={this.props.store.skillsholder.civicEngagement}
+                  />
+                </>
+              )}
+          </TabPane>
+        </TabContent>
+        <CardFooter className="bg-white">
+          <p>Selected Skills:</p>
+          {this.props.store.memberskills.map((skill, i) => {
+            let color = 'primary';
+            if (skill.category_id === 1) {
+              color = 'primary';
+            } else if (skill.category === 'Business and Entrepreneurship') {
+              color = 'info';
+            }
 
-              switch (skill.category_id) {
-                case 1:
-                  color = 'primary';
-                  break;
-                case 2:
-                  color = 'info';
-                  break;
-                case 3:
-                  color = 'secondary';
-                  break;
-                case 4:
-                  color = 'success';
-                  break;
-                case 5:
-                  color = 'danger';
-                  break;
-                case 6:
-                  color = 'warning';
-                  break;
-                case 7:
-                  color = 'primary';
-                  break;
-                case 8:
-                  color = 'info';
-                  break;
-                case 9:
-                  color = 'secondary';
-                  break;
-                case 10:
-                  color = 'success';
-                  break;
-                case 11:
-                  color = 'danger';
-                  break;
-                case 12:
-                  color = 'warning';
-                  break;
-              }
-              return (
-                <Badge key={skill.id} color={color} pill>
-                  {skill.skill}
-                  <span className={styles.cancelSkill}>
-                    <i
-                      className="ni ni-fat-remove"
-                      onClick={() => this.removeSkill(skill.id)}
-                    />
-                  </span>
-                </Badge>
-              );
-            })}
-          </CardFooter>
-        </Card>
+            switch (skill.category_id) {
+              case 1:
+                color = 'primary';
+                break;
+              case 2:
+                color = 'info';
+                break;
+              case 3:
+                color = 'secondary';
+                break;
+              case 4:
+                color = 'success';
+                break;
+              case 5:
+                color = 'danger';
+                break;
+              case 6:
+                color = 'warning';
+                break;
+              case 7:
+                color = 'primary';
+                break;
+              case 8:
+                color = 'info';
+                break;
+              case 9:
+                color = 'secondary';
+                break;
+              case 10:
+                color = 'success';
+                break;
+              case 11:
+                color = 'danger';
+                break;
+              case 12:
+                color = 'warning';
+                break;
+            }
+            return (
+              <Badge key={skill.id} color={color} pill>
+                <span className={styles.cancelSkill}>
+                  <i
+                    className="ni ni-fat-remove"
+                    onClick={() => this.removeSkill(skill.id)}
+                  />
+                </span>
+                {skill.skill}
+              </Badge>
+            );
+          })}
+        </CardFooter>
       </div>
     );
   }
