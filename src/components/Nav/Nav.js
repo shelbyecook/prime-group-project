@@ -32,7 +32,7 @@ const Nav = (props) => {
     <Navbar
       className="navbar-horizontal navbar-light bg-secondary"
       expand="lg"
-      style={{ borderBottom: '1px solid #888' }}
+      style={{ borderBottom: '1px solid #999999' }}
     >
       <Container>
         {/* <NavLink onClick={(e) => e.preventDefault()}> */}

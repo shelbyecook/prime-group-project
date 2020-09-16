@@ -19,6 +19,7 @@ import {
   CardText,
   Label,
   CardHeader,
+  Badge,
 } from 'reactstrap';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -58,14 +59,18 @@ class ProfilePage extends Component {
                   <CardHeader className="bg-white">My Profile:</CardHeader>
                   <CardBody>
                     <CardText className="text-uppercase text-muted">
-                      User Information
+                      Account Information
                     </CardText>
                     <Row>
                       <Col lg={6}>
-                        <CardTitle className="form-control-label">
+                        <Label
+                          htmlFor="display_name"
+                          className="form-control-label"
+                        >
                           Display Name:
-                        </CardTitle>
+                        </Label>
                         <Input
+                          id="display_name"
                           type="text"
                           placeholder={this.props.store.profile.display_name}
                           onChange={this.handleChange('display_name')}
@@ -73,11 +78,12 @@ class ProfilePage extends Component {
                         />
                       </Col>
                       <Col lg={6}>
-                        <CardTitle className="form-control-label">
+                        <Label htmlFor="email" className="form-control-label">
                           Email:
-                        </CardTitle>
+                        </Label>
                         <Input
                           type="text"
+                          id="email"
                           placeholder={this.props.store.profile.email}
                           onChange={this.handleChange('email')}
                           value={this.state.profile.email}
@@ -98,14 +104,78 @@ class ProfilePage extends Component {
                         />
                       </Col>
                       <Col lg={6}>
-                        <CardTitle className="form-control-label">
+                        <Label
+                          htmlFor="last_name"
+                          className="form-control-label"
+                        >
                           Last Name:
-                        </CardTitle>
+                        </Label>
                         <Input
+                          id="last_name"
                           type="text"
                           placeholder={this.props.store.profile.last_name}
                           onChange={this.handleChange('last_name')}
                           value={this.state.profile.last_name}
+                        />
+                      </Col>
+                    </Row>
+                    <hr />
+                    <CardText className="text-uppercase text-muted">
+                      Personal Information
+                    </CardText>
+                    <Row>
+                      <Col lg={12}>
+                        <Label htmlFor="address" className="form-control-label">
+                          Street Address:
+                        </Label>
+                        <Input
+                          type="text"
+                          id="address"
+                          placeholder={this.props.store.profile.address}
+                          onChange={this.handleChange('address')}
+                          value={this.state.profile.address}
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg={4}>
+                        <Label htmlFor="city" className="form-control-label">
+                          City:
+                        </Label>
+                        <Input
+                          id="city"
+                          type="text"
+                          placeholder={this.props.store.profile.city}
+                          onChange={this.handleChange('city')}
+                          value={this.state.profile.city}
+                        />
+                      </Col>
+
+                      <Col lg={4}>
+                        <Label htmlFor="state" className="form-control-label">
+                          State:
+                        </Label>
+                        <Input
+                          type="text"
+                          id="state"
+                          placeholder={this.props.store.profile.state}
+                          onChange={this.handleChange('state')}
+                          value={this.state.profile.state}
+                        />
+                      </Col>
+                      <Col lg={4}>
+                        <Label
+                          htmlFor="zip_code"
+                          className="form-control-label"
+                        >
+                          Zipcode:
+                        </Label>
+                        <Input
+                          type="text"
+                          id="zip_code"
+                          placeholder={this.props.store.profile.zip_code}
+                          onChange={this.handleChange('zip_code')}
+                          value={this.state.profile.zip_code}
                         />
                       </Col>
                     </Row>
@@ -271,44 +341,82 @@ class ProfilePage extends Component {
                       {this.props.store.profile.job_title}
                     </p>
                     <hr />
-                    <a href={this.props.store.profile.instagram}>
-                      <i
-                        className="fa fa-instagram"
-                        style={{
-                          fontSize: '30px',
-                          background:
-                            'linear-gradient(220deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)',
-                          WebkitTextFillColor: 'transparent',
-                          WebkitBackgroundClip: 'text',
-                        }}
-                      />
-                    </a>{' '}
-                    |{' '}
-                    <a href={this.props.store.profile.facebook}>
-                      <i
-                        className="fa fa-facebook-official"
-                        style={{ fontSize: '30px', color: '#4267B2' }}
-                      />
-                    </a>{' '}
-                    |{' '}
-                    <a href={this.props.store.profile.linkedin}>
-                      <i
-                        className="fa fa-linkedin-square"
-                        style={{ fontSize: '30px', color: '#2867B2' }}
-                      />
-                    </a>{' '}
-                    |{' '}
-                    <a href={this.props.store.profile.twitter}>
-                      <i
-                        className="fa fa-twitter-square"
-                        style={{ fontSize: '30px', color: '#1DA1F2' }}
-                      />
-                    </a>
+                    <p>Skills/Areas of Interest</p>
+                    <Row>
+                      {this.props.store.profile &&
+                        this.props.store.profile.skills &&
+                        this.props.store.profile.skills.map((item, i) => {
+                          return (
+                            <Badge key={i} pill color="primary">
+                              {item.skill}
+                            </Badge>
+                          );
+                        })}
+                    </Row>
+                    <br />
+                    <Row>
+                      <Col lg={{ size: 6, offset: 3 }}>
+                        <a href={this.props.store.profile.instagram}>
+                          <i
+                            className="fa fa-instagram"
+                            style={{
+                              fontSize: '30px',
+                              background:
+                                'linear-gradient(220deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)',
+                              WebkitTextFillColor: 'transparent',
+                              WebkitBackgroundClip: 'text',
+                              verticalAlign: 'middle',
+                            }}
+                          />
+                        </a>{' '}
+                        |{' '}
+                        <a href={this.props.store.profile.facebook}>
+                          <i
+                            className="fa fa-facebook-official"
+                            style={{
+                              fontSize: '30px',
+                              color: '#4267B2',
+                              verticalAlign: 'middle',
+                            }}
+                          />
+                        </a>{' '}
+                        |{' '}
+                        <a href={this.props.store.profile.linkedin}>
+                          <i
+                            className="fa fa-linkedin-square"
+                            style={{
+                              fontSize: '30px',
+                              color: '#2867B2',
+                              verticalAlign: 'middle',
+                            }}
+                          />
+                        </a>{' '}
+                        |{' '}
+                        <a href={this.props.store.profile.twitter}>
+                          <i
+                            className="fa fa-twitter-square"
+                            style={{
+                              fontSize: '30px',
+                              color: '#1DA1F2',
+                              verticalAlign: 'middle',
+                            }}
+                          />
+                        </a>
+                      </Col>
+                    </Row>
+                    <br />
+                    <Row>
+                      <Col className="text-center">
+                        <Button outline color="primary" size="sm">
+                          Contact Me
+                        </Button>
+                      </Col>
+                    </Row>
+                    <br />
                   </CardBody>
                 </Card>
               </Col>
             </Row>
-            <h2>{this.state.heading}</h2>
           </Container>
         )}
       </>

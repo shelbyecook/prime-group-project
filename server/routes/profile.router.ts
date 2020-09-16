@@ -10,9 +10,7 @@ router.get(
   '/about/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
     const userId = req.params.id;
-    const queryText = `SELECT display_name, community_role, organization_name, mentor, mentee, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram   FROM about
-                        JOIN "users" ON "about".user_id= "users".id 
-                        JOIN "demographic" on "demographic".user_id= "users".id  WHERE "users".id=$1;`;
+    const queryText = `SELECT * FROM about JOIN "users" ON "about".user_id= "users".id WHERE "users".id=$1;`;
     pool
       .query(queryText, [userId])
       .then((response) => {
@@ -28,12 +26,12 @@ router.get(
 /**
  * POST route template
  */
-router.post(
-  '/',
-  (req: Request, res: Response, next: express.NextFunction): void => {
-    // POST route code here
-  }
-);
+// router.post(
+//   '/',
+//   (req: Request, res: Response, next: express.NextFunction): void => {
+//     // POST route code here
+//   }
+// );
 
 //PUT route for updating user profile data on about table
 router.put(

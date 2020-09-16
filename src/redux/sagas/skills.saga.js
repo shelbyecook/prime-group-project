@@ -63,8 +63,24 @@ function* getSkills(action) {
   }
 }
 
+function* getProfileSkills(action) {
+  try {
+    const response = yield axios.get(
+      `/api/skills/profile-list/${action.payload}`
+    );
+    console.log(response.data);
+    yield put({
+      type: 'SET_PROFILE_SKILLS',
+      payload: response.data,
+    });
+  } catch (error) {
+    alert('Skills failed to load. Please go back and try again');
+  }
+}
+
 function* skillsSaga() {
   yield takeLatest('GET_SKILLS', getSkills);
+  yield takeLatest('GET_PROFILE_SKILLS', getProfileSkills);
   // yield takeLatest('FINAL_SUBMIT', );
 }
 
