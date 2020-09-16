@@ -2,33 +2,27 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import React from 'react';
 
-//implicitly importing the component
 class SpeakerCard extends React.Component {
   state = {
     tr: false,
   };
 
-  onExpand = (event) => {
+  cellToggle = (event) => {
     this.setState({
-      tr: !this.state.tr, //evaluates value as opposite of what is current
+      tr: !this.state.tr,
     });
   };
 
+  expand = {};
   render() {
-    const expand = {
-      height: '150px',
-    };
-    const closed = {
-      height: '0',
-    };
-
-    //style={this.state.tr ? expand : closed}
     return (
       <tbody>
         <tr>
-          <td onClick={this.onExpand}>(-)</td>
+          <td onClick={this.cellToggle}>
+            <i class="ni ni-fat-add" />
+          </td>
           <td>{this.props.speaker.fields.Name}</td>
-          <td>Test</td>
+          <td>{this.props.speaker.fields.Name}</td>
           <td>Test</td>
           <td>Test</td>
         </tr>
