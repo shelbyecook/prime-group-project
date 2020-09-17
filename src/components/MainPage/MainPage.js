@@ -47,22 +47,22 @@ state= {
             <Container >
                 <Row xs={2}>
                     <Col className="spacing">
-                        <div class="list-group">
-                            <button class="btn btn-secondary btn-lg">
-                            <a class="list-group-item" href="#community"><i class="fa fa-users fa-3x" aria-hidden="true"></i>&nbsp;IHKC Community</a>
+                        <div className="list-group">
+                            <button className="btn btn-secondary btn-lg">
+                            <a className="list-group-item" href="#community"><i className="fa fa-users fa-3x" aria-hidden="true"></i>&nbsp;IHKC Community</a>
                             </button>
                         </div>
                     </Col>
                 </Row>
             <Row className="text-right">
                 <Col className="spacing-01">
-                    <button class="btn btn-secondary btn-lg" >
-                    <a class="list-group-item" href="#about"><i class="fa fa-microphone" aria-hidden="true"> </i>&nbsp; Find A Speaker</a>
+                    <button className="btn btn-secondary btn-lg" >
+                    <a className="list-group-item" href="#about"><i className="fa fa-microphone" aria-hidden="true"> </i>&nbsp; Find A Speaker</a>
                     </button>
                 </Col>
                 <Col className="spacing-01">
                     <button class="btn btn-secondary btn-lg">
-                    <a class="list-group-item" href="#about"><i class="fa fa-building" aria-hidden="true"></i>&nbsp; Find A Space</a>
+                    <a className="list-group-item" href="#about"><i className="fa fa-building" aria-hidden="true"></i>&nbsp; Find A Space</a>
                     </button>
                 </Col>
             </Row>
@@ -95,7 +95,7 @@ state= {
                         </Row>
                         <Row>
                             <Col>
-                            <a href="#profile" role="button" aria-disabled="true" class="btn fa fa-long-arrow-right">view profile</a>
+                            <a href="#profile" role="button" aria-disabled="true" className="btn fa fa-long-arrow-right">view profile</a>
                             </Col>
                         </Row>
                     </CardBody>
