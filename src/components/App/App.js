@@ -27,6 +27,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 
 import './App.css';
+import NodeMailer from '../NodeMailer/NodeMailer';
 
 class App extends Component {
   componentDidMount() {
@@ -73,7 +74,12 @@ class App extends Component {
               path="/profile"
               component={ProfilePage}
             />
-
+            <ProtectedRoute
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/mail"
+              component={NodeMailer}
+            />
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
