@@ -1,5 +1,3 @@
-.card-img-top {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+.items:nth-child(2n) {
+  background-color: black;
 }

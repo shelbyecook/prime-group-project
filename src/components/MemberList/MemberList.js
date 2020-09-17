@@ -27,8 +27,8 @@ class MemberList extends Component {
       <Row>
         {this.props.store.memberListingsReducer.map((item, index) => {
           return (
-            <Col lg={12}>
-              <MemberItem member={item} index={index} {...this.props} />
+            <Col key={index} lg={12}>
+              <MemberItem key={item.email} member={item} {...this.props} />
             </Col>
           );
         })}

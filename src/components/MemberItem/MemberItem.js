@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// import './MemberItem.css';
+import './MemberItem.css';
 import {
   Container,
   Button,
@@ -18,7 +18,7 @@ import {
 } from 'reactstrap';
 
 class MemberItem extends Component {
-  state = { defaultModal: false };
+  state = { defaultModal: false, isOpen: false };
 
   toggleModal = (state) => {
     this.setState({
@@ -35,17 +35,59 @@ class MemberItem extends Component {
     this.toggleModal('defaultModal');
   };
 
+  openMember = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
+
   render() {
     const { member } = this.props;
 
+    const closedFade = {
+      top: '0',
+      left: '0',
+      backgroundImage: 'linear-gradient(to bottom, transparent, #f2f2f2)',
+      transition: 'all 0.3s 0.08s ease-in-out',
+    };
+
+    const openFade = {
+      top: '0',
+      left: '0',
+      backgroundImage: 'none',
+      transition: 'all 0.3s 0.08s ease-in-out',
+    };
+
+    const closedHeight = {
+      maxHeight: '150px',
+      position: 'relative',
+      overflow: 'hidden',
+      transition: 'all 0.3s 0.08s ease-in',
+    };
+
+    const openHeight = {
+      maxHeight: '100%',
+      position: 'relative',
+      overflow: 'hidden',
+      transition: 'all 0.3s 0.08s ease-in',
+    };
     return (
       <>
-        <Card className="shadow">
-          <CardBody className="m-0">
+        <Card
+          className="shadow"
+          style={this.state.isOpen ? openHeight : closedHeight}
+          onClick={this.openMember}
+        >
+          <CardBody
+            className="m-0"
+            style={this.state.isOpen ? openFade : closedFade}
+          >
             <Row>
-              <Col lg={2} xs={4} className="mr-0">
+              <Col lg={2} xs={6} className="mr-0">
                 <img
                   style={{
+                    minWidth: '150px',
+                    minHeight: '150px',
                     maxWidth: '100%',
                     maxHeight: '100%',
                     borderRadius: '50%',
@@ -54,41 +96,101 @@ class MemberItem extends Component {
                   alt="Profile image"
                 />
               </Col>
-              <Col lg={2} xs={5}>
-                <CardTitle className="text-left">
-                  {member.first_name} {member.last_name}
-                </CardTitle>
-              </Col>
-              <Col lg={4} xs={7}>
-                <p>
-                  {member.community_role} at {member.organization_name}
-                </p>
-              </Col>
-              <Col lg={4} xs={5}>
-                <Button
-                  outline
-                  size="sm"
-                  color="primary"
-                  onClick={this.handleListingClick}
-                >
-                  More Info
-                </Button>
+              <Col lg={10} xs={6}>
+                <Row>
+                  <Col lg={3}>
+                    <p className="lead mb-0">
+                      {member.first_name} {member.last_name}
+                    </p>
+                    <p className="h5">
+                      {member.community_role} at {member.organization_name}
+                    </p>
+                  </Col>
+                  <Col lg={4}>
+                    <p className="lead">Bio: {member.bio}</p>
+                  </Col>
+                  <Col lg={3}>
+                    <h3 className="lead">Skills:</h3>
+                  </Col>
+
+                  <Col lg={2}>
+                    <Button
+                      outline
+                      size="sm"
+                      color="primary"
+                      onClick={this.handleListingClick}
+                    >
+                      More Info
+                    </Button>
+                  </Col>
+                </Row>
+                <Row className="mt-3">
+                  <Col>
+                    <h2>Social Media</h2>
+                    <a href={member.instagram} target="_blank">
+                      <i
+                        className="fa fa-instagram"
+                        style={{
+                          fontSize: '30px',
+                          background:
+                            'linear-gradient(220deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)',
+                          WebkitTextFillColor: 'transparent',
+                          WebkitBackgroundClip: 'text',
+                          verticalAlign: 'middle',
+                        }}
+                      />
+                    </a>{' '}
+                    |{' '}
+                    <a href={member.facebook}>
+                      <i
+                        className="fa fa-facebook-official"
+                        style={{
+                          fontSize: '30px',
+                          color: '#4267B2',
+                          verticalAlign: 'middle',
+                        }}
+                      />
+                    </a>{' '}
+                    |{' '}
+                    <a href={member.linkedin}>
+                      <i
+                        className="fa fa-linkedin-square"
+                        style={{
+                          fontSize: '30px',
+                          color: '#2867B2',
+                          verticalAlign: 'middle',
+                        }}
+                      />
+                    </a>{' '}
+                    |{' '}
+                    <a href={member.twitter}>
+                      <i
+                        className="fa fa-twitter-square"
+                        style={{
+                          fontSize: '30px',
+                          color: '#1DA1F2',
+                          verticalAlign: 'middle',
+                        }}
+                      />
+                    </a>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </CardBody>
         </Card>
 
-        <Modal
-          className="modal-dialog-centered"
+        {/* <Modal
+          className="modal-dialog-centered modal-primary"
+          contentClassName="bg-gradient-primary"
           isOpen={this.state.defaultModal}
           toggle={() => this.toggleModal('defaultModal')}
         >
           <div className="modal-header">
-            <h4 className="modal-title" id="modal-title-default">
+            <p className="lead" id="modal-title-default">
               {this.props.store.listingClickedReducer.first_name}{' '}
               {this.props.store.listingClickedReducer.last_name}
-            </h4>
-            <h4>{this.props.store.listingClickedReducer.organization_name}</h4>
+            </p>
             <button
               aria-label="Close"
               className="close"
@@ -100,10 +202,11 @@ class MemberItem extends Component {
             </button>
           </div>
           <div className="modal-body">
-            <p>Bio goes here: {this.props.store.listingClickedReducer.bio}</p>
+            <h4>{this.props.store.listingClickedReducer.organization_name}</h4>
+            <p>Bio: {this.props.store.listingClickedReducer.bio}</p>
           </div>
           <div className="modal-footer">
-            <Button color="primary" type="button">
+            <Button outline color="primary" type="button">
               Contact Now
             </Button>
             <Button
@@ -116,7 +219,7 @@ class MemberItem extends Component {
               Close
             </Button>
           </div>
-        </Modal>
+        </Modal> */}
       </>
     );
   }
