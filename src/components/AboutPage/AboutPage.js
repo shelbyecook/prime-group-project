@@ -55,7 +55,7 @@ class AboutPage extends Component {
             <thead>
               <tr>
                 <th></th>
-                <th filter>Name</th>
+                <th>Name</th>
                 <th>Content Style</th>
                 <th>Organization</th>
                 <th>Speaker Fee</th>

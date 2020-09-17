@@ -11,6 +11,9 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
+//import BootstrapTable from 'react-bootstrap-table-next';
+//import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter'; //Want to add filtering
+
 class SpeakerList extends React.Component {
   state = {
     status: false, //'false' = '+' AND 'true' = '-'
@@ -21,7 +24,7 @@ class SpeakerList extends React.Component {
       status: !this.state.status,
     });
   };
-  //style={{styling goes here in JSX format}} add to element
+
   render() {
     return (
       <tbody>
@@ -34,15 +37,13 @@ class SpeakerList extends React.Component {
               <i style={{ cursor: 'pointer' }} class="ni ni-fat-add" />
             )}
           </td>
-          {/*Considering making the person's name "click-able" to view their profile.*/}
           <td>
             <Button color="link" size="sm">
               {this.props.speaker.fields.Name} {` `}
             </Button>
           </td>
-          {/*</td>*/}
           <td>{this.props.speaker.fields['Content Style']}</td>
-          <td>
+          <td color="info">
             {this.props.speaker.fields.Title}
             {` at `}{' '}
             {/*Would like to differentiate role and organization. For instance, change the colors of each?*/}
