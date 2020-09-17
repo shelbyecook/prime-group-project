@@ -10,9 +10,9 @@ import {
   CardHeader,
 } from 'reactstrap';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import SpeakerCard from './SpeakerCard';
-import SpaceCard from './SpaceCard';
-import BusinessCard from './BusinessCard';
+import SpeakerList from './SpeakerList';
+import SpaceList from './SpaceList';
+import BusinessList from './BusinessList';
 
 class AboutPage extends Component {
   componentDidMount() {
@@ -39,15 +39,42 @@ class AboutPage extends Component {
   //state true or false
   //style render/return - programatically written styles
 
+  //<Table hover style={{ wordWrap: 'break-word' }}>
   render() {
     console.log(typeof this.props.store.speakers.records);
     return (
+      //<Container>
       <CardBody>
         <Container>
           <CardHeader>
             <h3>Speakers</h3>
           </CardHeader>
           <Table hover>
+            {' '}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Content Style</th>
+                <th>Organization</th>
+                <th>Speaker Fee</th>
+              </tr>
+            </thead>
+            {this.props.store &&
+              this.props.store.speakers &&
+              this.props.store.speakers.map((speaker, index) => {
+                return <SpeakerList speaker={speaker} key={index} />;
+              })}
+          </Table>
+        </Container>
+        {/*</CardBody>*/}
+        <Container>
+          {/*<CardBody>*/}
+          <CardHeader>
+            <h2>Spaces</h2>
+          </CardHeader>
+          <Table hover>
+            {' '}
             <thead>
               <tr>
                 <th></th>
@@ -58,37 +85,37 @@ class AboutPage extends Component {
               </tr>
             </thead>
             {this.props.store &&
-              this.props.store.speakers &&
-              this.props.store.speakers.map((speaker, index) => {
-                return <SpeakerCard speaker={speaker} key={index} />;
+              this.props.store.spaces &&
+              this.props.store.spaces.map((space, index) => {
+                return <SpaceList space={space} key={index} />;
               })}
           </Table>
         </Container>
         <Container>
-          <h2>Spaces</h2>
-          <Card>
-            <Row>
-              {this.props.store &&
-                this.props.store.spaces &&
-                this.props.store.spaces.map((space, index) => {
-                  return <SpaceCard space={space} key={index} />;
-                })}
-            </Row>
-          </Card>
-        </Container>
-        <Container>
-          <h2>Businesses</h2>
-          <Card>
-            <Row>
-              {this.props.store &&
-                this.props.store.businesses &&
-                this.props.store.businesses.map((business, index) => {
-                  return <BusinessCard business={business} key={index} />;
-                })}
-            </Row>
-          </Card>
+          {/*<CardBody>*/}
+          <CardHeader>
+            <h2>Businesses</h2>
+          </CardHeader>
+          <Table hover>
+            {' '}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Test</th>
+                <th>Test</th>
+                <th>Test</th>
+              </tr>
+            </thead>
+            {this.props.store &&
+              this.props.store.businesses &&
+              this.props.store.spaces.map((business, index) => {
+                return <BusinessList business={business} key={index} />;
+              })}
+          </Table>
         </Container>
       </CardBody>
+      //</Container>
     );
   }
 }
