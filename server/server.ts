@@ -10,6 +10,7 @@ import profileRouter from './routes/profile.router';
 import imageUrlRouter from './routes/image-url.router';
 import skillsRouter from './routes/skills.router';
 import nodemailer from 'nodemailer';
+import nodemailerRouter from './routes/nodemailer.router';
 
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
@@ -32,6 +33,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/airtable', airtableRouter);
 app.use('/api/form', formRouter);
+app.use('/api/nodemailer', nodemailerRouter);
 
 app.use(
   '/s3',

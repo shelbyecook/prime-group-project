@@ -2,7 +2,7 @@ require('dotenv').config();
 import { Request, Response } from 'express';
 import express from 'express';
 import pool from '../modules/pool';
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 const router: express.Router = express.Router();
 
@@ -14,33 +14,36 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-/**
- * POST route template
- */
-router.post('/mail', async (req, res) => {
-  const mailer = req.body;
+router.post(
+  '/mail',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    console.log(req.body);
 
-  const mailOptions = {
-    //example: from: '"Scott" scott@primeacademy.io',
-    from: '', // sender address -> //YOUR GMAIL USER HERE IN STRING + email not in string! -> EXAMPLE@gmail.com
-    to: mailer.toEmail, // list of receivers
-    subject: mailer.subject, // Subject line
-    text: mailer.message, // plain text body
-    html: '<b>' + mailer.message + '</b>', // html body
-  };
+    const mailer = req.body;
 
-  try {
-    await transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        return console.log(error);
-      }
-      console.log('Message %s sent: %s', info.messageId, info.response);
-    });
+    const mailOptions = {
+      //example: from: '"Scott" scott@primeacademy.io',
+      from: '"InnovateHER" innovateher@gmail.com', // sender address -> //YOUR GMAIL USER HERE IN STRING + email not in string! -> EXAMPLE@gmail.com
+      // to: mailer.email,
+      to: mailer.toEmail, // list of receivers
+      subject: mailer.subject, // Subject line
+      text: mailer.message, // plain text body
+      html: '<b>' + mailer.message + '</b>', // html body
+    };
 
-    res.sendStatus(200);
-  } catch (err) {
-    res.sendStatus(500);
+    try {
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+      });
+
+      res.sendStatus(200);
+    } catch (error) {
+      res.sendStatus(500);
+    }
   }
-});
+);
 
 export default router;
