@@ -21,6 +21,7 @@ class MainPage extends Component{
     state = {
         first_name: "",
         last_name: "",
+        email: "",
         headshot: "",
         organization_name: "",
         skill: "",
@@ -55,8 +56,8 @@ class MainPage extends Component{
             </Row>
             <Card className="spacing" border="primary" style={{ width: '20 rem' }}>
                 <CardImg className="card-img-top" style={{ width: "8rem" }}
-                src='https://innovateher.s3.amazonaws.com/b3d6b4c6-7e50-4a27-ba9b-421cb2667d41_4199642B-38BB-4309-8C63-7FEF5904DFFB.jpeg'
-                alt='Profile Img'
+                src="/api/imageurl/headshot/${action.payload.avatarId}"
+                
                 />
                 <Col lg={8}>
                     <CardTitle className="text-left">
@@ -65,20 +66,18 @@ class MainPage extends Component{
                 </Col>
                 <Col lg={8}>
                     <CardText>
-                        Organization: 
-                        {/* {this.props.store.about.organization_name} */}
+                        Organization: {this.props.store.skillsholder.memberskills}
                     </CardText>
                 </Col>
                 {/* speakerphoto.url */}
                     <CardBody>
                         <Row>
                             <CardText>
-                                Skills: 
-                                
+                                Skills:
                             </CardText>
                         </Row>
                         
-                            <a href="#profile" role="button" aria-disabled="true" class="btn move fa fa-long-arrow-right">view profile</a>
+                            <a href="#profile" role="button" aria-disabled="true" class="btn fa fa-long-arrow-right">view profile</a>
 
                     </CardBody>
                 </Card>
