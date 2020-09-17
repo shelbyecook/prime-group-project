@@ -28,6 +28,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import MainPage from '../MainPage/MainPage';
 
 import './App.css';
 import MemberSearchPage from '../MemberSearchPage/MemberSearchPage';
@@ -64,6 +65,14 @@ class App extends Component {
               exact
               path="/user"
               component={UserPage}
+            />
+
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/main"
+              component={MainPage}
             />
 
             <ProtectedRoute
