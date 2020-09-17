@@ -32,9 +32,9 @@ class SpeakerList extends React.Component {
           <td onClick={this.cellToggle}>
             {' '}
             {this.state.status ? (
-              <i style={{ cursor: 'pointer' }} class="ni ni-fat-delete" />
+              <i style={{ cursor: 'pointer' }} className="ni ni-fat-delete" />
             ) : (
-              <i style={{ cursor: 'pointer' }} class="ni ni-fat-add" />
+              <i style={{ cursor: 'pointer' }} className="ni ni-fat-add" />
             )}
           </td>
           <td>
@@ -42,24 +42,31 @@ class SpeakerList extends React.Component {
               {this.props.speaker.fields.Name} {` `}
             </Button>
           </td>
-          <td>{this.props.speaker.fields['Content Style']}</td>
-          <td color="info">
-            {this.props.speaker.fields.Title}
-            {` at `}{' '}
-            {/*Would like to differentiate role and organization. For instance, change the colors of each?*/}
-            {this.props.speaker.fields.Organization}
+          <td>
+            <ul style={{ listStyleType: 'none' }}>
+              <li>
+                <i style={{ cursor: 'pointer' }} className="ni ni-email-83" />
+                {this.props.speaker.fields.Email}
+              </li>
+              <li>
+                <i
+                  style={{ cursor: 'pointer' }}
+                  className="ni ni-mobile-button"
+                />
+                {this.props.speaker.fields['Phone Number']}
+              </li>
+            </ul>
           </td>
-          <td>{this.props.speaker.fields['Speaker Fee']}</td>
         </tr>
         {this.state.status ? (
           <tr>
             {' '}
             {/*Want to add style so when the new row is added, there isn't a line separating the two rows.*/}
-            <td>
-              {/*Connect icon and node mailer*/}
-              <i style={{ cursor: 'pointer' }} class="ni ni-email-83" />{' '}
-            </td>
-            <td colSpan="3"> {this.props.speaker.fields['Speaker Bio']} </td>{' '}
+            <td></td>
+            <td colSpan="3">
+              {' '}
+              {this.props.speaker.fields['Speaker Bio']}{' '}
+            </td>{' '}
             {/*style={{ wordWrap: 'break-word' }}*/}
             {/*Can't seem to get the text contained. Maybe change table width?*/}
             <tr>

@@ -56,9 +56,7 @@ class AboutPage extends Component {
               <tr>
                 <th></th>
                 <th>Name</th>
-                <th>Content Style</th>
-                <th>Organization</th>
-                <th>Speaker Fee</th>
+                <th>Contact Info</th>
               </tr>
             </thead>
             {this.props.store &&
