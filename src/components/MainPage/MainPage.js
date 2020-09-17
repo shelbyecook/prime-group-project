@@ -22,6 +22,8 @@ class MainPage extends Component{
         first_name: "",
         last_name: "",
         headshot: "",
+        organization_name: "",
+        skill: "",
     };
     
     
@@ -53,26 +55,26 @@ class MainPage extends Component{
             </Row>
             <Card className="spacing" border="primary" style={{ width: '20 rem' }}>
                 <CardImg className="card-img-top" style={{ width: "8rem" }}
-                src='https://innovateher.s3.amazonaws.com/170d9588-2a75-4208-acc3-0632363b5d93_ashleigh1_c.png'
+                src='https://innovateher.s3.amazonaws.com/b3d6b4c6-7e50-4a27-ba9b-421cb2667d41_4199642B-38BB-4309-8C63-7FEF5904DFFB.jpeg'
                 alt='Profile Img'
                 />
                 <Col lg={8}>
                     <CardTitle className="text-left">
-                        Name:
-                        {/* Name: {this.state.props.first_name} */}
+                        Name: {this.props.store.user.first_name}
                     </CardTitle>
                 </Col>
                 <Col lg={8}>
                     <CardText>
-                        Organization:
+                        Organization: 
+                        {/* {this.props.store.about.organization_name} */}
                     </CardText>
                 </Col>
                 {/* speakerphoto.url */}
                     <CardBody>
                         <Row>
                             <CardText>
-                                Skills: list of skills
-                                {/* {this.props.store.memberskills.records.map((memberskills, index ))} */}
+                                Skills: 
+                                
                             </CardText>
                         </Row>
                         
