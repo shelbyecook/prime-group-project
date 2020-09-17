@@ -28,12 +28,22 @@ function* updateProfile(action) {
 
 function* getAllProfiles(action) {
   try {
-    console.log(action.payload); // :id = action.payload.id ${}
     const response = yield axios.get(
       `/api/profile/members`
       //  Data structure needed for payload on backend on req.body: { id }
     );
-    yield put({ type: 'SET_MEMBER_LISTINGS', payload: response.data });
+    const responseSkills = yield axios.get(`/api/profile/memberskills`);
+    console.log(responseSkills);
+    const profiles = response.data.map((profile) => {
+      return {
+        ...profile,
+        skills: responseSkills.data.filter((skill) => {
+          return skill.user_id === profile.user_id;
+        }),
+      };
+    });
+    console.log(profiles);
+    yield put({ type: 'SET_MEMBER_LISTINGS', payload: profiles });
   } catch (error) {
     console.log('getAllProfiles failed. Please try again.', error);
   }

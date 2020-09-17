@@ -100,6 +100,7 @@ function MemberAboutForm(props) {
                         id="bio"
                         name="bio"
                         type="textarea"
+                        maxLength="300"
                         onChange={formik.handleChange}
                         value={formik.values.bio}
                       />

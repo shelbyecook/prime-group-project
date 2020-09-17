@@ -5,6 +5,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './MemberItem.css';
 import {
   Container,
+  Badge,
   Button,
   Col,
   Row,
@@ -61,15 +62,22 @@ class MemberItem extends Component {
     const closedHeight = {
       maxHeight: '150px',
       position: 'relative',
+      top: '0',
+      bottom: '0',
       overflow: 'hidden',
-      transition: 'all 0.3s 0.08s ease-in',
+      zIndex: '0',
+      transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
     };
 
     const openHeight = {
       maxHeight: '100%',
       position: 'relative',
+      top: '0',
+      // bottom: '0',
       overflow: 'hidden',
-      transition: 'all 0.3s 0.08s ease-in',
+      zIndex: '999',
+      // transform: 'translate(0, 50px)',
+      transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
     };
     return (
       <>
@@ -109,19 +117,62 @@ class MemberItem extends Component {
                   <Col lg={4}>
                     <p className="lead">Bio: {member.bio}</p>
                   </Col>
-                  <Col lg={3}>
+                  <Col lg={5}>
                     <h3 className="lead">Skills:</h3>
-                  </Col>
+                    {member.skills.map((skill, i) => {
+                      let color = 'primary';
+                      if (skill.category_id === 1) {
+                        color = 'primary';
+                      } else if (
+                        skill.category === 'Business and Entrepreneurship'
+                      ) {
+                        color = 'info';
+                      }
 
-                  <Col lg={2}>
-                    <Button
-                      outline
-                      size="sm"
-                      color="primary"
-                      onClick={this.handleListingClick}
-                    >
-                      More Info
-                    </Button>
+                      switch (skill.category_id) {
+                        case 1:
+                          color = 'primary';
+                          break;
+                        case 2:
+                          color = 'info';
+                          break;
+                        case 3:
+                          color = 'secondary';
+                          break;
+                        case 4:
+                          color = 'success';
+                          break;
+                        case 5:
+                          color = 'danger';
+                          break;
+                        case 6:
+                          color = 'warning';
+                          break;
+                        case 7:
+                          color = 'primary';
+                          break;
+                        case 8:
+                          color = 'info';
+                          break;
+                        case 9:
+                          color = 'secondary';
+                          break;
+                        case 10:
+                          color = 'success';
+                          break;
+                        case 11:
+                          color = 'danger';
+                          break;
+                        case 12:
+                          color = 'warning';
+                          break;
+                      }
+                      return (
+                        <Badge key={skill.id} color={color} pill>
+                          {skill.skill}
+                        </Badge>
+                      );
+                    })}
                   </Col>
                 </Row>
                 <Row className="mt-3">
@@ -173,6 +224,16 @@ class MemberItem extends Component {
                         }}
                       />
                     </a>
+                  </Col>
+                  <Col lg={2}>
+                    <Button
+                      outline
+                      size="sm"
+                      color="primary"
+                      onClick={this.handleListingClick}
+                    >
+                      More Info
+                    </Button>
                   </Col>
                 </Row>
               </Col>
