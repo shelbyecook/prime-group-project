@@ -71,7 +71,42 @@ router.put(
       });
   }
 );
+router.get(
+  '/members',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const queryText = `SELECT display_name, community_role, organization_name, mentor, mentee, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram, user_id   FROM about
+                        JOIN "users" ON "about".user_id= "users".id `;
+    pool
+      .query(queryText, [])
+      .then((response) => {
+        res.send(response.rows);
+      })
+      .catch((err) => {
+        console.log('Error completing GET all profile query', err);
+        res.sendStatus(500);
+      });
+  }
+);
 
+router.get(
+  '/memberskills',
+  (req: Request, res: Response, next: express.NextFunction) => {
+    const query = `SELECT user_id, skill_id, category_id, skill FROM "users_skills"
+    JOIN skills ON skills.id = users_skills.skill_id
+    JOIN "category" ON "skills".category_id = category.id
+    ORDER BY user_id;`;
+
+    pool
+      .query(query)
+      .then((dbResponse) => {
+        res.send(dbResponse.rows);
+      })
+      .catch((error) => {
+        res.sendStatus(500);
+      });
+  }
+);
+      
 router.put(
   '/user/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
@@ -95,5 +130,5 @@ router.put(
       });
   }
 );
-
+  
 export default router;

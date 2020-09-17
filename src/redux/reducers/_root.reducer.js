@@ -10,7 +10,8 @@ import speakers from './speaker.reducer';
 import spaces from './spaces.reducer';
 import businesses from './businesses.reducer';
 import imageUrlReducer from './image-upload.reducer';
-
+import memberListingsReducer from './memberListings.reducer';
+import listingClickedReducer from './listingClicked.reducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -27,6 +28,8 @@ const rootReducer = combineReducers({
   spaces,
   businesses,
   imageUrlReducer,
+  memberListingsReducer,
+  listingClickedReducer,
   profile,
 });
 

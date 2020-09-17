@@ -27,6 +27,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 
 import './App.css';
+import MemberSearchPage from '../MemberSearchPage/MemberSearchPage';
 import NodeMailer from '../NodeMailer/NodeMailer';
 
 class App extends Component {
@@ -67,6 +68,12 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+              // logged in shows MemberSearchPage else shows LoginPage
+              exact
+              path="/search"
+              component={MemberSearchPage}
             />
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
