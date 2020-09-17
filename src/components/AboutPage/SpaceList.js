@@ -34,7 +34,7 @@ class SpaceList extends React.Component {
             )}
           </td>
           <td>{this.props.space.fields['Space Name']}</td>
-          <td>Test</td>
+          <td>{this.props.space.fields['Contact Person']}</td>
           <td>Test</td>
           <td>Test</td>
         </tr>

@@ -49,12 +49,13 @@ class AboutPage extends Component {
           <CardHeader>
             <h3>Speakers</h3>
           </CardHeader>
-          <Table hover>
+          <Table>
             {' '}
+            {/*hover*/}{' '}
             <thead>
               <tr>
                 <th></th>
-                <th>Name</th>
+                <th filter>Name</th>
                 <th>Content Style</th>
                 <th>Organization</th>
                 <th>Speaker Fee</th>

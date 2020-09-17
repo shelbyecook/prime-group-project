@@ -29,17 +29,18 @@ class SpeakerList extends React.Component {
           <td onClick={this.cellToggle}>
             {' '}
             {this.state.status ? (
-              <i class="ni ni-fat-delete" />
+              <i style={{ cursor: 'pointer' }} class="ni ni-fat-delete" />
             ) : (
-              <i class="ni ni-fat-add" />
+              <i style={{ cursor: 'pointer' }} class="ni ni-fat-add" />
             )}
           </td>
+          {/*Considering making the person's name "click-able" to view their profile.*/}
           <td>
-            {/*Considering making the person's name "click-able" to view their profile.*/}
-            {/*<Button>*/}
-            {this.props.speaker.fields.Name}
-            {/*<Button>*/}
+            <Button color="link" size="sm">
+              {this.props.speaker.fields.Name} {` `}
+            </Button>
           </td>
+          {/*</td>*/}
           <td>{this.props.speaker.fields['Content Style']}</td>
           <td>
             {this.props.speaker.fields.Title}
@@ -51,13 +52,20 @@ class SpeakerList extends React.Component {
         </tr>
         {this.state.status ? (
           <tr>
+            {' '}
+            {/*Want to add style so when the new row is added, there isn't a line separating the two rows.*/}
             <td>
               {/*Connect icon and node mailer*/}
-              <i class="ni ni-email-83" />{' '}
+              <i style={{ cursor: 'pointer' }} class="ni ni-email-83" />{' '}
             </td>
             <td colSpan="3"> {this.props.speaker.fields['Speaker Bio']} </td>{' '}
             {/*style={{ wordWrap: 'break-word' }}*/}
             {/*Can't seem to get the text contained. Maybe change table width?*/}
+            <tr>
+              <td>
+                <i class="fa fa-linkedin-square" />
+              </td>
+            </tr>
           </tr>
         ) : (
           ''
