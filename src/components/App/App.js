@@ -11,6 +11,9 @@ import '../../assets/plugins/nucleo/css/nucleo.css';
 import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
 import '../../assets/scss/argon-dashboard-react.scss';
 
+//Iport Filter Capabilities
+//import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+
 import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -28,6 +31,8 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import MainPage from '../MainPage/MainPage';
 
 import './App.css';
+import MemberSearchPage from '../MemberSearchPage/MemberSearchPage';
+import NodeMailer from '../NodeMailer/NodeMailer';
 
 class App extends Component {
   componentDidMount() {
@@ -77,16 +82,27 @@ class App extends Component {
               component={InfoPage}
             />
             <ProtectedRoute
+              // logged in shows MemberSearchPage else shows LoginPage
+              exact
+              path="/search"
+              component={MemberSearchPage}
+            />
+            <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/profile"
               component={ProfilePage}
             />
-
+            <ProtectedRoute
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/mail"
+              component={NodeMailer}
+            />
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LoginPage at /login
@@ -94,8 +110,8 @@ class App extends Component {
               path="/login"
               component={LoginPage}
               authRedirect="/user"
-            />
-            <ProtectedRoute
+            /> */}
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows RegisterPage at "/registration"
@@ -103,7 +119,7 @@ class App extends Component {
               path="/registration"
               component={RegisterPage}
               authRedirect="/user"
-            />
+            /> */}
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

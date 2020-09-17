@@ -8,7 +8,9 @@ import './Footer.css';
 
 const Footer = () => (
   <footer>
-    &copy; An InnovateHer KC Space | Built with{' '}
+    &copy; An <span style={{ color: '#7A38A6' }}>Innovate</span>
+    <span style={{ color: '#F59032' }}>HER</span>{' '}
+    <span style={{ color: '#1BBFBF' }}>KC</span> Space | Built with{' '}
     <i className="fa fa-heartbeat" /> by Prime Digital Academy
   </footer>
 );

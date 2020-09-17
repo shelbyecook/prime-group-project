@@ -30,9 +30,9 @@ const Nav = (props) => {
 
   return (
     <Navbar
-      className="navbar-horizontal navbar-dark"
-      style={{ backgroundColor: '#bc91d9' }}
+      className="navbar-horizontal navbar-light bg-secondary"
       expand="lg"
+      style={{ borderBottom: '1px solid #999999' }}
     >
       <Container>
         {/* <NavLink onClick={(e) => e.preventDefault()}> */}
@@ -50,6 +50,7 @@ const Nav = (props) => {
         </Link>
         {/* </NavLink> */}
         <button
+          style={{ color: '#333' }}
           aria-controls="navbar-info"
           aria-expanded={false}
           aria-label="Toggle navigation"
@@ -59,7 +60,10 @@ const Nav = (props) => {
           id="navbar-info"
           type="button"
         >
-          <span className="navbar-toggler-icon" />
+          <span
+            // style={{ color: '#333' }}
+            className="navbar-toggler-icon text-muted"
+          />
         </button>
         <UncontrolledCollapse navbar toggler="#navbar-info">
           <div className="navbar-collapse-header">
@@ -86,38 +90,30 @@ const Nav = (props) => {
           <div className="ml-auto">
             {props.store.user.id && (
               <>
-                <i className="ni ni-circle-08" style={{ color: 'white' }} />
-                <NavLink className="nav-piece">
-                  <Link className="nav-piece" to={loginLinkData.path}>
-                    {/* Show this link if they are logged in or not,
+                <Link className="nav-line" to={loginLinkData.path}>
+                  <i className="ni ni-circle-08" style={{ color: '#888' }} />
+                  {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
           and call this link 'Login / Register' if they are not */}
-                    {loginLinkData.text}
-                  </Link>
-                </NavLink>
-                <i className="ni ni-book-bookmark" style={{ color: 'white' }} />
-                <NavLink className="nav-piece">
-                  <Link className="nav-piece" to="/info">
-                    Info Page
-                  </Link>
-                </NavLink>
-                <i className="ni ni-user-run" style={{ color: 'white' }} />
-                <NavLink className="nav-logout">
-                  <LogOutButton className="nav-logout" />
-                </NavLink>
+                  {loginLinkData.text}
+                </Link>
+                <Link className="nav-line" to="/info">
+                  <i
+                    className="ni ni-book-bookmark"
+                    style={{ color: '#888' }}
+                  />
+                  Info Page
+                </Link>
+                <i className="ni ni-user-run" style={{ color: '#888' }} />
+                <LogOutButton className="nav-logout" />
               </>
             )}
 
             {/* Always show this link since the about page is not protected */}
-            <NavLink
-              className="nav-piece"
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <Link className="nav-piece" to="/about">
-                About
-              </Link>
-            </NavLink>
+
+            <Link className="nav-line" to="/about">
+              About
+            </Link>
           </div>
         </UncontrolledCollapse>
       </Container>
