@@ -5,6 +5,22 @@ import { QueryConfig } from 'pg';
 
 const router: express.Router = express.Router();
 
+function queryNum(n: any, array: any): any {
+  if (n <= 0) {
+    return;
+  } else {
+    let skill = n + 1;
+    let queryValues = `($1, $${skill})`;
+    array.push(queryValues);
+    queryNum(n - 1, array);
+    console.log(array);
+  }
+}
+
+//----------------------------
+//        GET ROUTES         |
+//----------------------------
+
 //GET route for getting skills from the skills table
 router.get(
   '/all',
@@ -23,17 +39,30 @@ router.get(
   }
 );
 
-function queryNum(n: any, array: any): any {
-  if (n <= 0) {
-    return;
-  } else {
-    let skill = n + 1;
-    let queryValues = `($1, $${skill})`;
-    array.push(queryValues);
-    queryNum(n - 1, array);
-    console.log(array);
+// GET skills that relate to signed in profile
+router.get(
+  '/profile-list/:id',
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const id = req.params.id;
+    const queryText = `SELECT user_id, skill_id, skill, category_id FROM users_skills
+  JOIN skills ON users_skills.skill_id = skills.id
+  WHERE user_id = $1;`;
+
+    pool
+      .query(queryText, [id])
+      .then((dbResponse) => {
+        res.send(dbResponse.rows);
+      })
+      .catch((err) => {
+        console.log(`Error retreiving skill from database: ${err}`);
+        res.sendStatus(500);
+      });
   }
-}
+);
+
+//-----------------------------
+//        POST ROUTES         |
+//-----------------------------
 
 //POST route for posting to the user_skills table
 router.post(
@@ -65,6 +94,10 @@ router.post(
       });
   }
 );
+
+//-------------------------------
+//        DELETE ROUTES         |
+//-------------------------------
 
 //DELETE route for deleting a skill off profile
 router.delete(

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import SearchOption from '../SearchOption/SearchOption';
 
-import { Button } from 'reactstrap';
+import styles from './SearchResults.module.css';
+
+import { Badge, Button } from 'reactstrap';
 // Displays results when placed in the Search Option map function
 class SearchResults extends Component {
   state = {
@@ -20,22 +22,58 @@ class SearchResults extends Component {
   render() {
     return (
       <>
-        {this.props.results.map((skill, i) => (
-          <tr key={skill.id}>
-            <td scope="col">{skill.skill}</td>
-            {/*id: skill:*/}
-            <td scope="col">
-              <Button
-                //   disabled={clicked}
-                onClick={this.selectSkill(skill)}
-                outline
-                color="primary"
-              >
-                Add Skill
-              </Button>
-            </td>
-          </tr>
-        ))}
+        {this.props.results.map((skill, i) => {
+          let color;
+          switch (skill.category_id) {
+            case 1:
+              color = 'primary';
+              break;
+            case 2:
+              color = 'info';
+              break;
+            case 3:
+              color = 'secondary';
+              break;
+            case 4:
+              color = 'success';
+              break;
+            case 5:
+              color = 'danger';
+              break;
+            case 6:
+              color = 'warning';
+              break;
+            case 7:
+              color = 'primary';
+              break;
+            case 8:
+              color = 'info';
+              break;
+            case 9:
+              color = 'secondary';
+              break;
+            case 10:
+              color = 'success';
+              break;
+            case 11:
+              color = 'danger';
+              break;
+            case 12:
+              color = 'warning';
+              break;
+          }
+          return (
+            <Badge key={i} pill color={color}>
+              {skill.skill}
+              <span className={styles.cancelSkill}>
+                <i
+                  className="ni ni-fat-add"
+                  onClick={this.selectSkill(skill)}
+                />
+              </span>
+            </Badge>
+          );
+        })}
       </>
     );
   }

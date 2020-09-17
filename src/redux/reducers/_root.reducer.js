@@ -5,7 +5,7 @@ import user from './user.reducer';
 import form from './form.reducer';
 import skillsholder from './skillsholder.reducer';
 import memberskills from './memberskills.reducer';
-
+import profile from './profile.reducer';
 import speakers from './speaker.reducer';
 import spaces from './spaces.reducer';
 import businesses from './businesses.reducer';
@@ -30,6 +30,7 @@ const rootReducer = combineReducers({
   imageUrlReducer,
   memberListingsReducer,
   listingClickedReducer,
+  profile,
 });
 
 export default rootReducer;
