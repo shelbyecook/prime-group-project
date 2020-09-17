@@ -11,6 +11,9 @@ import '../../assets/plugins/nucleo/css/nucleo.css';
 import '../../assets/vendor/font-awesome/css/font-awesome.min.css';
 import '../../assets/scss/argon-dashboard-react.scss';
 
+//Iport Filter Capabilities
+//import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+
 import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
