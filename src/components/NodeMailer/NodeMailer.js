@@ -2,34 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import axios from 'axios';
+import { Button } from 'reactstrap';
 
 class NodeMailer extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const subject = document.getElementById('subject').value;
-    const email = document.getElementById('email').value;
+    // const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
-    axios({
-      method: 'POST',
-      url: '/api/nodemailer/mail',
-      data: {
-        subject: subject,
-        toEmail: email,
-        message: message,
-      },
-    }).then((response) => {
-      if (response.data.msg === 'success') {
-        alert('Message Sent.');
-        this.resetForm();
-      } else if (response.data.msg === 'fail') {
-        alert('Message failed to send.');
-      }
-    });
+
+    if (subject || message === '') {
+      alert('Please fill in missing fields');
+    } else {
+      axios({
+        method: 'POST',
+        url: '/api/nodemailer/mail',
+        data: {
+          subject: subject,
+          toEmail: this.props.store.listingClickedReducer.email,
+          message: message,
+        },
+      })
+        .then((response) => {
+          if (response.data.msg === 'success') {
+            alert('Message Sent.');
+            this.resetForm();
+          } else if (response.data.msg === 'fail') {
+            alert('Message failed to send.');
+          }
+        })
+        .catch((error) => {
+          console.log('error sending message', error);
+        });
+    }
   }
 
-  resetForm() {
+  resetForm = () => {
     document.getElementById('contact-form').reset();
-  }
+  };
 
   render() {
     return (
@@ -40,10 +50,15 @@ class NodeMailer extends Component {
           method="POST"
         >
           <div className="form-group">
-            <label htmlFor="subject">Subject</label>
-            <input type="text" className="form-control" id="subject" />
+            <label htmlFor="subject">Subject:</label>
+            <input
+              // placeholder="ex: Our event this week"
+              type="text"
+              className="form-control"
+              id="subject"
+            />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
               type="email"
@@ -51,14 +66,14 @@ class NodeMailer extends Component {
               id="email"
               aria-describedby="emailHelp"
             />
-          </div>
+          </div> */}
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Message:</label>
             <textarea className="form-control" rows="5" id="message"></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <Button outline color="primary" type="submit">
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );
