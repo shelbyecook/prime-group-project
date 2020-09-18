@@ -63,7 +63,7 @@ class SearchResults extends Component {
               break;
           }
           return (
-            <Badge key={i} pill color={color}>
+            <Badge className="mr-1 mt-1" key={i} pill color={color}>
               {skill.skill}
               <span className={styles.cancelSkill}>
                 <i

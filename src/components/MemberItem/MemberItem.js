@@ -61,7 +61,7 @@ class MemberItem extends Component {
     };
 
     const closedHeight = {
-      maxHeight: '200px',
+      maxHeight: '180px',
       position: 'relative',
       top: '0',
       bottom: '0',
@@ -125,7 +125,7 @@ class MemberItem extends Component {
                     </p>
                   </Col>
                   <Col lg={4}>
-                    <p className="lead">Bio: {member.bio}</p>
+                    <p>Bio: {member.bio}</p>
                   </Col>
                   <Col lg={5}>
                     <h3 className="lead">Skills:</h3>
@@ -236,7 +236,7 @@ class MemberItem extends Component {
                       />
                     </a>
                   </Col>
-                  <Col>
+                  {/* <Col>
                     <Button
                       outline
                       size="sm"
@@ -245,7 +245,7 @@ class MemberItem extends Component {
                     >
                       Contact Now
                     </Button>
-                  </Col>
+                  </Col> */}
                 </Row>
               </Col>
             </Row>
@@ -295,9 +295,6 @@ class MemberItem extends Component {
             </Button>
 
           </div> */}
-
-          </div>
-
         </Modal>
       </>
     );

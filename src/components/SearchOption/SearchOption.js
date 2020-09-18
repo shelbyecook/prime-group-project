@@ -30,7 +30,7 @@ function SearchOptions(props) {
   }, [searchTerm]);
   return (
     <div>
-      <Container className="bg-neutral">
+      <Container className="bg-secondary">
         <Row>
           {/* <Col lg={{ size: 6, offset: 3 }}> */}
           <Input

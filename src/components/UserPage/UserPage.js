@@ -48,7 +48,7 @@ class UserPage extends Component {
         id: this.props.store.user.id,
       },
     });
-    this.props.history.push('/profile');
+    this.props.history.push('/main');
   };
 
   render() {
