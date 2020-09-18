@@ -60,7 +60,7 @@ class MemberItem extends Component {
     };
 
     const closedHeight = {
-      maxHeight: '150px',
+      maxHeight: '200px',
       position: 'relative',
       top: '0',
       bottom: '0',
@@ -103,6 +103,15 @@ class MemberItem extends Component {
                   src={member.headshot}
                   alt="Profile image"
                 />
+                <Button
+                  className="mt-5"
+                  outline
+                  size="sm"
+                  color="primary"
+                  onClick={this.handleListingClick}
+                >
+                  Contact Now
+                </Button>
               </Col>
               <Col lg={10} xs={6}>
                 <Row>
@@ -111,7 +120,7 @@ class MemberItem extends Component {
                       {member.first_name} {member.last_name}
                     </p>
                     <p className="h5">
-                      {member.community_role} at {member.organization_name}
+                      {member.job_title} at {member.organization_name}
                     </p>
                   </Col>
                   <Col lg={4}>
@@ -175,6 +184,7 @@ class MemberItem extends Component {
                     })}
                   </Col>
                 </Row>
+                <hr />
                 <Row className="mt-3">
                   <Col>
                     <h2>Social Media</h2>
@@ -225,14 +235,14 @@ class MemberItem extends Component {
                       />
                     </a>
                   </Col>
-                  <Col lg={2}>
+                  <Col>
                     <Button
                       outline
                       size="sm"
                       color="primary"
                       onClick={this.handleListingClick}
                     >
-                      More Info
+                      Contact Now
                     </Button>
                   </Col>
                 </Row>
@@ -241,7 +251,7 @@ class MemberItem extends Component {
           </CardBody>
         </Card>
 
-        {/* <Modal
+        <Modal
           className="modal-dialog-centered modal-primary"
           contentClassName="bg-gradient-primary"
           isOpen={this.state.defaultModal}
@@ -280,7 +290,7 @@ class MemberItem extends Component {
               Close
             </Button>
           </div>
-        </Modal> */}
+        </Modal>
       </>
     );
   }

@@ -79,7 +79,7 @@ class ProfilePage extends Component {
           <Container fluid className="mt-5">
             <Row>
               <Col
-                lg={{ size: 8, order: '1' }}
+                lg={{ size: 8, order: '2' }}
                 sm={{ size: 12, order: '2' }}
                 xs={{ size: 12, order: '2' }}
               >
@@ -357,7 +357,7 @@ class ProfilePage extends Component {
                 </Card>
               </Col>
               <Col
-                lg={{ size: 4, order: '2' }}
+                lg={{ size: 4, order: '1' }}
                 sm={{ size: 12, order: '1' }}
                 xs={{ size: 12, order: '1' }}
               >
