@@ -68,6 +68,7 @@ class SpeakerList extends React.Component {
     return (
       <>
         <Card
+          //lg={9}
           className="p-3 bg-secondary"
           style={{
             // background: 'linear-gradient(to right, #ccace2, #823bae)',
@@ -77,7 +78,7 @@ class SpeakerList extends React.Component {
         >
           <CardBody style={this.state.status ? openHeight : closedHeight}>
             <Row style={this.state.status ? openFade : closedFade}>
-              <Col lg={0.5}>
+              <Col lg={1}>
                 {this.state.status ? (
                   <i
                     onClick={this.cellToggle}
@@ -144,18 +145,19 @@ class SpeakerList extends React.Component {
                   </li>
                 </ul>
               </Col>
-              <Col lg={1}></Col>
+              {/*<Col lg={1}></Col>*/}
             </Row>
             <Row>
-              <Col lg={5}>
-                <div>
-                  <p className="font-weight-light">
-                    {this.props.speaker.fields['Speaker Bio']}
-                  </p>
-                </div>
+              <Col lg={1}></Col>
+              <Col lg={9}>
+                {/*<Row style={{ width: '100%' }}>*/}
+                <p className="font-weight-light">
+                  {this.props.speaker.fields['Speaker Bio']}
+                </p>
+                {/*</Row>*/}
               </Col>
               <Col lg={9} style={{ border: '1px solid orange' }}></Col>
-              <Col lg={1}></Col>
+              {/*<Col lg={1}></Col>*/}
             </Row>
           </CardBody>
         </Card>

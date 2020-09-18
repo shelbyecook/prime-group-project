@@ -120,23 +120,25 @@ class AboutPage extends Component {
         </Container> */}
 
         <Card
+          //lg={9}
           style={{ background: 'none', borderRadius: '0px', border: 'none' }}
           className="mt-5"
         >
           <CardHeader>
-            <h3>Speakers</h3>
-          </CardHeader>
-          {this.props.store &&
-            this.props.store.speakers &&
-            this.props.store.speakers.map((speaker, index) => {
-              return <SpeakerList speaker={speaker} key={index} />;
-            })}
-          <Container>
-            {/*<CardBody>*/}
-            <CardHeader>
-              <h2>Spaces</h2>
-            </CardHeader>
-            {/*<Table hover>
+            <h1>Speakers</h1>
+            {/*<h3 className="lead">Speakers</h3>*/}
+
+            {this.props.store &&
+              this.props.store.speakers &&
+              this.props.store.speakers.map((speaker, index) => {
+                return <SpeakerList speaker={speaker} key={index} />;
+              })}
+            <Container>
+              {/*<CardBody>*/}
+              <CardHeader>
+                <h2>Spaces</h2>
+              </CardHeader>
+              {/*<Table hover>
               {' '}
               <thead>
                 <tr>
@@ -153,13 +155,13 @@ class AboutPage extends Component {
                   return <SpaceList space={space} key={index} />;
                 })}
             </Table>*/}
-          </Container>
-          <Container>
-            {/*<CardBody>*/}
-            <CardHeader>
-              <h2>Businesses</h2>
-            </CardHeader>
-            {/*<Table hover>
+            </Container>
+            <Container>
+              {/*<CardBody>*/}
+              <CardHeader>
+                <h2>Businesses</h2>
+              </CardHeader>
+              {/*<Table hover>
               {' '}
               <thead>
                 <tr>
@@ -176,7 +178,8 @@ class AboutPage extends Component {
                   return <BusinessList business={business} key={index} />;
                 })}
             </Table>*/}
-          </Container>
+            </Container>
+          </CardHeader>
         </Card>
       </Container>
     );
