@@ -7,6 +7,7 @@ import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
 import MemberDemoForm from '../MemberDemoForm/MemberDemoForm';
 import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
 import SkillsWidget from '../SkillsWidget/SkillsWidget';
+import MainPage from '../MainPage/MainPage';
 
 import {
   Container,
@@ -56,29 +57,35 @@ class UserPage extends Component {
         {this.props.store.profile &&
         this.props.store.profile.skills &&
         this.props.store.profile.skills.length > 1 ? (
-          <ProfilePage />
+          <MainPage />
         ) : (
           <>
-            <Row>
-              <Col lg={10} style={{ margin: 'auto', marginTop: '50px' }}>
-                <Card className="shadow">
-                  <CardBody>
-                    <h2 className="display-2">
-                      Welcome to the InnovateHER KC Community!
-                    </h2>
-                    <p className="lead">
-                      We'll start with gathering some information about{' '}
-                      <span style={{ color: '#F59032' }}>you</span> to help
-                      solidify your place in the community. Through this we can
-                      support the foundation for the six pillars of InnovateHer
-                      KC: Social Connection, Professional Development,
-                      Championship, Amplification, Resource Sharing, and
-                      Mentorship.
-                    </p>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
+            <Container>
+              <Row>
+                <Col
+                  lg={{ size: 12 }}
+                  className="mt-5"
+                  // style={{ margin: 'auto', marginTop: '50px' }}
+                >
+                  <Card className="shadow">
+                    <CardBody>
+                      <h2 className="display-2">
+                        Welcome to the InnovateHER KC Community!
+                      </h2>
+                      <p className="lead">
+                        We'll start with gathering some information about{' '}
+                        <span style={{ color: '#F59032' }}>you</span> to help
+                        solidify your place in the community. Through this we
+                        can support the foundation for the six pillars of
+                        InnovateHer KC: Social Connection, Professional
+                        Development, Championship, Amplification, Resource
+                        Sharing, and Mentorship.
+                      </p>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
             <br />
             <Container>
               <Nav
