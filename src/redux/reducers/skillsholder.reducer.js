@@ -1,5 +1,5 @@
 const skillsholder = (state = {}, action) => {
-  switch (action.type.data) {
+  switch (action.type) {
     case 'SET_SKILLS':
       return {
         leadership: action.payload[0],

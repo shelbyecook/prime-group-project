@@ -6,7 +6,6 @@ import Skills from './Skills';
 
 import './MainPage.css';
 
-
 //ReactStrap imports
 import { Container, Row, Col, CardBody,} from 'reactstrap';
 import {
@@ -14,19 +13,14 @@ import {
     CardImg,
     CardTitle,
     CardText,
-    
-  } from "reactstrap";
-import memberskills from '../../redux/reducers/memberskills.reducer';
-import skillsholder from '../../redux/reducers/skillsholder.reducer';
-
+    Badge,
+} from "reactstrap";
 
 class MainPage extends Component{
-    
+
     componentDidMount() {
-        this.props.dispatch({
-          type: 'SET_SKILLS',
-          payload: this.props.store.users_skills
-        })}
+
+}
 
 state= {
         first_name: "",
@@ -34,77 +28,131 @@ state= {
         email: "",
         headshot: "",
         organization_name: "",
-        skill: {},
+        skill: ""
 };
-
-
-
     render() {
-
-        console.log(this.props.state);
-        
         return(
             <Container >
                 <Row xs={2}>
                     <Col className="spacing">
                         <div className="list-group">
                             <button className="btn btn-secondary btn-lg">
-                            <a className="list-group-item" href="#community"><i className="fa fa-users fa-3x" aria-hidden="true"></i>&nbsp;IHKC Community</a>
+                            <a className="list-group-item" href="#search"><i className="fa fa-users fa-3x" aria-hidden="true"></i>&nbsp;IHKC Community</a>
                             </button>
                         </div>
                     </Col>
                 </Row>
-            <Row className="text-right">
+            <Row className="text-center">
                 <Col className="spacing-01">
+                    <Card>
                     <button className="btn btn-secondary btn-lg" >
                     <a className="list-group-item" href="#about"><i className="fa fa-microphone" aria-hidden="true"> </i>&nbsp; Find A Speaker</a>
                     </button>
+                    </Card>
                 </Col>
                 <Col className="spacing-01">
+                    <Card>
+                    <button className="btn btn-secondary btn-lg" >
+                    <a className="list-group-item" href="#about"><i className="fa fa-briefcase" aria-hidden="true"> </i>&nbsp; Find A Business</a>
+                    </button>
+                    </Card>
+                </Col>
+                <Col className="spacing-01">
+                    <Card>
                     <button class="btn btn-secondary btn-lg">
                     <a className="list-group-item" href="#about"><i className="fa fa-building" aria-hidden="true"></i>&nbsp; Find A Space</a>
                     </button>
+                    </Card>
                 </Col>
             </Row>
-            <Card className="spacing" border="primary" style={{ width: '0 rem' }}>
-                <CardImg className="card-img-top" style={{ width: "8rem" }}
-                src= 'https://innovateher.s3.amazonaws.com/9600884e-c917-4022-a609-35bd568c55b0_A3E9E68F-7D8D-44E9-97D6-85A1A47873DE.jpeg'
-                alt='Profile image'
-                />
-             <Col sm={4}>
-                <CardTitle className="text-right">
-                        Name: {this.props.store.user.first_name}
+            <Card className="spacing" border="primary" >
+            <Col sm={4}lg={12}>
+                <CardTitle className= "display-2 text-center">
+                        Welcome, {this.props.store.profile.display_name}!
                 </CardTitle>
+                <CardImg className="card-img-top" style={{ width: "8rem" }}
+                        src= {this.props.store.profile.headshot}
+                        alt='Profile image'
+                    />
             </Col>
-                <Col sm={4}>
+                {/* <Col sm={4}>
                     <CardText className="text-right">
-                        email: {this.props.store.user.email}
+                    {this.props.store.profile.job_title}
+                    </CardText> */}
+                    {/* organization name */}
+                {/* <Col className="text-right">
+                    <CardText>
+                        {this.props.store.profile.organization_name}
                     </CardText>
-                </Col>
-                {/* speakerphoto.url */}
-                    <CardBody>
-                        <Row>
-                        {this.props.store &&
-              this.props.store.skills &&
-              this.props.store.skills.map((skill, index) => {
-                return <Skills skill={skill} key={index} />;
-              })}
-                            <CardText>
-                                Skills:{this.props.store.skillsholder.skill_id}
-                            </CardText>
-                        </Row>
-                        <Row>
-                            <Col>
-                            <a href="#profile" role="button" aria-disabled="true" className="btn fa fa-long-arrow-right">view profile</a>
-                            </Col>
-                        </Row>
-                    </CardBody>
+                </Col> */}
+                <CardText className="text-center">
+                Skills:{' '}
+                    {this.props.store &&
+                        this.props.store.profile.skills &&
+                        this.props.store.profile.skills.map((skill, i) => {
+                            let color = 'primary';
+                            if (skill.category_id === 1) {
+                              color = 'primary';
+                            } else if (
+                              skill.category === 'Business and Entrepreneurship'
+                            ) {
+                              color = 'info';
+                            }
+                            switch (skill.category_id) {
+                              case 1:
+                                color = 'primary';
+                                break;
+                              case 2:
+                                color = 'info';
+                                break;
+                              case 3:
+                                color = 'secondary';
+                                break;
+                              case 4:
+                                color = 'success';
+                                break;
+                              case 5:
+                                color = 'danger';
+                                break;
+                              case 6:
+                                color = 'warning';
+                                break;
+                              case 7:
+                                color = 'primary';
+                                break;
+                              case 8:
+                                color = 'info';
+                                break;
+                              case 9:
+                                color = 'secondary';
+                                break;
+                              case 10:
+                                color = 'success';
+                                break;
+                              case 11:
+                                color = 'danger';
+                                break;
+                              case 12:
+                                color = 'warning';
+                                break;
+                            }
+                            return (
+                              <Badge className="mr-1" key={skill.id} color={color} pill>
+                                {skill.skill}
+                              </Badge>
+                            );
+                          })}   
+                </CardText>
+                <Row>
+                    <Col className="text-right">
+                        <a href="#profile" role="button" aria-disabled="true" className="btn btn-inner--text fa fa-long-arrow-right">view profile</a>
+                    </Col>
+                </Row>
                 </Card>
             </Container>
         );
     }
 }
-
 
 
 export default connect(mapStoreToProps)(MainPage);
