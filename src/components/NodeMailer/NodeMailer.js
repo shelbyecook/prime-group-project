@@ -8,34 +8,36 @@ class NodeMailer extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const subject = document.getElementById('subject').value;
+    console.log(subject);
     // const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
-
-    if (subject || message === '') {
-      alert('Please fill in missing fields');
-    } else {
-      axios({
-        method: 'POST',
-        url: '/api/nodemailer/mail',
-        data: {
-          subject: subject,
-          toEmail: this.props.store.listingClickedReducer.email,
-          message: message,
-        },
+    console.log(message);
+    console.log(this.props.store.listingClickedReducer.email);
+    // if (subject || message === '') {
+    //   alert('Please fill in missing fields');
+    // } else {
+    axios({
+      method: 'POST',
+      url: '/api/nodemailer/mail',
+      data: {
+        subject: subject,
+        toEmail: this.props.store.listingClickedReducer.email,
+        message: message,
+      },
+    })
+      .then((response) => {
+        if (response.data.msg === 'success') {
+          alert('Message Sent.');
+          this.resetForm();
+        } else if (response.data.msg === 'fail') {
+          alert('Message failed to send.');
+        }
       })
-        .then((response) => {
-          if (response.data.msg === 'success') {
-            alert('Message Sent.');
-            this.resetForm();
-          } else if (response.data.msg === 'fail') {
-            alert('Message failed to send.');
-          }
-        })
-        .catch((error) => {
-          console.log('error sending message', error);
-        });
-    }
+      .catch((error) => {
+        console.log('error sending message', error);
+      });
   }
+  // }
 
   resetForm = () => {
     document.getElementById('contact-form').reset();
@@ -43,7 +45,7 @@ class NodeMailer extends Component {
 
   render() {
     return (
-      <div className="col-sm-4 offset-sm-4">
+      <div className="col-sm-8 offset-sm-2">
         <form
           id="contact-form"
           onSubmit={this.handleSubmit.bind(this)}
@@ -71,7 +73,7 @@ class NodeMailer extends Component {
             <label htmlFor="message">Message:</label>
             <textarea className="form-control" rows="5" id="message"></textarea>
           </div>
-          <Button outline color="primary" type="submit">
+          <Button color="secondary" type="submit">
             Submit
           </Button>
         </form>

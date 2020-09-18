@@ -17,6 +17,7 @@ import {
   CardSubtitle,
   Modal,
 } from 'reactstrap';
+import NodeMailer from '../NodeMailer/NodeMailer';
 
 class MemberItem extends Component {
   state = { defaultModal: false, isOpen: false };
@@ -241,13 +242,16 @@ class MemberItem extends Component {
           </CardBody>
         </Card>
 
-        {/* <Modal
+        <Modal
           className="modal-dialog-centered modal-primary"
           contentClassName="bg-gradient-primary"
           isOpen={this.state.defaultModal}
           toggle={() => this.toggleModal('defaultModal')}
         >
-          <div className="modal-header">
+          <div className="m-5">
+            <NodeMailer />
+          </div>
+          {/* <div className="modal-header">
             <p className="lead" id="modal-title-default">
               {this.props.store.listingClickedReducer.first_name}{' '}
               {this.props.store.listingClickedReducer.last_name}
@@ -279,8 +283,8 @@ class MemberItem extends Component {
             >
               Close
             </Button>
-          </div>
-        </Modal> */}
+          </div> */}
+        </Modal>
       </>
     );
   }

@@ -20,7 +20,7 @@ import ProfileSearch from '../ProfileSearch/ProfileSearch';
 
 class MemberSearchPage extends Component {
   state = {
-    searchTerm: 'skills',
+    searchTerm: 'community_role',
   };
   componentDidMount() {
     this.props.dispatch({
