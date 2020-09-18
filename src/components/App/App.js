@@ -67,7 +67,6 @@ class App extends Component {
               component={UserPage}
             />
 
-
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
@@ -93,12 +92,12 @@ class App extends Component {
               path="/profile"
               component={ProfilePage}
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/mail"
               component={NodeMailer}
-            />
+            /> */}
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
