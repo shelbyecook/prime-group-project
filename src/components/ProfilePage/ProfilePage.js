@@ -74,7 +74,7 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <>
+      <Container>
         {this.props && this.props.store && this.props.store.profile && (
           <Container fluid className="mt-5">
             <Row>
@@ -386,7 +386,7 @@ class ProfilePage extends Component {
                             maxWidth: '50%',
                             borderRadius: '50%',
                           }}
-                          className="card-profile-image"
+                          className="card-profile-image mb-2"
                           src={this.props.store.profile.headshot}
                           alt="profile headshot"
                         />
@@ -395,6 +395,7 @@ class ProfilePage extends Component {
                           outline
                           color="primary"
                           size="sm"
+                          className="mb-3 mt-3"
                           onClick={this.switchPic}
                         >
                           Change Profile Picture
@@ -529,7 +530,7 @@ class ProfilePage extends Component {
             </Row>
           </Container>
         )}
-      </>
+      </Container>
     );
   }
 }
