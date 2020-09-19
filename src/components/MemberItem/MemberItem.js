@@ -93,17 +93,22 @@ class MemberItem extends Component {
           >
             <Row>
               <Col lg={2} xs={6} className="mr-0">
-                <img
+                <div
                   style={{
-                    minWidth: '150px',
-                    minHeight: '150px',
+                    maxHeight: '150px',
                     maxWidth: '100%',
-                    maxHeight: '100%',
                     borderRadius: '50%',
+                    overflow: 'hidden',
                   }}
-                  src={member.headshot}
-                  alt="Profile image"
-                />
+                >
+                  <img
+                    style={{
+                      objectFit: 'cover',
+                    }}
+                    src={member.headshot}
+                    alt="Profile image"
+                  />
+                </div>
                 <Button
                   className="mt-5"
                   outline

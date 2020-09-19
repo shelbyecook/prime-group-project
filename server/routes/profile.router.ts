@@ -71,11 +71,12 @@ router.put(
       });
   }
 );
+
 router.get(
   '/members',
   (req: Request, res: Response, next: express.NextFunction): void => {
     const queryText = `SELECT display_name, community_role, organization_name, mentor, mentee, job_title, headshot, bio, email, first_name, last_name, twitter, facebook, linkedin, instagram, user_id   FROM about
-                        JOIN "users" ON "about".user_id= "users".id `;
+                        JOIN "users" ON "about".user_id= "users".id;`;
     pool
       .query(queryText, [])
       .then((response) => {
@@ -106,7 +107,7 @@ router.get(
       });
   }
 );
-      
+
 router.put(
   '/user/:id',
   (req: Request, res: Response, next: express.NextFunction): void => {
@@ -130,5 +131,5 @@ router.put(
       });
   }
 );
-  
+
 export default router;

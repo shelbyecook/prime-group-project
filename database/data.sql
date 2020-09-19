@@ -1,9 +1,9 @@
 -- Add users
 INSERT INTO "users" (email, password, first_name, last_name)
-VALUES ('crosbycalvillo@gmail.com', 'password123', 'Crosby', 'Calvillo'),
-('sarahmiller@gmail.com', 'password123', 'Sarah', 'Miller'),
-('briannahamption@gmail.com', 'password123', 'Brianna', 'Hampton'),
-('kristinjones@gmail.com', 'password123', 'Kristin', 'Jones');
+VALUES ('crosbycalvillo@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Crosby', 'Calvillo'),
+('sarahmiller@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Sarah', 'Miller'),
+('briannahamption@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Brianna', 'Hampton'),
+('kristinjones@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Kristin', 'Jones');
 
 
 -- Add Profiles
@@ -15,7 +15,7 @@ mentor, mentee, user_id)
 VALUES
 ('Crosby Calvillo', 'Occupational Therapist', 'Advent Health', 'Acute Care OT',
 '5315 Haskell Ave', 'Kansas City', 'KS', 66104, 'linkedin.link',
-'facebook.link', 'twitter.link', 'instagram.link', 'photo url here',
+'facebook.link', 'twitter.link', 'instagram.link', 'https://innovateher.s3.us-east-2.amazonaws.com/10d8f542-cc89-4dba-9df2-27e557a846df_IMG_0984.jpg',
 'My name is Crosby and I enjoy helping people live their lives to the fullest.', 
 'M', '04/18/1995', true, false, 1), 
 ('Sarah Miller', 'Elementary Teacher', 'Whispering Meadows Elementary', 
@@ -35,3 +35,9 @@ VALUES
 'https://www.twitter.com', 'https://www.instagram.com', 
 'https://innovateher.s3.us-east-2.amazonaws.com/Sample2.jpeg', 
 'Law is my passion.', 'S', '12/04/1992', false, false, 4);
+
+INSERT INTO "users_skills" (user_id, skill_id) 
+VALUES (1, 2), (1, 35), (1, 50), (1, 300), (1, 230),
+      (2, 23), (2, 245), (2, 23), (2, 9), (2, 98),
+      (3, 2), (3, 43), (3, 520), (3, 345), (3, 22),
+      (4, 23), (4, 245), (4, 23), (4, 9), (4, 98);

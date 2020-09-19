@@ -56,6 +56,7 @@ function* getAllProfiles(action) {
     });
     console.log(profiles);
     yield put({ type: 'SET_MEMBER_LISTINGS', payload: profiles });
+    // yield put({ type: 'SET_MEMBER_LISTINGS', payload: response.data });
   } catch (error) {
     console.log('getAllProfiles failed. Please try again.', error);
   }
