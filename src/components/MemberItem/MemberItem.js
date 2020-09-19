@@ -61,7 +61,7 @@ class MemberItem extends Component {
     };
 
     const closedHeight = {
-      maxHeight: '180px',
+      maxHeight: '200px',
       position: 'relative',
       top: '0',
       bottom: '0',
@@ -83,20 +83,19 @@ class MemberItem extends Component {
     return (
       <>
         <Card
-          className="shadow"
+          className="shadow mb-2"
           style={this.state.isOpen ? openHeight : closedHeight}
-          onClick={this.openMember}
         >
           <CardBody
             className="m-0"
             style={this.state.isOpen ? openFade : closedFade}
           >
             <Row>
-              <Col lg={2} xs={6} className="mr-0">
+              <Col lg={3} xs={6} className="mr-0">
                 <div
                   style={{
-                    maxHeight: '150px',
-                    maxWidth: '100%',
+                    maxHeight: '160px',
+                    maxWidth: '160px',
                     borderRadius: '50%',
                     overflow: 'hidden',
                   }}
@@ -119,9 +118,9 @@ class MemberItem extends Component {
                   Contact Now
                 </Button>
               </Col>
-              <Col lg={10} xs={6}>
+              <Col lg={9} xs={6}>
                 <Row>
-                  <Col lg={3}>
+                  <Col lg={5}>
                     <p className="lead mb-0">
                       {member.first_name} {member.last_name}
                     </p>
@@ -129,10 +128,8 @@ class MemberItem extends Component {
                       {member.job_title} at {member.organization_name}
                     </p>
                   </Col>
-                  <Col lg={4}>
-                    <p>Bio: {member.bio}</p>
-                  </Col>
-                  <Col lg={5}>
+
+                  <Col lg={7}>
                     <h3 className="lead">Skills:</h3>
                     {member.skills.map((skill, i) => {
                       let color = 'primary';
@@ -241,22 +238,30 @@ class MemberItem extends Component {
                       />
                     </a>
                   </Col>
-                  {/* <Col>
-                    <Button
-                      outline
-                      size="sm"
-                      color="primary"
-                      onClick={this.handleListingClick}
-                    >
-                      Contact Now
-                    </Button>
-                  </Col> */}
+                  <Col>
+                    <p>Bio: {member.bio}</p>
+                  </Col>
                 </Row>
               </Col>
             </Row>
           </CardBody>
         </Card>
-
+        <Row>
+          <Button
+            block
+            outline
+            color="danger"
+            style={{
+              position: 'absolute',
+              top: '158px',
+              left: '15px',
+              width: '96.8%',
+            }}
+            onClick={this.openMember}
+          >
+            Expand
+          </Button>
+        </Row>
         <Modal
           className="modal-dialog-centered modal-primary"
           contentClassName="bg-gradient-primary"
