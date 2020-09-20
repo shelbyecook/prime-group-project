@@ -10,22 +10,20 @@ import {
   CardHeader,
 } from 'reactstrap';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import SpeakerList from './SpeakerList';
-import SpaceList from './SpaceList';
-import BusinessList from './BusinessList';
+import SpeakerList from '../SpeakerList/SpeakerList';
 
-class AboutPage extends Component {
+class SpeakerPage extends Component {
   state = { defaultModal: false, isOpen: false };
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_AIRTABLE_SPEAKER',
     });
-    this.props.dispatch({
-      type: 'FETCH_AIRTABLE_SPACES',
-    });
-    this.props.dispatch({
-      type: 'FETCH_AIRTABLE_BUSINESSES',
-    });
+    // this.props.dispatch({
+    //   type: 'FETCH_AIRTABLE_SPACES',
+    // });
+    // this.props.dispatch({
+    //   type: 'FETCH_AIRTABLE_BUSINESSES',
+    // });
   }
 
   //props.store.imageUrlReducer.avatarPath
@@ -133,12 +131,12 @@ class AboutPage extends Component {
               this.props.store.speakers.map((speaker, index) => {
                 return <SpeakerList speaker={speaker} key={index} />;
               })}
-            <Container>
-              {/*<CardBody>*/}
-              <CardHeader>
+            {/* <Container> */}
+            {/*<CardBody>*/}
+            {/* <CardHeader>
                 <h2>Spaces</h2>
-              </CardHeader>
-              {/*<Table hover>
+              </CardHeader> */}
+            {/*<Table hover>
               {' '}
               <thead>
                 <tr>
@@ -155,13 +153,13 @@ class AboutPage extends Component {
                   return <SpaceList space={space} key={index} />;
                 })}
             </Table>*/}
-            </Container>
-            <Container>
-              {/*<CardBody>*/}
-              <CardHeader>
+            {/* </Container> */}
+            {/* <Container> */}
+            {/*<CardBody>*/}
+            {/* <CardHeader>
                 <h2>Businesses</h2>
-              </CardHeader>
-              {/*<Table hover>
+              </CardHeader> */}
+            {/*<Table hover>
               {' '}
               <thead>
                 <tr>
@@ -178,7 +176,7 @@ class AboutPage extends Component {
                   return <BusinessList business={business} key={index} />;
                 })}
             </Table>*/}
-            </Container>
+            {/* </Container> */}
           </CardHeader>
         </Card>
       </Container>
@@ -186,4 +184,4 @@ class AboutPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(AboutPage);
+export default connect(mapStoreToProps)(SpeakerPage);
