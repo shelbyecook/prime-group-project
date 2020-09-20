@@ -53,8 +53,8 @@ class NodeMailer extends Component {
   render() {
     if (this.state.sent === true) {
       return (
-        <div className="col-sm-8 offset-sm-2">
-          <h1>Message Sent successfully!</h1>
+        <div className="col-sm-8 offset-sm-2 text-center">
+          <h1 style={{ color: 'white' }}>Message Sent successfully!</h1>
         </div>
       );
     } else {

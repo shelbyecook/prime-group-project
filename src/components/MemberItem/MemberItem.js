@@ -332,6 +332,15 @@ class MemberItem extends Component {
           isOpen={this.state.defaultModal}
           toggle={() => this.toggleModal('defaultModal')}
         >
+          <button
+            aria-label="Close"
+            className="close m-2 "
+            data-dismiss="modal"
+            type="button"
+            onClick={() => this.toggleModal('defaultModal')}
+          >
+            <span aria-hidden={true}>×</span>
+          </button>
           <div className="m-5">
             <NodeMailer />
           </div>
