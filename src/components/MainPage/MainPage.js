@@ -7,7 +7,7 @@ import Skills from './Skills';
 import './MainPage.css';
 
 //ReactStrap imports
-import { Container, Row, Col, CardBody,} from 'reactstrap';
+import { Container, Row, Col, CardBody, Button} from 'reactstrap';
 import {
     Card,
     CardImg,
@@ -15,6 +15,9 @@ import {
     CardText,
     Badge,
 } from "reactstrap";
+
+
+import { Link } from 'react-router-dom';
 
 class MainPage extends Component{
 
@@ -33,61 +36,107 @@ state= {
     render() {
         return(
             <Container>
+              <Col lg={{ size: 10, offset: 1 }}>
                   <Row xs={2}>
                       <Col className="spacing">
-                          <div className="list-group">
+                          <Card>
                               <button className="btn btn-secondary btn-lg">
                               <a className="list-group-item" href="#search"><i className="fa fa-users fa-3x" aria-hidden="true"></i>&nbsp;IHKC Community</a>
                               </button>
-                          </div>
+                          </Card>
                       </Col>
                   </Row>
               <Row className="text-center">
                   <Col className="spacing-01">
-                      <Card>
-                      <button className="btn btn-secondary btn-lg" >
-                      <a className="list-group-item" href="#about"><i className="fa fa-microphone" aria-hidden="true"> </i>&nbsp; Find A Speaker</a>
-                      </button>
-                      </Card>
+                  <Card>
+              <button className="btn btn-secondary btn-lg">
+                <a className="list-group-item" href="#speakers">
+                  <i className="fa fa-microphone" aria-hidden="true">
+                    {' '}
+                  </i>
+                  &nbsp; Find A Speaker
+                </a>
+              </button>
+            </Card>
                   </Col>
                   <Col className="spacing-01">
-                      <Card>
-                      <button className="btn btn-secondary btn-lg" >
-                      <a className="list-group-item" href="#about"><i className="fa fa-briefcase" aria-hidden="true"> </i>&nbsp; Find A Business</a>
-                      </button>
-                      </Card>
+                  <Card>
+              <button className="btn btn-secondary btn-lg">
+                <a className="list-group-item" href="#businesses">
+                  <i className="fa fa-briefcase" aria-hidden="true">
+                    {' '}
+                  </i>
+                  &nbsp; Find A Business
+                </a>
+              </button>
+            </Card>
                   </Col>
                   <Col className="spacing-01">
-                      <Card>
-                      <button class="btn btn-secondary btn-lg">
-                      <a className="list-group-item" href="#about"><i className="fa fa-building" aria-hidden="true"></i>&nbsp; Find A Space</a>
-                      </button>
-                      </Card>
+                  <Card>
+              <button className="btn btn-secondary btn-lg">
+                <a className="list-group-item" href="#spaces">
+                  <i className="fa fa-building" aria-hidden="true"></i>&nbsp;
+                  Find A Space
+                </a>
+              </button>
+            </Card>
                   </Col>
               </Row>
-              <Card className="spacing" border="primary" >
-                  <Col sm={4}lg={12}>
+              <Card className="p-5" style={{borderTopRightRadius: '80px',borderBottomLeftRadius: '80px',}}>
                     <CardTitle className= "display-2 text-center">
+
                             Welcome, {this.props.store.profile.display_name}!
                     </CardTitle>
-                    <Col m={8}>
-                      <CardImg style={{ width: "8rem" }}
+                    {/* <hr style={{backgroundColor: "#F59032"}}/> */}
+                  <Row className="mb-4">
+                    <Col lg={4}>
+                      <div style={{maxHeight: '160px',maxWidth: '160px',borderRadius: '50%',overflow: 'hidden',margin: 'auto',}}>
+                      <CardImg style={{ objectFit: "cover" }}
                           src= {this.props.store.profile.headshot}
                           alt='Profile image'
-                  />
-                      <CardText className="text-center ">
-                        {this.props.store.profile.bio}
-                      </CardText>
-                      <CardText className="text-center">
-                          {this.props.store.profile.organization_name}
-                      </CardText>
+                      />
+                      </div>
+                    </Col>
+                  <Col>
+                      <CardText className="text-left ">
+                        {/* <span className="font-weight-bold text-primary">
+                        Bio:
+                        </span> */}
 
-                      <CardText className="text-center">
+                        <h4 style={{borderBottom: "1px solid black"}}>
+                          Bio:
+                        </h4>
+                        <p>
+                        {this.props.store.profile.bio}
+                        </p>
+                      </CardText>
+                      <CardText className="text-left">
+
+                      <h4 style={{borderBottom: "1px solid black"}}>
+                          Organization:
+                        </h4>
+                        {/* <span className="font-weight-bold text-primary">
+                        Organization:
+                        </span> */}
+                        <p>
+                        {this.props.store.profile.organization_name}
+                        </p>
+                      </CardText>
+                      <CardText className="text-left">
+
+                      <h4 style={{borderBottom: "1px solid black"}}>
+                          Job Title:
+                        </h4>
+                        {/* <span className="font-weight-bold text-primary">
+                      Job Title:
+                      </span> */}
+                      <p>
                       {this.props.store.profile.job_title}
+                      </p>
                       </CardText>
                       </Col>
-                  </Col>
-                      {/* organization name */}
+                      <Col lg={1}> </Col>
+                  </Row>
 
                   <CardText className="text-center">
                   Skills:{' '}
@@ -149,10 +198,16 @@ state= {
                   </CardText>
                   <Row>
                       <Col className="text-right">
-                          <a href="#profile" role="button" aria-disabled="true" className="btn btn-inner--text fa fa-long-arrow-right">view profile</a>
+                        <Link to="profile">
+                        <Button outline color="primary">
+                          View Profile 
+                          <i className="ml-1 fa fa-long-arrow-right"></i>
+                        </Button>
+                        </Link>
                       </Col>
                   </Row>
                 </Card>
+            </Col>
           </Container>
         );
     }
