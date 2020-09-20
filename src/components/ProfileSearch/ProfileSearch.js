@@ -29,22 +29,22 @@ function ProfileOptions(props) {
   }, [searchTerm]);
   return (
     <div>
-      <Container>
-        <Row>
-          <Col>
-            <Input
-              className="form-control-alternative"
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={handleChange}
-            />
-          </Col>
-        </Row>
-        <Row>
+      <Row>
+        <Col>
+          <Input
+            className="form-control-alternative"
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleChange}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <ProfileResults results={searchResults} />
-        </Row>
-      </Container>
+        </Col>
+      </Row>
     </div>
   );
 }

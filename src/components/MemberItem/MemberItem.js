@@ -61,7 +61,7 @@ class MemberItem extends Component {
     };
 
     const closedHeight = {
-      maxHeight: '180px',
+      maxHeight: '200px',
       position: 'relative',
       top: '0',
       bottom: '0',
@@ -80,33 +80,63 @@ class MemberItem extends Component {
       // transform: 'translate(0, 50px)',
       transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
     };
+
+    const buttonClose = {
+      position: 'relative',
+      // top: '208px',
+      bottom: '13px',
+      // left: '15px',
+      // width: '96.8%',
+      zIndex: '999',
+      transition: 'position 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
+    };
+
+    const buttonOpen = {
+      position: 'relative',
+      bottom: '25px',
+      // left: '15px',
+      // width: '96.8%',
+      zIndex: '999',
+      transition: 'position 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
+    };
     return (
       <>
         <Card
-          className="shadow"
+          className="bg-neutral shadow mb-2"
           style={this.state.isOpen ? openHeight : closedHeight}
-          onClick={this.openMember}
         >
           <CardBody
             className="m-0"
             style={this.state.isOpen ? openFade : closedFade}
           >
-            <Row>
-              <Col lg={2} xs={6} className="mr-0">
-                <img
+            <Row className="mb-2">
+              <Col
+                lg={3}
+                xs={12}
+                className="mr-0 text-center"
+                style={{ borderRight: '0.5px solid #F59032' }}
+              >
+                <div
                   style={{
-                    minWidth: '150px',
-                    minHeight: '150px',
-                    maxWidth: '100%',
-                    maxHeight: '100%',
+                    maxHeight: '160px',
+                    maxWidth: '160px',
                     borderRadius: '50%',
+                    overflow: 'hidden',
+                    margin: 'auto',
                   }}
-                  src={member.headshot}
-                  alt="Profile image"
-                />
+                >
+                  <img
+                    style={{
+                      objectFit: 'cover',
+                    }}
+                    src={member.headshot}
+                    alt="Profile image"
+                  />
+                </div>
                 <Button
                   className="mt-5"
                   outline
+                  block
                   size="sm"
                   color="primary"
                   onClick={this.handleListingClick}
@@ -114,9 +144,9 @@ class MemberItem extends Component {
                   Contact Now
                 </Button>
               </Col>
-              <Col lg={10} xs={6}>
+              <Col lg={9} xs={12}>
                 <Row>
-                  <Col lg={3}>
+                  <Col lg="5">
                     <p className="lead mb-0">
                       {member.first_name} {member.last_name}
                     </p>
@@ -124,72 +154,94 @@ class MemberItem extends Component {
                       {member.job_title} at {member.organization_name}
                     </p>
                   </Col>
-                  <Col lg={4}>
-                    <p>Bio: {member.bio}</p>
-                  </Col>
-                  <Col lg={5}>
-                    <h3 className="lead">Skills:</h3>
-                    {member.skills.map((skill, i) => {
-                      let color = 'primary';
-                      if (skill.category_id === 1) {
-                        color = 'primary';
-                      } else if (
-                        skill.category === 'Business and Entrepreneurship'
-                      ) {
-                        color = 'info';
-                      }
 
-                      switch (skill.category_id) {
-                        case 1:
+                  <Col lg={7} xs={12}>
+                    <h3 className="lead mb-0">Skills:</h3>
+                    <div
+                    // style={{
+                    //   height: '65px',
+                    //   overflow: 'scroll',
+                    //   borderBottom: '1px solid #9999993a',
+                    //   borderLeft: '1px solid #9999993a',
+                    //   borderRight: '1px solid #9999993a',
+                    //   paddingLeft: '2px',
+                    // }}
+                    >
+                      {member.skills.map((skill, i) => {
+                        let color = 'primary';
+                        if (skill.category_id === 1) {
                           color = 'primary';
-                          break;
-                        case 2:
+                        } else if (
+                          skill.category === 'Business and Entrepreneurship'
+                        ) {
                           color = 'info';
-                          break;
-                        case 3:
-                          color = 'secondary';
-                          break;
-                        case 4:
-                          color = 'success';
-                          break;
-                        case 5:
-                          color = 'danger';
-                          break;
-                        case 6:
-                          color = 'warning';
-                          break;
-                        case 7:
-                          color = 'primary';
-                          break;
-                        case 8:
-                          color = 'info';
-                          break;
-                        case 9:
-                          color = 'secondary';
-                          break;
-                        case 10:
-                          color = 'success';
-                          break;
-                        case 11:
-                          color = 'danger';
-                          break;
-                        case 12:
-                          color = 'warning';
-                          break;
-                      }
-                      return (
-                        <Badge key={skill.id} color={color} pill>
-                          {skill.skill}
-                        </Badge>
-                      );
-                    })}
+                        }
+
+                        switch (skill.category_id) {
+                          case 1:
+                            color = 'primary';
+                            break;
+                          case 2:
+                            color = 'info';
+                            break;
+                          case 3:
+                            color = 'secondary';
+                            break;
+                          case 4:
+                            color = 'success';
+                            break;
+                          case 5:
+                            color = 'danger';
+                            break;
+                          case 6:
+                            color = 'warning';
+                            break;
+                          case 7:
+                            color = 'primary';
+                            break;
+                          case 8:
+                            color = 'info';
+                            break;
+                          case 9:
+                            color = 'secondary';
+                            break;
+                          case 10:
+                            color = 'success';
+                            break;
+                          case 11:
+                            color = 'danger';
+                            break;
+                          case 12:
+                            color = 'warning';
+                            break;
+                        }
+                        return (
+                          <Badge
+                            className="mr-1 mt-1"
+                            key={skill.id}
+                            color={color}
+                            pill
+                          >
+                            {skill.skill}
+                          </Badge>
+                        );
+                      })}
+                    </div>
                   </Col>
                 </Row>
-                <hr />
-                <Row className="mt-3">
-                  <Col>
-                    <h2>Social Media</h2>
-                    <a href={member.instagram} target="_blank">
+                <hr style={{ backgroundColor: '#F59032' }} />
+                <Row
+                  className="mt-3"
+                  style={{ borderLeft: '0.5px solid #F59032' }}
+                >
+                  <Col lg={5} xs={12}>
+                    <p className="lead">Social Media</p>
+                    <a
+                      target="_blank"
+                      // rel="noopener noreferrer"
+                      href={member.instagram}
+                      target="_blank"
+                    >
                       <i
                         className="fa fa-instagram"
                         style={{
@@ -203,7 +255,11 @@ class MemberItem extends Component {
                       />
                     </a>{' '}
                     |{' '}
-                    <a href={member.facebook}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={member.facebook}
+                    >
                       <i
                         className="fa fa-facebook-official"
                         style={{
@@ -214,7 +270,11 @@ class MemberItem extends Component {
                       />
                     </a>{' '}
                     |{' '}
-                    <a href={member.linkedin}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={member.linkedin}
+                    >
                       <i
                         className="fa fa-linkedin-square"
                         style={{
@@ -225,7 +285,11 @@ class MemberItem extends Component {
                       />
                     </a>{' '}
                     |{' '}
-                    <a href={member.twitter}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={member.twitter}
+                    >
                       <i
                         className="fa fa-twitter-square"
                         style={{
@@ -236,22 +300,32 @@ class MemberItem extends Component {
                       />
                     </a>
                   </Col>
-                  {/* <Col>
-                    <Button
-                      outline
-                      size="sm"
-                      color="primary"
-                      onClick={this.handleListingClick}
-                    >
-                      Contact Now
-                    </Button>
-                  </Col> */}
+                  <Col lg={7} xs={12} className="text-left">
+                    <p className="lead mb-0">Bio: </p>
+                    <p>{member.bio}</p>
+                  </Col>
                 </Row>
               </Col>
             </Row>
           </CardBody>
         </Card>
-
+        <Button
+          block
+          // outline
+          color="primary"
+          style={this.state.isOpen ? buttonOpen : buttonClose}
+          onClick={this.openMember}
+        >
+          {this.state.isOpen ? (
+            <>
+              <i className="ni ni-bold-up"></i>
+            </>
+          ) : (
+            <>
+              <i className="ni ni-bold-down" />
+            </>
+          )}
+        </Button>
         <Modal
           className="modal-dialog-centered modal-primary"
           contentClassName="bg-gradient-primary"

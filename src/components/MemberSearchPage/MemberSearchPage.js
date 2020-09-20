@@ -21,6 +21,7 @@ import ProfileSearch from '../ProfileSearch/ProfileSearch';
 class MemberSearchPage extends Component {
   state = {
     searchTerm: 'community_role',
+    rSelected: 1,
   };
   componentDidMount() {
     this.props.dispatch({
@@ -34,11 +35,11 @@ class MemberSearchPage extends Component {
       rSelected: selected,
     });
     switch (selected) {
-      // case 1:
-      //   this.setState({
-      //     searchTerm: 'skills',
-      //   });
-      //   break;
+      case 1:
+        this.setState({
+          searchTerm: 'job_title',
+        });
+        break;
       case 2:
         this.setState({
           searchTerm: 'community_role',
@@ -65,33 +66,53 @@ class MemberSearchPage extends Component {
               </Card>
             </Col>
           </Row>
-          <ButtonGroup>
-            {/* <Button
-              color="primary"
-              onClick={() => this.buttonClick(1)}
-              active={this.state.rSelected === 1}
-            >
-              Skills
-            </Button> */}
-            <Button
-              color="primary"
-              onClick={() => this.buttonClick(2)}
-              active={this.state.rSelected === 2}
-            >
-              Community Role
-            </Button>
-            <Button
-              color="primary"
-              onClick={() => this.buttonClick(3)}
-              active={this.state.rSelected === 3}
-            >
-              Organization Name
-            </Button>
-          </ButtonGroup>
-          <ProfileSearch
-            skills={this.props.store.memberListingsReducer}
-            term={this.state.searchTerm}
-          />
+          <br />
+          <Row>
+            <Col lg={{ size: 2, offset: 1 }} xs={4} className="text-right pt-2">
+              Search By:
+            </Col>
+            <Col lg={{ size: 2 }} xs={12}>
+              <Button
+                outline
+                block
+                color="primary"
+                onClick={() => this.buttonClick(1)}
+                active={this.state.rSelected === 1}
+              >
+                Job Title
+              </Button>
+            </Col>
+            <Col lg={2} xs={12}>
+              <Button
+                outline
+                block
+                color="primary"
+                onClick={() => this.buttonClick(2)}
+                active={this.state.rSelected === 2}
+              >
+                Community Role
+              </Button>
+            </Col>
+            <Col lg={2} xs={12}>
+              <Button
+                outline
+                block
+                color="primary"
+                onClick={() => this.buttonClick(3)}
+                active={this.state.rSelected === 3}
+              >
+                Organization Name
+              </Button>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col>
+              <ProfileSearch
+                skills={this.props.store.memberListingsReducer}
+                term={this.state.searchTerm}
+              />
+            </Col>
+          </Row>
         </Container>
       </>
     );
