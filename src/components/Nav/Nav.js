@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 
 import {
   Navbar,
@@ -36,6 +37,7 @@ const Nav = (props) => {
     >
       <Container>
         {/* <NavLink onClick={(e) => e.preventDefault()}> */}
+
         <Link to="/home">
           <img
             style={{
@@ -48,8 +50,9 @@ const Nav = (props) => {
             alt="logo for InnovateHer KC"
           />
         </Link>
+
         {/* </NavLink> */}
-        <button
+        {/* <button
           style={{ color: '#333' }}
           aria-controls="navbar-info"
           aria-expanded={false}
@@ -64,9 +67,9 @@ const Nav = (props) => {
             // style={{ color: '#333' }}
             className="navbar-toggler-icon text-muted"
           />
-        </button>
-        <UncontrolledCollapse navbar toggler="#navbar-info">
-          <div className="navbar-collapse-header">
+        </button> */}
+        {/* <UncontrolledCollapse navbar toggler="#navbar-info"> */}
+        {/* <div className="navbar-collapse-header">
             <Row>
               <Col className="collapse-brand" xs="6"></Col>
               <Col className="collapse-close" xs="6">
@@ -85,40 +88,48 @@ const Nav = (props) => {
                 </button>
               </Col>
             </Row>
-          </div>
-          {/* Show the link to the info page and the logout button if the user is logged in */}
-          <div className="ml-auto">
-            {props.store.user.id && (
-              <>
-                <Link className="nav-line" to={loginLinkData.path}>
-                  <i className="ni ni-circle-08" style={{ color: '#888' }} />
-                  {/* Show this link if they are logged in or not,
+          </div> */}
+        {/* Show the link to the info page and the logout button if the user is logged in */}
+
+        <div className="ml-auto">
+          {props.store.user.id && (
+            <>
+              {/* <Link className="nav-line" to={loginLinkData.path}>
+                  <i className="ni ni-circle-08" style={{ color: '#888' }} /> */}
+              {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
           and call this link 'Login / Register' if they are not */}
-                  {loginLinkData.text}
-                </Link>
-                <Link className="nav-line" to="/info">
-                  <i
-                    className="ni ni-book-bookmark"
-                    style={{ color: '#888' }}
-                  />
-                  Info Page
-                </Link>
-                <i className="ni ni-user-run" style={{ color: '#888' }} />
-                <LogOutButton className="nav-logout" />
-              </>
-            )}
+              {/* {loginLinkData.text}
+                </Link> */}
 
-            {/* Always show this link since the about page is not protected */}
+              <Link className="nav-line text-nowrap mr-2  " to="/profile">
+                <i className="ni ni-circle-08 m-1" style={{ color: '#888' }} />
+                Profile
+              </Link>
 
-            <Link className="nav-line" to="/about">
-              About
-            </Link>
-          </div>
-        </UncontrolledCollapse>
+              <Link className="nav-line text-nowrap m-2" to="/main">
+                <i
+                  className="ni ni-book-bookmark m-1"
+                  style={{ color: '#888' }}
+                />
+                Home
+              </Link>
+
+              {/* <i className="ni ni-user-run" style={{ color: '#888' }} /> */}
+              <LogOutButton className="nav-logout  " />
+
+              {/* <Link className="nav-line" to="/profile">
+                  Profile
+                </Link> */}
+            </>
+          )}
+
+          {/* Always show this link since the about page is not protected */}
+        </div>
+        {/* </UncontrolledCollapse> */}
       </Container>
     </Navbar>
   );
 };
 
-export default connect(mapStoreToProps)(Nav);
+export default connect(mapStoreToProps)(withRouter(Nav));
