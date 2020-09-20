@@ -68,28 +68,35 @@ class MemberSearchPage extends Component {
           </Row>
           <br />
           <Row>
-            <Col lg={4} className="text-right pt-2">
+            <Col lg={{ size: 2, offset: 1 }} xs={4} className="text-right pt-2">
               Search By:
             </Col>
-            <Col lg={{ size: 6 }}>
+            <Col lg={{ size: 2 }} xs={12}>
               <Button
                 outline
+                block
                 color="primary"
                 onClick={() => this.buttonClick(1)}
                 active={this.state.rSelected === 1}
               >
                 Job Title
               </Button>
+            </Col>
+            <Col lg={2} xs={12}>
               <Button
                 outline
+                block
                 color="primary"
                 onClick={() => this.buttonClick(2)}
                 active={this.state.rSelected === 2}
               >
                 Community Role
               </Button>
+            </Col>
+            <Col lg={2} xs={12}>
               <Button
                 outline
+                block
                 color="primary"
                 onClick={() => this.buttonClick(3)}
                 active={this.state.rSelected === 3}
