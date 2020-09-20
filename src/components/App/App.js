@@ -21,7 +21,7 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
+import AboutPage from '../SpeakerPage/SpeakerPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -33,6 +33,9 @@ import MainPage from '../MainPage/MainPage';
 import './App.css';
 import MemberSearchPage from '../MemberSearchPage/MemberSearchPage';
 import NodeMailer from '../NodeMailer/NodeMailer';
+import SpeakerPage from '../SpeakerPage/SpeakerPage';
+import BusinessPage from '../BusinessPage/BusinessPage';
+import SpacesPage from '../SpacesPage/SpacesPage';
 
 class App extends Component {
   componentDidMount() {
@@ -49,12 +52,12 @@ class App extends Component {
             <Redirect exact from="/" to="/home" />
 
             {/* Visiting localhost:3000/about will show the about page. */}
-            <Route
+            {/* <Route
               // shows AboutPage at all times (logged in or not)
               exact
-              path="/about"
-              component={AboutPage}
-            />
+              path="/speakers"
+              component={SpeakerPage}
+            /> */}
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -65,6 +68,26 @@ class App extends Component {
               exact
               path="/user"
               component={UserPage}
+            />
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/businesses"
+              component={BusinessPage}
+            />
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/spaces"
+              component={SpacesPage}
+            />
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/speakers"
+              component={SpeakerPage}
             />
 
             <ProtectedRoute

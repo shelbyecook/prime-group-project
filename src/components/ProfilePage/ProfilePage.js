@@ -361,7 +361,7 @@ class ProfilePage extends Component {
                 sm={{ size: 12, order: '1' }}
                 xs={{ size: 12, order: '1' }}
               >
-                <Card className="shadow">
+                <Card className="shadow mb-3">
                   <CardBody className="text-center">
                     {this.state.picEdit ? (
                       <Col lg={{ size: 5, offset: 3 }}>
@@ -381,15 +381,22 @@ class ProfilePage extends Component {
                       </Col>
                     ) : (
                       <>
-                        <img
+                        <div
                           style={{
+                            maxHeight: '150px',
                             maxWidth: '50%',
                             borderRadius: '50%',
+                            overflow: 'hidden',
+                            margin: 'auto',
                           }}
-                          className="card-profile-image mb-2"
-                          src={this.props.store.profile.headshot}
-                          alt="profile headshot"
-                        />
+                        >
+                          <img
+                            style={{ objectFit: 'cover' }}
+                            // className="card-profile-image mb-2"
+                            src={this.props.store.profile.headshot}
+                            alt="profile headshot"
+                          />
+                        </div>
                         <br />
                         <Button
                           outline
@@ -466,7 +473,7 @@ class ProfilePage extends Component {
                     </Row>
                     <br />
                     <Row>
-                      <Col lg={{ size: 6, offset: 3 }}>
+                      <Col lg={{ size: 12 }}>
                         <a href={this.props.store.profile.instagram}>
                           <i
                             className="fa fa-instagram"

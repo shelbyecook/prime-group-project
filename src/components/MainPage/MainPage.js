@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import Skills from './Skills';
+
 //import { useFormik } from 'formik';
 
 import './MainPage.css';
 
 //ReactStrap imports
-import { Container, Row, Col, CardBody, Button} from 'reactstrap';
 import {
     Card,
     CardImg,
     CardTitle,
     CardText,
     Badge,
+    Container,
+    Row,
+    Col,
+    CardBody,
+    Button,
 } from "reactstrap";
 
 
 import { Link } from 'react-router-dom';
 
-class MainPage extends Component{
-
-    componentDidMount() {
-
-}
+class MainPage extends Component {
+  componentDidMount() {}
 
 state= {
         first_name: "",
@@ -212,6 +213,5 @@ state= {
         );
     }
 }
-
 
 export default connect(mapStoreToProps)(MainPage);
