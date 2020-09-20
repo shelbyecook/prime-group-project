@@ -46,7 +46,7 @@ class SpeakerList extends React.Component {
     };
 
     const closedHeight = {
-      maxHeight: '50px',
+      maxHeight: '190px',
       position: 'relative',
       top: '0',
       bottom: '0',
@@ -95,6 +95,22 @@ class SpeakerList extends React.Component {
               </Col>
               <Col lg={5}>
                 <div style={{ width: '50%' }}>
+                  {this.props.speaker.fields &&
+                    this.props.speaker.fields['Speaker Photo'] &&
+                    this.props.speaker.fields['Speaker Photo'][0] && (
+                      <img
+                        className="mt-2"
+                        style={{
+                          height: '30%',
+                          width: '30%',
+                          borderRadius: '6px',
+                        }}
+                        src={this.props.speaker.fields['Speaker Photo'][0].url}
+                        alt="img"
+                      />
+                    )}
+                </div>
+                <div style={{ width: '50%' }}>
                   {' '}
                   {this.props.speaker.fields.Name}
                 </div>
@@ -103,22 +119,7 @@ class SpeakerList extends React.Component {
                   {' at '} {this.props.speaker.fields.Organization}
                 </p>
                 <hr />
-                <div style={{ width: '50%' }}>
-                  {this.props.speaker.fields &&
-                    this.props.speaker.fields['Speaker Photo'] &&
-                    this.props.speaker.fields['Speaker Photo'][0] && (
-                      <img
-                        className="mt-2"
-                        style={{
-                          height: '100%',
-                          width: '100%',
-                          borderRadius: '6px',
-                        }}
-                        src={this.props.speaker.fields['Speaker Photo'][0].url}
-                        alt="speaker headshot"
-                      />
-                    )}
-                </div>
+
                 {/*<div style={{ width: '50%' }}>
                   {this.props.speaker.fields['Speaker Photo'][0].url}
                 </div>*/}
@@ -128,19 +129,22 @@ class SpeakerList extends React.Component {
                   <li className="mb-2">
                     <i
                       style={{ cursor: 'pointer' }}
-                      className="ni ni-email-83"
+                      className="ni ni-email-83 m-1"
                     />
                     {this.props.speaker.fields.Email}
                   </li>
                   <li>
                     <i
                       style={{ cursor: 'pointer' }}
-                      className="ni ni-mobile-button"
+                      className="ni ni-mobile-button m-1"
                     />
                     {this.props.speaker.fields['Phone Number']}
                   </li>
                   <li>
-                    <i style={{ cursor: 'pointer' }} className="ni ni-laptop" />
+                    <i
+                      style={{ cursor: 'pointer' }}
+                      className="ni ni-laptop m-1"
+                    />
                     {this.props.speaker.fields['Website']}
                   </li>
                 </ul>

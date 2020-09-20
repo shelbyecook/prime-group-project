@@ -151,7 +151,7 @@ class BusinessList extends React.Component {
                   {' '}
                   {this.props.business.fields['Organization Name']}
                 </div>
-                <p>Capacity: {this.props.business.fields.Capacity}</p>
+                <p>{this.props.business.fields['Business Description']}</p>
                 <p>
                   Address: {this.props.business.fields['Primary Address']}{' '}
                   {this.props.business.fields.City},{' '}
