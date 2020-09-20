@@ -5,8 +5,14 @@ import axios from 'axios';
 import { Button } from 'reactstrap';
 
 class NodeMailer extends Component {
+  state = {
+    sent: false,
+  };
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({
+      sent: true,
+    });
     const subject = document.getElementById('subject').value;
     console.log(subject);
     // const email = document.getElementById('email').value;
@@ -28,6 +34,7 @@ class NodeMailer extends Component {
       .then((response) => {
         if (response.data.msg === 'success') {
           alert('Message Sent.');
+
           this.resetForm();
         } else if (response.data.msg === 'fail') {
           alert('Message failed to send.');
@@ -44,23 +51,30 @@ class NodeMailer extends Component {
   };
 
   render() {
-    return (
-      <div className="col-sm-8 offset-sm-2">
-        <form
-          id="contact-form"
-          onSubmit={this.handleSubmit.bind(this)}
-          method="POST"
-        >
-          <div className="form-group">
-            <label htmlFor="subject">Subject:</label>
-            <input
-              // placeholder="ex: Our event this week"
-              type="text"
-              className="form-control"
-              id="subject"
-            />
-          </div>
-          {/* <div className="form-group">
+    if (this.state.sent === true) {
+      return (
+        <div className="col-sm-8 offset-sm-2">
+          <h1>Message Sent successfully!</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="col-sm-8 offset-sm-2">
+          <form
+            id="contact-form"
+            onSubmit={this.handleSubmit.bind(this)}
+            method="POST"
+          >
+            <div className="form-group">
+              <label htmlFor="subject">Subject:</label>
+              <input
+                // placeholder="ex: Our event this week"
+                type="text"
+                className="form-control"
+                id="subject"
+              />
+            </div>
+            {/* <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
               type="email"
@@ -69,16 +83,21 @@ class NodeMailer extends Component {
               aria-describedby="emailHelp"
             />
           </div> */}
-          <div className="form-group">
-            <label htmlFor="message">Message:</label>
-            <textarea className="form-control" rows="5" id="message"></textarea>
-          </div>
-          <Button color="secondary" type="submit">
-            Submit
-          </Button>
-        </form>
-      </div>
-    );
+            <div className="form-group">
+              <label htmlFor="message">Message:</label>
+              <textarea
+                className="form-control"
+                rows="5"
+                id="message"
+              ></textarea>
+            </div>
+            <Button color="secondary" type="submit">
+              Submit
+            </Button>
+          </form>
+        </div>
+      );
+    }
   }
 }
 

@@ -1,9 +1,12 @@
 -- Add users
 INSERT INTO "users" (email, password, first_name, last_name)
-VALUES ('crosbycalvillo@gmail.com', 'password123', 'Crosby', 'Calvillo'),
-('sarahmiller@gmail.com', 'password123', 'Sarah', 'Miller'),
-('briannahamption@gmail.com', 'password123', 'Brianna', 'Hampton'),
-('kristinjones@gmail.com', 'password123', 'Kristin', 'Jones');
+VALUES ('crosbycalvillo@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Crosby', 'Calvillo'),
+('sarahmiller@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Sarah', 'Miller'),
+('briannahamption@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Brianna', 'Hampton'),
+('kristinjones@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Kristin', 'Jones'),
+('annasmith@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Anna', 'Smith'),
+('ginabirdling@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Gina', 'Birdling'),
+('sophiajean@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Sophia', 'Jean');
 
 
 -- Add Profiles
@@ -15,13 +18,13 @@ mentor, mentee, user_id)
 VALUES
 ('Crosby Calvillo', 'Occupational Therapist', 'Advent Health', 'Acute Care OT',
 '5315 Haskell Ave', 'Kansas City', 'KS', 66104, 'linkedin.link',
-'facebook.link', 'twitter.link', 'instagram.link', 'photo url here',
+'facebook.link', 'twitter.link', 'instagram.link', 'https://innovateher.s3.us-east-2.amazonaws.com/10d8f542-cc89-4dba-9df2-27e557a846df_IMG_0984.jpg',
 'My name is Crosby and I enjoy helping people live their lives to the fullest.', 
 'M', '04/18/1995', true, false, 1), 
 ('Sarah Miller', 'Elementary Teacher', 'Whispering Meadows Elementary', 
 'Elementary Music Teacher', '5174 Anderson Dr.', 'Lees Summit', 'MO', 
 '64134', 'linkedin.link', 'facebook.link', 'twitter.link', 'instagram.link', 
-'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 
+'https://innovateher.s3.us-east-2.amazonaws.com/linkedin-sales-navigator-QgYvORVDdd8-unsplash.jpg', 
 'As a teacher, I love helping shape our future through my students!', 
 'M', '07/13/1989', true, true, 2),
 ('Brianna Hampton', 'Registered Nurse', 'St. James Hospital', 'ICU RN', 
@@ -34,4 +37,32 @@ VALUES
 'Blue Springs', 'MO', 60933, 'https://www.linkedin.com', 'https://www.facebook.com', 
 'https://www.twitter.com', 'https://www.instagram.com', 
 'https://innovateher.s3.us-east-2.amazonaws.com/Sample2.jpeg', 
-'Law is my passion.', 'S', '12/04/1992', false, false, 4);
+'Law is my passion.', 'S', '12/04/1992', false, false, 4),
+('Anna Smith', 'Social Media Enthusiast', 'Axios Media', 'Social Media Coordinator', '2525 W 64th St', 
+'Kansas City', 'KS', 66108, 'https://www.linkedin.com', 'https://www.facebook.com', 
+'https://www.twitter.com', 'https://www.instagram.com', 
+'https://innovateher.s3.amazonaws.com/7d96db04-83c4-4ab7-a16d-33a83e1b5803_michael-dam-mEZ3PoFGs_k-unsplash.jpg', 
+'I am the new girl in town and I am looking to find my community and place!', 'S', '02/17/1999', true, false, 5),
+('Gina Birdling', 'Photographer', 'Ginas Photography', 'Photographer',
+'167 Jackson Ave', 'Kansas City', 'MO', 64108, 'https://www.linkedin.com',
+'https://www.facebook.com', 'https://www.twitter.com', 'https://www.instagram.com', 'https://innovateher.s3.amazonaws.com/1eab1c72-64c8-4de0-bc0c-dbdbcd21f7b2_courtney-cook-TSZo17r3m0s-unsplash.jpg',
+'I am a photographer from KC who loves working with families and other women in the community!', 
+'M', '07/13/1989', true, false, 6),
+('Sophia Jean', 'Public Servant', 'Independence Police Department', 'Police Patrol Officer',
+'1675  Davis Place', 'Kansas City', 'MO', 64106, 'https://www.linkedin.com',
+'https://www.facebook.com', 'https://www.twitter.com', 'https://www.instagram.com', 'https://innovateher.s3.us-east-2.amazonaws.com/ansley-ventura---SIXoW9s9A-unsplash.jpg',
+'Creator. Hardcore music fanatic. Food buff. Zombie expert. Unapologetic reader. Travel practitioner.', 
+'M', '12/10/1981', true, false, 7);
+
+INSERT INTO "users_skills" (user_id, skill_id) 
+VALUES (1, 2), (1, 35), (1, 50), (1, 300), (1, 230),
+      (2, 23), (2, 245), (2, 23), (2, 9), (2, 98),
+      (3, 2), (3, 43), (3, 520), (3, 345), (3, 22),
+      (4, 23), (4, 245), (4, 23), (4, 9), (4, 98),
+      (5, 112), (5, 111), (5, 116), (5, 117), (5, 120),
+      (5, 121), (5, 123), (5, 124), (5, 182), (5, 181),
+      (5, 176), (5, 177), (5, 434), (5, 435), (5, 441),
+      (5, 579), (5, 581), (6, 494), (6, 544), (6, 532), 
+      (6, 520), (6, 512), (6, 511), (6, 488), (6, 489), 
+      (6, 589), (7, 3), (7, 9), (7, 15), (7, 391),
+      (7, 398), (7, 414), (7, 415), (7, 436), (7, 87);
