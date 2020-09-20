@@ -70,6 +70,7 @@ state= {
                     <CardTitle className= "display-2 text-center">
                             Welcome, {this.props.store.profile.display_name}!
                     </CardTitle>
+                    <Col m={8}>
                       <CardImg style={{ width: "8rem" }}
                           src= {this.props.store.profile.headshot}
                           alt='Profile image'
@@ -84,6 +85,7 @@ state= {
                       <CardText className="text-center">
                       {this.props.store.profile.job_title}
                       </CardText>
+                      </Col>
                   </Col>
                       {/* organization name */}
 
