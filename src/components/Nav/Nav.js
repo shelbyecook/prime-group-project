@@ -92,12 +92,7 @@ const Nav = (props) => {
               {/* {loginLinkData.text}
                 </Link> */}
 
-              <Link className="nav-line text-nowrap mr-2  " to="/profile">
-                <i className="ni ni-circle-08 m-1" style={{ color: '#888' }} />
-                Profile
-              </Link>
-
-              <Link className="nav-line text-nowrap m-2" to="/main">
+              <Link className="nav-line text-nowrap mr-2" to="/main">
                 <i
                   className="ni ni-book-bookmark m-1"
                   style={{ color: '#888' }}
@@ -105,8 +100,13 @@ const Nav = (props) => {
                 Home
               </Link>
 
+              <Link className="nav-line text-nowrap mr-2  " to="/profile">
+                <i className="ni ni-circle-08 m-1" style={{ color: '#888' }} />
+                Profile
+              </Link>
+
               {/* <i className="ni ni-user-run" style={{ color: '#888' }} /> */}
-              <LogOutButton className="nav-logout  " />
+              <LogOutButton className="nav-logout ml-0" />
 
               {/* <Link className="nav-line" to="/profile">
                   Profile

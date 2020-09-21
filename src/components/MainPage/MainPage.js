@@ -16,6 +16,7 @@ import {
   Container,
   Row,
   Col,
+  CardBody,
   Button,
 } from 'reactstrap';
 
@@ -119,11 +120,20 @@ class MainPage extends Component {
                         Bio:
                         </span> */}
 
-                  <h4 style={{ borderBottom: '1px solid black' }}>Bio:</h4>
+
+                  <h4
+                    className="text-uppercase text-muted"
+                    style={{ borderBottom: '1px solid #9999999e' }}
+                  >
+                    Bio:
+                  </h4>
                   <p>{this.props.store.profile.bio}</p>
                 </CardText>
                 <CardText className="text-left">
-                  <h4 style={{ borderBottom: '1px solid black' }}>
+                  <h4
+                    className="text-uppercase text-muted"
+                    style={{ borderBottom: '1px solid #9999999e' }}
+                  >
                     Organization:
                   </h4>
                   {/* <span className="font-weight-bold text-primary">
@@ -132,7 +142,10 @@ class MainPage extends Component {
                   <p>{this.props.store.profile.organization_name}</p>
                 </CardText>
                 <CardText className="text-left">
-                  <h4 style={{ borderBottom: '1px solid black' }}>
+                  <h4
+                    className="text-uppercase text-muted"
+                    style={{ borderBottom: '1px solid #9999999e' }}
+                  >
                     Job Title:
                   </h4>
                   {/* <span className="font-weight-bold text-primary">
@@ -203,7 +216,7 @@ class MainPage extends Component {
                 })}
             </CardText>
             <Row>
-              <Col className="text-right">
+              <Col lg={{ size: 3, offset: 9 }}>
                 <Link to="profile">
                   <Button outline color="primary">
                     View Profile

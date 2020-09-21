@@ -1,7 +1,22 @@
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import React from 'react';
-import { Row, Col, Card, CardBody } from 'reactstrap';
+import {
+  Button,
+  ButtonToggle,
+  ButtonDropdown,
+  DropdownToggle,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  Modal,
+  ModalBody,
+} from 'reactstrap';
 
 //import BootstrapTable from 'react-bootstrap-table-next';
 //import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter'; //Want to add filtering
@@ -9,6 +24,14 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 class SpeakerList extends React.Component {
   state = {
     status: false, //'false' = '+' AND 'true' = '-'
+    defaultModal: false,
+    isOpen: false,
+  };
+
+  toggleModal = (state) => {
+    this.setState({
+      [state]: !this.state[state],
+    });
   };
 
   cellToggle = () => {
@@ -33,6 +56,7 @@ class SpeakerList extends React.Component {
     };
 
     const closedHeight = {
+      maxWidth: '100%',
       maxHeight: '190px',
       position: 'relative',
       top: '0',
@@ -43,8 +67,9 @@ class SpeakerList extends React.Component {
     };
 
     const openHeight = {
+      maxWidth: '800px',
       maxHeight: '100%',
-      position: 'relative',
+      position: 'static',
       top: '0',
       // bottom: '0',
       overflow: 'hidden',
@@ -55,20 +80,31 @@ class SpeakerList extends React.Component {
     return (
       <>
         <Card
-          //lg={9}
-          className="p-3 bg-secondary"
-          style={{
-            // background: 'linear-gradient(to right, #ccace2, #823bae)',
-            // opacity: '0.6',
-            border: 'none',
-          }}
+          style={{ maxHeight: '280px', minHeight: '280px' }}
+          className="bg-secondary shadow ml-0 mr-0 mb-3"
         >
-          <CardBody style={this.state.status ? openHeight : closedHeight}>
-            <Row style={this.state.status ? openFade : closedFade}>
-              <Col lg={1}>
-                {this.state.status ? (
+          <CardBody
+          // style={this.state.status ? openHeight : closedHeight}
+          >
+            <Row
+            // style={this.state.status ? openFade : closedFade}
+            >
+              <Col className="pt-6 pr-1" lg={{ size: 3, order: 2 }}>
+                <Button
+                  block
+                  outline
+                  color="primary"
+                  size="sm"
+                  onClick={() => this.toggleModal('defaultModal')}
+                >
                   <i
-                    onClick={this.cellToggle}
+                    style={{ cursor: 'pointer', fontSize: '30px' }}
+                    className="ni ni-fat-add pt-1"
+                  />
+                </Button>
+                {/* {this.state.status ? (
+                  <i
+                    onClick={this.toggleModal}
                     style={{ cursor: 'pointer' }}
                     className="ni ni-fat-delete"
                   />
@@ -78,20 +114,22 @@ class SpeakerList extends React.Component {
                     style={{ cursor: 'pointer' }}
                     className="ni ni-fat-add"
                   />
-                )}
+                )} */}
               </Col>
-              <Col lg={5}>
-                <div style={{ width: '50%' }}>
+              <Col lg={{ size: 9, order: 1 }}>
+                <div
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    overflow: 'hidden',
+                    borderRadius: '50%',
+                  }}
+                >
                   {this.props.speaker.fields &&
                     this.props.speaker.fields['Speaker Photo'] &&
                     this.props.speaker.fields['Speaker Photo'][0] && (
                       <img
-                        className="mt-2"
-                        style={{
-                          height: '30%',
-                          width: '30%',
-                          borderRadius: '6px',
-                        }}
+                        style={{ objectFit: 'cover' }}
                         src={this.props.speaker.fields['Speaker Photo'][0].url}
                         alt="img"
                       />
@@ -111,7 +149,7 @@ class SpeakerList extends React.Component {
                   {this.props.speaker.fields['Speaker Photo'][0].url}
                 </div>*/}
               </Col>
-              <Col lg={4} style={{ borderRight: '1px solid orange' }}>
+              {/* <Col lg={5} style={{ borderRight: '1px solid orange' }}>
                 <ul style={{ listStyleType: 'none' }}>
                   <li className="mb-2">
                     <i
@@ -135,87 +173,107 @@ class SpeakerList extends React.Component {
                     {this.props.speaker.fields['Website']}
                   </li>
                 </ul>
-              </Col>
-              {/*<Col lg={1}></Col>*/}
+              </Col> */}
             </Row>
-            <Row>
+            {/* <Row>
               <Col lg={1}></Col>
               <Col lg={9}>
+                <p className="font-weight-light">
+                  {this.props.speaker.fields['Speaker Bio']}
+                </p>
+              </Col>
+              <Col lg={9} style={{ border: '1px solid orange' }}></Col>
+            </Row> */}
+          </CardBody>
+        </Card>
+        <Modal
+          className="modal-dialog-centered modal-primary"
+          size="lg"
+          // contentClassName="bg-gradient-primary"
+          isOpen={this.state.defaultModal}
+          toggle={() => this.toggleModal('defaultModal')}
+        >
+          <button
+            aria-label="Close"
+            className="close m-2 "
+            data-dismiss="modal"
+            type="button"
+            onClick={() => this.toggleModal('defaultModal')}
+          >
+            <span aria-hidden={true}>×</span>
+          </button>
+          <ModalBody>
+            {/* <Card className="shadow ml-0 mr-0 mb-3 text-primary"> */}
+            <Row>
+              <Col lg={1}></Col>
+              <Col lg={5}>
+                <div
+                  style={{
+                    width: '150px',
+                    height: '150px',
+                    overflow: 'hidden',
+                    borderRadius: '50%',
+                    margin: 'auto',
+                  }}
+                >
+                  {this.props.speaker.fields &&
+                    this.props.speaker.fields['Speaker Photo'] &&
+                    this.props.speaker.fields['Speaker Photo'][0] && (
+                      <img
+                        style={{ objectFit: 'cover' }}
+                        src={this.props.speaker.fields['Speaker Photo'][0].url}
+                        alt="img"
+                      />
+                    )}
+                </div>
+                <div className="mt-4"> {this.props.speaker.fields.Name}</div>
+                <p>
+                  {this.props.speaker.fields.Title}
+                  {' at '} {this.props.speaker.fields.Organization}
+                </p>
+              </Col>
+              <Col lg={6} className="text-left p-5">
+                <ul style={{ listStyleType: 'none' }}>
+                  <li className="mb-2">
+                    <i
+                      style={{ cursor: 'pointer' }}
+                      className="ni ni-email-83 mr-2"
+                    />
+                    {this.props.speaker.fields.Email}
+                  </li>
+                  <li className="mb-2">
+                    <i
+                      style={{ cursor: 'pointer' }}
+                      className="ni ni-mobile-button mr-2"
+                    />
+                    {this.props.speaker.fields['Phone Number']}
+                  </li>
+                  <li className="mb-2">
+                    <i
+                      style={{ cursor: 'pointer' }}
+                      className="ni ni-laptop mr-2"
+                    />
+                    {this.props.speaker.fields['Website']}
+                  </li>
+                </ul>
+              </Col>
+            </Row>
+            <hr />
+            <Row>
+              <Col
+                lg={{ size: 10, offset: 1 }}
+                style={{ borderBottom: '1px solid orange' }}
+              >
                 {/*<Row style={{ width: '100%' }}>*/}
                 <p className="font-weight-light">
                   {this.props.speaker.fields['Speaker Bio']}
                 </p>
                 {/*</Row>*/}
               </Col>
-              <Col lg={9} style={{ border: '1px solid orange' }}></Col>
-              {/*<Col lg={1}></Col>*/}
             </Row>
-          </CardBody>
-        </Card>
+          </ModalBody>
+        </Modal>
       </>
-      // <tbody>
-      //   <tr>
-      //     <td onClick={this.cellToggle}>
-      //       {' '}
-      //       {this.state.status ? (
-      //         <i style={{ cursor: 'pointer' }} className="ni ni-fat-delete" />
-      //       ) : (
-      //         <i style={{ cursor: 'pointer' }} className="ni ni-fat-add" />
-      //       )}
-      //     </td>
-      //     <td>
-      //       <Button
-      //         color="link"
-      //         size="sm"
-      //         href={this.props.speaker.fields['LinkedIn Profile']}
-      //         target=" "
-      //       >
-      //         {this.props.speaker.fields.Name} {` `}
-      //       </Button>
-      //     </td>
-      //     <td>
-      //       <ul style={{ listStyleType: 'none' }}>
-      //         <li>
-      //           <i style={{ cursor: 'pointer' }} className="ni ni-email-83" />
-      //           {this.props.speaker.fields.Email}
-      //         </li>
-      //         <li>
-      //           <i
-      //             style={{ cursor: 'pointer' }}
-      //             className="ni ni-mobile-button"
-      //           />
-      //           {this.props.speaker.fields['Phone Number']}
-      //         </li>
-      //         <li>
-      //           <i style={{ cursor: 'pointer' }} className="ni ni-laptop" />
-      //           {this.props.speaker.fields['Website']}
-      //         </li>
-      //       </ul>
-      //     </td>
-      //   </tr>
-      //   {this.state.status ? (
-      //     <tr>
-      //       {' '}
-      //       {/*Want to add style so when the new row is added, there isn't a line separating the two rows.*/}
-      //       <td>Random</td>
-      //       <td style={{ overflowWrap: 'break-word', maxWidth: '50px' }}>
-      //         {' '}
-      //         <p style={{ overflowWrap: 'break-word' }}>
-      //           {this.props.speaker.fields['Speaker Bio']}{' '}
-      //         </p>
-      //       </td>{' '}
-      //       random
-      //       {/*Can't seem to get the text contained. Maybe change table width?*/}
-      //       {/* <tr>
-      //         <td>
-      //           <i class="fa fa-linkedin-square" />
-      //         </td>
-      //       </tr> */}
-      //     </tr>
-      //   ) : (
-      //     ''
-      //   )}
-      // </tbody>
     );
   }
 }

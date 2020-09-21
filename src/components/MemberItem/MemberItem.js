@@ -219,7 +219,7 @@ class MemberItem extends Component {
                 <hr style={{ backgroundColor: '#F59032' }} />
                 <Row
                   className="mt-3"
-                  style={{ borderLeft: '0.5px solid #F59032' }}
+                  // style={{ borderLeft: '0.5px solid #F59032' }}
                 >
                   <Col lg={5} xs={12}>
                     <p className="lead">Social Media</p>
