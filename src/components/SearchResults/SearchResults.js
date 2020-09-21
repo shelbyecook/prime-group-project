@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import SearchOption from '../SearchOption/SearchOption';
 
 import styles from './SearchResults.module.css';
 
-import { Badge, Button } from 'reactstrap';
+import { Badge } from 'reactstrap';
 // Displays results when placed in the Search Option map function
 class SearchResults extends Component {
   state = {

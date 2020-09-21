@@ -6,17 +6,7 @@ import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { withRouter } from 'react-router-dom';
 
-import {
-  Navbar,
-  NavbarBrand,
-  UncontrolledCollapse,
-  Container,
-  Row,
-  Col,
-  NavItem,
-  NavLink,
-  Popover,
-} from 'reactstrap';
+import { Navbar, Container } from 'reactstrap';
 
 const Nav = (props) => {
   let loginLinkData = {

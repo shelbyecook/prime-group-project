@@ -2,19 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import {
-  Container,
-  Button,
-  Col,
-  Row,
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardImg,
-  CardSubtitle,
-  Modal,
-} from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import MemberItem from '../MemberItem/MemberItem';
 
 class MemberList extends Component {

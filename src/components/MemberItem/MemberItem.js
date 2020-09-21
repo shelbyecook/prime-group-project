@@ -3,20 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './MemberItem.css';
-import {
-  Container,
-  Badge,
-  Button,
-  Col,
-  Row,
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardImg,
-  CardSubtitle,
-  Modal,
-} from 'reactstrap';
+import { Badge, Button, Col, Row, Card, CardBody, Modal } from 'reactstrap';
 import NodeMailer from '../NodeMailer/NodeMailer';
 
 class MemberItem extends Component {
@@ -130,7 +117,7 @@ class MemberItem extends Component {
                       objectFit: 'cover',
                     }}
                     src={member.headshot}
-                    alt="Profile image"
+                    alt="Profile"
                   />
                 </div>
                 <Button
@@ -238,9 +225,9 @@ class MemberItem extends Component {
                     <p className="lead">Social Media</p>
                     <a
                       target="_blank"
-                      // rel="noopener noreferrer"
+                      rel="noopener noreferrer"
                       href={member.instagram}
-                      target="_blank"
+                      // target="_blank"
                     >
                       <i
                         className="fa fa-instagram"

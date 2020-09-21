@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import RegisterPage from '../RegisterPage/RegisterPage';
+
 import MemberAboutForm from '../MemberAboutForm/MemberAboutForm';
 import MemberDemoForm from '../MemberDemoForm/MemberDemoForm';
-import MemberMentorForm from '../MemberMentorForm/MemberMentorForm';
+
 import SkillsWidget from '../SkillsWidget/SkillsWidget';
 import MainPage from '../MainPage/MainPage';
 
@@ -24,7 +24,6 @@ import {
 } from 'reactstrap';
 
 import classnames from 'classnames';
-import ProfilePage from '../ProfilePage/ProfilePage';
 
 class UserPage extends Component {
   state = {

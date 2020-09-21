@@ -6,15 +6,12 @@ import SearchOption from '../SearchOption/SearchOption';
 import styles from './SkillsWidget.module.css';
 import classnames from 'classnames';
 import {
-  Card,
-  CardBody,
   NavItem,
   NavLink,
   Nav,
   TabContent,
   TabPane,
   Badge,
-  Button,
   CardFooter,
 } from 'reactstrap';
 

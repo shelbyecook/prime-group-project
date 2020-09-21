@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  CardBody,
-  Container,
-  Row,
-  Col,
-  Card,
-  Table,
-  CardHeader,
-} from 'reactstrap';
+import { Container, Card, CardHeader } from 'reactstrap';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BusinessList from '../BusinessList/BusinessList';
 

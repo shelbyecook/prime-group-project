@@ -21,18 +21,16 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../SpeakerPage/SpeakerPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+
 import ProfilePage from '../ProfilePage/ProfilePage';
 import MainPage from '../MainPage/MainPage';
 
 import './App.css';
 import MemberSearchPage from '../MemberSearchPage/MemberSearchPage';
-import NodeMailer from '../NodeMailer/NodeMailer';
+
 import SpeakerPage from '../SpeakerPage/SpeakerPage';
 import BusinessPage from '../BusinessPage/BusinessPage';
 import SpacesPage from '../SpacesPage/SpacesPage';

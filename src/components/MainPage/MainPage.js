@@ -120,6 +120,7 @@ class MainPage extends Component {
                         Bio:
                         </span> */}
 
+
                   <h4
                     className="text-uppercase text-muted"
                     style={{ borderBottom: '1px solid #9999999e' }}

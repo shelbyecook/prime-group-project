@@ -2,20 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import {
-  Button,
-  ButtonGroup,
-  Row,
-  Col,
-  Input,
-  Container,
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-} from 'reactstrap';
-import MemberList from '../MemberList/MemberList';
-import SearchOption from '../SearchOption/SearchOption';
+import { Button, Row, Col, Container, Card, CardBody } from 'reactstrap';
+
 import ProfileSearch from '../ProfileSearch/ProfileSearch';
 
 class MemberSearchPage extends Component {
