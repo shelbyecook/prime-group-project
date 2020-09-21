@@ -70,6 +70,7 @@ class ProfilePage extends Component {
         id: this.props.store.user.id,
       },
     });
+    this.props.history.push('/main');
   };
 
   render() {
@@ -465,7 +466,12 @@ class ProfilePage extends Component {
                               break;
                           }
                           return (
-                            <Badge key={i} pill color={color}>
+                            <Badge
+                              className="mr-1 mt-1"
+                              key={i}
+                              pill
+                              color={color}
+                            >
                               {item.skill}
                             </Badge>
                           );

@@ -79,106 +79,24 @@ class SpeakerPage extends Component {
     //};
     return (
       <Container>
-        {/* <Container className="pt-5">
-          <Card>
-            <CardHeader>
-              <h3 className="display-2">Speakers</h3>
-            </CardHeader>
-            <CardBody>
-              <Card
-                //style={this.state.isOpen ? openHeight : closedHeight}
-                style={{
-                  background: 'linear-gradient(to right, #f2f2f2, #bc91d980)',
-                }}
-              >
-                <Row>
-                  <Col lg={3}>
-                    {this.state.status ? (
-                      <i
-                        style={{ cursor: 'pointer' }}
-                        className="ni ni-fat-delete"
-                      />
-                    ) : (
-                      <i
-                        style={{ cursor: 'pointer' }}
-                        className="ni ni-fat-add"
-                      />
-                    )}
-                  </Col>
-                  <Col lg={4}>NAMES GO HERE</Col>
-                  <Col lg={5}>
-                    <p>DETAILS GO HERE</p>
-                    <p>DETAILS GO HERE</p>
-                    <p>DETAILS GO HERE</p>
-                  </Col>
-                </Row>
-              </Card>
-            </CardBody>
-          </Card>
-        </Container> */}
-
-        <Card
-          //lg={9}
+        {/* <Card
           style={{ background: 'none', borderRadius: '0px', border: 'none' }}
-          className="mt-5"
         >
-          <CardHeader>
-            <h1>Speakers</h1>
-            {/*<h3 className="lead">Speakers</h3>*/}
-
-            {this.props.store &&
-              this.props.store.speakers &&
-              this.props.store.speakers.map((speaker, index) => {
-                return <SpeakerList speaker={speaker} key={index} />;
-              })}
-            {/* <Container> */}
-            {/*<CardBody>*/}
-            {/* <CardHeader>
-                <h2>Spaces</h2>
-              </CardHeader> */}
-            {/*<Table hover>
-              {' '}
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Test</th>
-                  <th>Test</th>
-                  <th>Test</th>
-                </tr>
-              </thead>
-              {this.props.store &&
-                this.props.store.spaces &&
-                this.props.store.spaces.map((space, index) => {
-                  return <SpaceList space={space} key={index} />;
-                })}
-            </Table>*/}
-            {/* </Container> */}
-            {/* <Container> */}
-            {/*<CardBody>*/}
-            {/* <CardHeader>
-                <h2>Businesses</h2>
-              </CardHeader> */}
-            {/*<Table hover>
-              {' '}
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Test</th>
-                  <th>Test</th>
-                  <th>Test</th>
-                </tr>
-              </thead>
-              {this.props.store &&
-                this.props.store.businesses &&
-                this.props.store.spaces.map((business, index) => {
-                  return <BusinessList business={business} key={index} />;
-                })}
-            </Table>*/}
-            {/* </Container> */}
-          </CardHeader>
-        </Card>
+          <CardHeader> */}
+        <h1 className="mt-5 mb-5 display-1">Speakers</h1>
+        <Row>
+          {this.props.store &&
+            this.props.store.speakers &&
+            this.props.store.speakers.map((speaker, index) => {
+              return (
+                <Col lg={4} className="ml-0 mr-0">
+                  <SpeakerList speaker={speaker} key={index} />
+                </Col>
+              );
+            })}
+        </Row>
+        {/* </CardHeader>
+        </Card> */}
       </Container>
     );
   }
