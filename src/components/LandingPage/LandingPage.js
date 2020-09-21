@@ -10,16 +10,7 @@ import LoginForm from '../LoginForm/LoginForm';
 
 // Argon Components
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Button,
-  CardTitle,
-  CardText,
-} from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 
 // const [activeTab, setActiveTab] = useState('1');

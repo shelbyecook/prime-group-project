@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import SearchOption from '../SearchOption/SearchOption';
 
-import { Button } from 'reactstrap';
-import MemberItem from '../MemberItem/MemberItem';
 import MemberList from '../MemberList/MemberList';
 // Displays results when placed in the Search Option map function
 class ProfileResults extends Component {

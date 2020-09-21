@@ -54,20 +54,7 @@
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import React from 'react';
-import {
-  Button,
-  ButtonToggle,
-  ButtonDropdown,
-  DropdownToggle,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-} from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 
 //import BootstrapTable from 'react-bootstrap-table-next';
 //import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter'; //Want to add filtering

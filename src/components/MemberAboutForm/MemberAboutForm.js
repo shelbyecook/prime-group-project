@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { useFormik } from 'formik';
@@ -21,7 +21,6 @@ import {
   CardBody,
   Row,
   Col,
-  Container,
   CardHeader,
 } from 'reactstrap';
 import ImageUpload from '../ImageUpload/ImageUpload';

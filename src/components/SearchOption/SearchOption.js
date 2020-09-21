@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import { Row, Col, Input, Table, Container } from 'reactstrap';
+import { Row, Col, Input, Container } from 'reactstrap';
 import SearchResults from '../SearchResults/SearchResults';
 
 // creating a Search functional component to reuse in search page and for skills

@@ -1,17 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-  Navbar,
-  NavbarBrand,
-  UncontrolledCollapse,
-  Container,
-  Row,
-  Col,
-  NavItem,
-  NavLink,
-  Popover,
-} from 'reactstrap';
 
 const LogOutButton = (props) => (
   // <button
