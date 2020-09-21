@@ -1,22 +1,7 @@
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import React from 'react';
-import {
-  Button,
-  ButtonToggle,
-  ButtonDropdown,
-  DropdownToggle,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  Modal,
-  ModalBody,
-} from 'reactstrap';
+import { Button, Row, Col, Card, CardBody, Modal, ModalBody } from 'reactstrap';
 
 //import BootstrapTable from 'react-bootstrap-table-next';
 //import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter'; //Want to add filtering
@@ -41,42 +26,6 @@ class SpeakerList extends React.Component {
   };
 
   render() {
-    const closedFade = {
-      top: '0',
-      left: '0',
-      backgroundImage: 'linear-gradient(to bottom, transparent, #f2f2f251)',
-      transition: 'all 0.3s 0.08s ease-in-out',
-    };
-
-    const openFade = {
-      top: '0',
-      left: '0',
-      backgroundImage: 'none',
-      transition: 'all 0.3s 0.08s ease-in-out',
-    };
-
-    const closedHeight = {
-      maxWidth: '100%',
-      maxHeight: '190px',
-      position: 'relative',
-      top: '0',
-      bottom: '0',
-      overflow: 'hidden',
-      zIndex: '0',
-      transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
-    };
-
-    const openHeight = {
-      maxWidth: '800px',
-      maxHeight: '100%',
-      position: 'static',
-      top: '0',
-      // bottom: '0',
-      overflow: 'hidden',
-      zIndex: '999',
-      // transform: 'translate(0, 50px)',
-      transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
-    };
     return (
       <>
         <Card

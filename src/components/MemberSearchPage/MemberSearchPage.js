@@ -38,6 +38,11 @@ class MemberSearchPage extends Component {
           searchTerm: 'organization_name',
         });
         break;
+      default:
+        this.setState({
+          searchTerm: 'job_title',
+        });
+        break;
     }
   };
 

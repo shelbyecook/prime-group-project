@@ -458,6 +458,9 @@ class ProfilePage extends Component {
                             case 12:
                               color = 'warning';
                               break;
+                            default:
+                              color = 'primary';
+                              break;
                           }
                           return (
                             <Badge

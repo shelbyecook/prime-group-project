@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card, CardHeader } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import SpeakerList from '../SpeakerList/SpeakerList';
 

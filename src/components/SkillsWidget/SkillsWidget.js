@@ -363,6 +363,9 @@ class SkillsWidget extends Component {
               case 12:
                 color = 'warning';
                 break;
+              default:
+                color = 'primary';
+                break;
             }
             return (
               <Badge key={skill.id} color={color} pill>
