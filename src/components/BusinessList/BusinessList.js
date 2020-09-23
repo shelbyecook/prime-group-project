@@ -187,7 +187,12 @@ class BusinessList extends React.Component {
                   {' '}
                   {this.props.business.fields['Organization Name']}
                 </div>
-                <p>{this.props.business.fields['Business Category']}</p>
+                <ul>
+                  <li>{this.props.business.fields['Business Category']}</li>
+                  <li>
+                    Womxn Owned?: {this.props.business.fields['Womxn Owned?']}
+                  </li>
+                </ul>
                 <hr />
 
                 {/*<div style={{ width: '50%' }}>
@@ -283,6 +288,9 @@ class BusinessList extends React.Component {
                   {this.props.business.fields['Organization Name']}
                 </div>
                 <p>{this.props.business.fields['Business Category']}</p>
+                <p>
+                  Womxn Owned?: {this.props.business.fields['Womxn Owned?']}
+                </p>
               </Col>
               <Col lg={6} className="text-left p-5">
                 <ul style={{ listStyleType: 'none' }}>
