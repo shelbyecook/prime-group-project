@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import axios from 'axios';
-import { Button } from 'reactstrap';
+import { Button, UncontrolledTooltip } from 'reactstrap';
 
 class NodeMailer extends Component {
   state = {
@@ -90,6 +90,15 @@ class NodeMailer extends Component {
                 rows="5"
                 id="message"
               ></textarea>
+              <UncontrolledTooltip
+                delay={0}
+                fade={true}
+                placement="right"
+                target="message"
+              >
+                Reminder: The recipient can’t respond to your message. To keep
+                the conversation going, include your contact info!
+              </UncontrolledTooltip>
             </div>
             <Button color="secondary" type="submit">
               Submit
