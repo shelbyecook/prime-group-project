@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card, CardHeader } from 'reactstrap';
+import { Container, Col, Row } from 'reactstrap';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BusinessList from '../BusinessList/BusinessList';
 
@@ -71,36 +71,56 @@ class SpeakerPage extends Component {
     //};
     return (
       <Container>
-        <Card
-          //lg={9}
-          style={{ background: 'none', borderRadius: '0px', border: 'none' }}
-          className="mt-5"
-        >
-          <CardHeader>
-            <h1>Businesses</h1>
-
-            {this.props.store &&
-              this.props.store.businesses &&
-              this.props.store.businesses.map((business, index) => {
-                return <BusinessList business={business} key={index} />;
-              })}
-            {/* <Container> */}
-            {/*<CardBody>*/}
-            {/* <CardHeader>
-                <h2>Spaces</h2>
-              </CardHeader>
-           
-            </Container>
-            <Container> */}
-            {/*<CardBody>*/}
-            {/* <CardHeader>
-                <h2>Businesses</h2>
-              </CardHeader> */}
-
-            {/* </Container> */}
-          </CardHeader>
-        </Card>
+        {/* <Card
+        style={{ background: 'none', borderRadius: '0px', border: 'none' }}
+      >
+        <CardHeader> */}
+        <h1 className="mt-5 mb-5 display-1">Businesses</h1>
+        <Row>
+          {this.props.store &&
+            this.props.store.businesses &&
+            this.props.store.businesses.map((business, index) => {
+              return (
+                <Col lg={4} className="ml-0 mr-0">
+                  <BusinessList business={business} key={index} />
+                </Col>
+              );
+            })}
+        </Row>
+        {/* </CardHeader>
+      </Card> */}
       </Container>
+      // <Container>
+      //   <Card
+      //     //lg={9}
+      //     style={{ background: 'none', borderRadius: '0px', border: 'none' }}
+      //     className="mt-5"
+      //   >
+      //     <CardHeader>
+      //       <h1>Businesses</h1>
+
+      //       {this.props.store &&
+      //         this.props.store.businesses &&
+      //         this.props.store.businesses.map((business, index) => {
+      //           return <BusinessList business={business} key={index} />;
+      //         })}
+      //       {/* <Container> */}
+      //       {/*<CardBody>*/}
+      //       {/* <CardHeader>
+      //           <h2>Spaces</h2>
+      //         </CardHeader>
+
+      //       </Container>
+      //       <Container> */}
+      //       {/*<CardBody>*/}
+      //       {/* <CardHeader>
+      //           <h2>Businesses</h2>
+      //         </CardHeader> */}
+
+      //       {/* </Container> */}
+      //     </CardHeader>
+      //   </Card>
+      // </Container>
     );
   }
 }
