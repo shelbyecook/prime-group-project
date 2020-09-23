@@ -13,7 +13,7 @@ class NodeMailer extends Component {
     this.setState({
       sent: true,
     });
-    const subject = document.getElementById('subject').value;
+    const subject = `Connection Request From ${this.props.store.user.first_name} ${this.props.store.user.last_name}`;
     console.log(subject);
     // const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
@@ -65,7 +65,7 @@ class NodeMailer extends Component {
             onSubmit={this.handleSubmit.bind(this)}
             method="POST"
           >
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="subject">Subject:</label>
               <input
                 // placeholder="ex: Our event this week"
@@ -73,7 +73,7 @@ class NodeMailer extends Component {
                 className="form-control"
                 id="subject"
               />
-            </div>
+            </div> */}
             {/* <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
@@ -87,7 +87,7 @@ class NodeMailer extends Component {
               <label htmlFor="message">Message:</label>
               <textarea
                 className="form-control"
-                rows="5"
+                rows="7"
                 id="message"
               ></textarea>
             </div>
