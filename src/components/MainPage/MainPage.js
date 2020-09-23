@@ -22,7 +22,9 @@ import {
 import { Link } from 'react-router-dom';
 
 class MainPage extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    document.title = 'ConnectHER';
+  }
 
   state = {
     first_name: '',

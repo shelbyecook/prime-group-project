@@ -6,7 +6,8 @@ VALUES ('crosbycalvillo@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8I
 ('kristinjones@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Kristin', 'Jones'),
 ('annasmith@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Anna', 'Smith'),
 ('ginabirdling@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Gina', 'Birdling'),
-('sophiajean@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Sophia', 'Jean');
+('sophiajean@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Sophia', 'Jean'),
+('bellakreig@gmail.com', '$2a$10$0mPSXOrr5aXmFxj4bWhEdO9vQPg.WHlCzu8IdooZjr40r9e9hv.d6', 'Bella', 'Kreig');
 
 
 -- Add Profiles
@@ -52,10 +53,15 @@ VALUES
 '1675  Davis Place', 'Kansas City', 'MO', 64106, 'https://www.linkedin.com',
 'https://www.facebook.com', 'https://www.twitter.com', 'https://www.instagram.com', 'https://innovateher.s3.us-east-2.amazonaws.com/ansley-ventura---SIXoW9s9A-unsplash.jpg',
 'Creator. Hardcore music fanatic. Food buff. Zombie expert. Unapologetic reader. Travel practitioner.', 
-'M', '12/10/1981', true, false, 7);
+'M', '12/10/1981', true, false, 7),
+('Bella Kreig', 'Event Photographer', 'Bella Photography', 'Photographer',
+'278 Nutter Street', 'Kansas City', 'MO', 64106, 'linkedin.link',
+'facebook.link', 'twitter.link', 'instagram.link', 'https://innovateher.s3.us-east-2.amazonaws.com/eye-for-ebony-vYpbBtkDhNE-unsplash.jpg',
+'I enjoy meeting people and taking their pictures. Never be afraid of who you are!', 
+'M', '12/18/1990', false, true, 8);
 
 INSERT INTO "users_skills" (user_id, skill_id) 
-VALUES (1, 2), (1, 35), (1, 50), (1, 300), (1, 230),
+VALUES (1, 357), (1, 388), (1, 389), (1, 300), (1, 381),
       (2, 23), (2, 245), (2, 23), (2, 9), (2, 98),
       (3, 2), (3, 43), (3, 520), (3, 345), (3, 22),
       (4, 23), (4, 245), (4, 23), (4, 9), (4, 98),
@@ -65,4 +71,6 @@ VALUES (1, 2), (1, 35), (1, 50), (1, 300), (1, 230),
       (5, 579), (5, 581), (6, 494), (6, 544), (6, 532), 
       (6, 520), (6, 512), (6, 511), (6, 488), (6, 489), 
       (6, 589), (7, 3), (7, 9), (7, 15), (7, 391),
-      (7, 398), (7, 414), (7, 415), (7, 436), (7, 87);
+      (7, 398), (7, 414), (7, 415), (7, 436), (7, 87),
+      (8, 494), (8, 544), (8, 532), 
+      (8, 520), (8, 512), (8, 511), (8, 488), (8, 489);

@@ -13,6 +13,10 @@ class SpeakerList extends React.Component {
     isOpen: false,
   };
 
+  componentDidMount() {
+    document.title = 'Find a Speaker';
+  }
+
   toggleModal = (state) => {
     this.setState({
       [state]: !this.state[state],
@@ -162,7 +166,6 @@ class SpeakerList extends React.Component {
                     height: '150px',
                     overflow: 'hidden',
                     borderRadius: '50%',
-                    margin: 'auto',
                   }}
                 >
                   {this.props.speaker.fields &&
@@ -175,7 +178,10 @@ class SpeakerList extends React.Component {
                       />
                     )}
                 </div>
-                <div className="mt-4"> {this.props.speaker.fields.Name}</div>
+                <div className="mt-4 display-4">
+                  {' '}
+                  {this.props.speaker.fields.Name}
+                </div>
                 <p>
                   {this.props.speaker.fields.Title}
                   {' at '} {this.props.speaker.fields.Organization}
@@ -209,17 +215,15 @@ class SpeakerList extends React.Component {
             </Row>
             <hr />
             <Row>
-              <Col
-                lg={{ size: 10, offset: 1 }}
-                style={{ borderBottom: '1px solid orange' }}
-              >
+              <Col lg={{ size: 10, offset: 1 }}>
                 {/*<Row style={{ width: '100%' }}>*/}
-                <p className="font-weight-light">
+                <p className="font-weight-light mt-2">
                   {this.props.speaker.fields['Speaker Bio']}
                 </p>
                 {/*</Row>*/}
               </Col>
             </Row>
+            <hr />
           </ModalBody>
         </Modal>
       </>

@@ -24,6 +24,9 @@ class LandingPage extends Component {
     activeTab: '1',
   };
 
+  componentDidMount() {
+    document.title = 'ConnectHER';
+  }
   toggle(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
