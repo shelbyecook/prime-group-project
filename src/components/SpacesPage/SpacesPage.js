@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card, CardHeader } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import SpacesList from '../SpacesList/SpacesList';
 
@@ -29,77 +29,26 @@ class SpacesPage extends Component {
 
   //<Table hover style={{ wordWrap: 'break-word' }}>
   render() {
-    //toggleModal = (state) => {
-    //  this.setState({
-    //    [state]: !this.state[state],
-    //  });
-    //};
-    //console.log(typeof this.props.store.speakers.records);
-    //const closedFade = {
-    //  top: '0',
-    //  left: '0',
-    //  backgroundImage: 'linear-gradient(to bottom, transparent, #f2f2f2)',
-    //  transition: 'all 0.3s 0.08s ease-in-out',
-    //};
-
-    //const openFade = {
-    //  top: '0',
-    //  left: '0',
-    //  backgroundImage: 'none',
-    //  transition: 'all 0.3s 0.08s ease-in-out',
-    //};
-
-    //const closedHeight = {
-    //  maxHeight: '150px',
-    //  position: 'relative',
-    //  top: '0',
-    //  bottom: '0',
-    //  overflow: 'hidden',
-    //  zIndex: '0',
-    //  transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
-    //};
-
-    //const openHeight = {
-    //  maxHeight: '100%',
-    //  position: 'relative',
-    //  top: '0',
-    //  // bottom: '0',
-    //  overflow: 'hidden',
-    //  zIndex: '999',
-    //  // transform: 'translate(0, 50px)',
-    //  transition: 'all 0.3s 0.08s cubic-bezier(.17,.67,.83,.67)',
-    //};
     return (
       <Container>
-        <Card
-          //lg={9}
-          style={{ background: 'none', borderRadius: '0px', border: 'none' }}
-          className="mt-5"
-        >
-          <CardHeader>
-            <h1>Spaces</h1>
-
-            {this.props.store &&
-              this.props.store.spaces &&
-              this.props.store.spaces.map((space, index) => {
-                return <SpacesList space={space} key={index} />;
-              })}
-            {/* <Container> */}
-            {/*<CardBody>*/}
-            {/* <CardHeader>
-                <h2>Spaces</h2>
-              </CardHeader>
-           
-            </Container>
-            <Container> */}
-            {/*<CardBody>*/}
-            {/* <CardHeader>
-                <h2>Businesses</h2>
-              </CardHeader> */}
-
-            {/* </Container> */}
-          </CardHeader>
-        </Card>
+        {/* <Card
+        style={{ background: 'none', borderRadius: '0px', border: 'none' }}
+      >
+        <CardHeader> */}
+        <h1 className="mt-5 mb-5 display-1">Spaces</h1>
+        <Row>
+          {this.props.store &&
+            this.props.store.spaces &&
+            this.props.store.spaces.map((space, index) => {
+              return (
+                <Col lg={4} className="ml-0 mr-0">
+                  <SpacesList space={space} key={index} />
+                </Col>
+              );
+            })}
+        </Row>
+        {/* </CardHeader>
+      </Card> */}
       </Container>
     );
   }
